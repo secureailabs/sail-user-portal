@@ -2,7 +2,7 @@ import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import { QueryClient, useQueryClient } from 'react-query';
 import React, { useState } from 'react';
 
-import Breadcrumbs from '@secureailabs/web-ui/components/Breadcrumbs';
+import Breadcrumbs from 'src/components/Breadcrumbs';
 
 
 const updateBreadcrumb = (queryKey: string, nameKey: string, setBreadcrumb: React.Dispatch<React.SetStateAction<string>>, queryClient: QueryClient, self: () => {}) => {
@@ -79,6 +79,5 @@ const BreadcrumbRoutes: React.FC = () => {
     // @ts-ignore
     return <Breadcrumbs breadcrumbsData={useBreadcrumbs(routes)} />
 }
-
 
 export default BreadcrumbRoutes

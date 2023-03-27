@@ -17,8 +17,8 @@ import { FaServer } from 'react-icons/fa';
 
 import DashboardRouter from 'src/routes/Dashboard.routes';
 
-import Sidebar from '@secureailabs/web-ui/layout/Sidebar';
-import Header from '@secureailabs/web-ui/components/Header';
+import Sidebar from 'src/layout/Sidebar';
+import Header from 'src/components/Header';
 
 // @ts-ignore
 import default_profile_image from '../../assets/user.png';
@@ -79,7 +79,7 @@ const Dashboard: React.FC<TDashboardProps> = ({ userData, logoutMutationFunction
 
   return (
     <Sidebar primary={primary} secondary={secondary} logo={newLogo}>
-      {/* <div className="standard-grid-row">
+      <div className="standard-grid-row">
         <Header
           search={() => { }}
           username={userData?.name}
@@ -90,7 +90,7 @@ const Dashboard: React.FC<TDashboardProps> = ({ userData, logoutMutationFunction
           <BreadcrumbRoutes />
           <DashboardRouter />
         </div>
-      </div> */}
+      </div>
     </Sidebar>
   );
 };
