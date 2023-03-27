@@ -8,7 +8,7 @@ const ConditionalRender: React.FC<IConditionalRender> = ({
   status,
   success,
   failure,
-  Loading,
+  loading,
   children,
   spinnerOnly = false,
 }): ReactElement => {
@@ -19,7 +19,7 @@ const ConditionalRender: React.FC<IConditionalRender> = ({
       return <>{failure()}</>;
     case 'loading':
       //@ts-ignore
-      return Loading ? Loading : spinnerOnly ? <SpinnerOnly /> : <Spinner />;
+      return loading ? loading : spinnerOnly ? <SpinnerOnly /> : <Spinner />;
     default:
       return <>{children}</>;
   }

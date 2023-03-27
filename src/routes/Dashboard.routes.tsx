@@ -22,64 +22,56 @@ import RestrictedRoute from './RestrictedRoute';
 
 const DashboardRouter: React.FC = (): React.ReactElement => (
   <Routes>
-    {localStorage.getItem('mode') == 'demo' && <>
-      <Route
-        path="/registries"
-        element={
-          <ProtectedRoute redirect="/login">
-            {/* @ts-ignore */}
-            <UnifiedRegistries />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/registries/:id"
-        element={
-          <ProtectedRoute redirect="/login">
-            {/* @ts-ignore */}
-            <UnifiedRegistry />
-          </ProtectedRoute>
-        }
-
-      />
-      <Route
-        path="/organizations/:id"
-        element={
-          <ProtectedRoute redirect="/login">
-            {/* @ts-ignore */}
-            <ViewOrganization />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/settings"
-        element={
-          <ProtectedRoute redirect="/login">
-            {/* @ts-ignore */}
-            <SettingsPage />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/my-organization"
-        element={
-          <ProtectedRoute redirect="/login">
-            {/* @ts-ignore */}
-            <Organization />
-          </ProtectedRoute>
-        }
-      />
-      {/* <Route
-        path="/computational-resources"
-        element={
-          <ProtectedRoute redirect="/login">
-            <VirtualMachines />
-          </ProtectedRoute>
-        }
-      /> */}
-    </>}
-
     {/* <Route
+      path="/registries"
+      element={
+        <ProtectedRoute redirect="/login">
+          <UnifiedRegistries />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path="/registries/:id"
+      element={
+        <ProtectedRoute redirect="/login">
+          <UnifiedRegistry />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path="/organizations/:id"
+      element={
+        <ProtectedRoute redirect="/login">
+          <ViewOrganization />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path="/settings"
+      element={
+        <ProtectedRoute redirect="/login">
+          <SettingsPage />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path="/my-organization"
+      element={
+        <ProtectedRoute redirect="/login">
+          <Organization />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path="/computational-resources"
+      element={
+        <ProtectedRoute redirect="/login">
+          <VirtualMachines />
+        </ProtectedRoute>
+      }
+    />
+
+    <Route
       path="/"
       element={
         <ProtectedRoute redirect="/login">
@@ -126,10 +118,10 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
           <Dataset />
         </ProtectedRoute>
       }
-    /> */}
+    />
     <Route path="*" element={<Navigate to="/dashboard" />} />
 
-    {/* <Route
+    <Route
       path="/datasets/:id/:version"
       element={
         <ProtectedRoute redirect="/login">
@@ -137,7 +129,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
         </ProtectedRoute>
       }
     /> */}
-  </Routes>
+  </Routes >
 );
 
 export default DashboardRouter;

@@ -1,10 +1,12 @@
 import React from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 
-import { logout } from 'APIs/user/user.utils';
-
 import Dashboard from './Dashboard.component';
+import { OpenAPI } from 'src/client';
 
+const logout = async () => {
+  OpenAPI.TOKEN = '';
+}
 
 const DashboardContainer: React.FC = () => {
   const queryClient = useQueryClient()
@@ -14,6 +16,7 @@ const DashboardContainer: React.FC = () => {
     }, retry: false
   })
 
+  // @ts-ignore
   return Dashboard({ userData: queryClient.getQueryData('userData'), logoutMutationFunction: logoutMutation.mutate })
 }
 

@@ -1,5 +1,5 @@
 import { UseMutateFunction } from "react-query";
-import { UserInfo_Out } from "client";
+import { UserInfo_Out } from "src/client";
 
 export type TDashboardProps = {
     userData: UserInfo_Out;

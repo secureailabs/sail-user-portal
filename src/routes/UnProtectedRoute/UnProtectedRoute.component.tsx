@@ -1,17 +1,14 @@
 import React, { ReactElement } from 'react';
-
 import { useQueryClient } from 'react-query';
-
 import { Navigate } from 'react-router-dom';
-
 import { IUnProtectedRoutes } from './UnProtectedRoute.types';
-
 import { AbsoluteSpinner } from 'src/components/Spinner';
 
 const UnProtectedRoute: React.FC<IUnProtectedRoutes> = ({
   children,
   redirect,
 }): ReactElement => {
+
   const userState = useQueryClient().getQueryState('userData')
 
   // check if user finished loading, else run spinner

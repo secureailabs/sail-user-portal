@@ -27,7 +27,7 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
         switch (value.type) {
           case 'textarea': {
             return (
-            <TextAreaInput 
+            <TextAreaInput
               {...register(key)}
               key={index}
               placeholder={value.title ? value.title: headerCase(key, { delimiter: ' ' })}

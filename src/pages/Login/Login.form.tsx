@@ -22,6 +22,7 @@ const Login: React.FC<TLoginFormProps> = ({ signInReset, signInStart }) => {
   const onSubmit: SubmitHandler<IEmailAndPassword> = (data) => {
     signInStart(data);
   };
+
   return (
     <Page pageType="full">
       <ImageBackground image={login_background}>

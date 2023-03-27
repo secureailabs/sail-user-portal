@@ -9,7 +9,7 @@ import { DefaultService, Body_login } from 'src/client';
 const LoginContainer: React.FC = () => {
 
   async function post(data: IEmailAndPassword): Promise<LoginSuccess_Out> {
-    OpenAPI.BASE = 'http://localhost:8000';
+    OpenAPI.BASE = 'http://127.0.0.1:8000';
     var login_req: Body_login = {
       username: data.username,
       password: data.password,

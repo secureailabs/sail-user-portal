@@ -15,19 +15,22 @@ import {
 import { HiOutlineDesktopComputer } from 'react-icons/hi';
 import { FaServer } from 'react-icons/fa';
 
-import DashboardRouter from 'routes/Dashboard.routes';
+import DashboardRouter from 'src/routes/Dashboard.routes';
 
-import Sidebar from 'web-ui/layout/Sidebar';
-import Header from 'web-ui/components/Header';
+import Sidebar from '@secureailabs/web-ui/layout/Sidebar';
+import Header from '@secureailabs/web-ui/components/Header';
 
-import default_profile_image from 'assets/user.png';
-import newLogo from 'assets/newLogo.png';
+// @ts-ignore
+import default_profile_image from '../../assets/user.png';
+// @ts-ignore
+import newLogo from '../../assets/newLogo.png';
 
-import BreadcrumbRoutes from 'routes/Breadcrumbs/breadcrumbs.routes';
+import BreadcrumbRoutes from 'src/routes/Breadcrumbs/breadcrumbs.routes';
 
 import { TDashboardProps } from './Dashboard.types';
 
 const Dashboard: React.FC<TDashboardProps> = ({ userData, logoutMutationFunction }) => {
+  console.log("userDataDashboard", userData);
   let primary: any[] = [
     { text: 'Dashboard', Icon: MdDashboard, link: '/dashboard', exact: true },
     { text: 'Datasets', Icon: MdViewColumn, link: '/dashboard/datasets' },
@@ -76,7 +79,7 @@ const Dashboard: React.FC<TDashboardProps> = ({ userData, logoutMutationFunction
 
   return (
     <Sidebar primary={primary} secondary={secondary} logo={newLogo}>
-      <div className="standard-grid-row">
+      {/* <div className="standard-grid-row">
         <Header
           search={() => { }}
           username={userData?.name}
@@ -87,7 +90,7 @@ const Dashboard: React.FC<TDashboardProps> = ({ userData, logoutMutationFunction
           <BreadcrumbRoutes />
           <DashboardRouter />
         </div>
-      </div>
+      </div> */}
     </Sidebar>
   );
 };

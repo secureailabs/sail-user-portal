@@ -1,5 +1,5 @@
-import type { TFormFieldsRenderer } from '../../components/FormFieldsRenderer';
-import setFormIcon from '../../utils/setFormIcon';
+import type { TFormFieldsRenderer } from 'src/components/FormFieldsRenderer';
+import setFormIcon from 'src/utils/setFormIcon';
 
 import { FieldValues, FormState } from 'react-hook-form';
 

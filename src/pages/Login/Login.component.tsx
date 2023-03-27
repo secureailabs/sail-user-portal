@@ -18,7 +18,7 @@ const Login: React.FC<TLoginProps> = ({
       status={status}
       success={LoginSuccess}
       failure={() => <LoginFailure signInReset={signInReset} />}
-      Loading={<AbsoluteSpinner />}
+      loading={<AbsoluteSpinner />}
     >
       <LoginForm signInReset={signInReset} signInStart={signInStart} />
     </ConditionalRender>
