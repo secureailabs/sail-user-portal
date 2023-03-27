@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './sass/main.scss';
+import AppRouter from 'src/routes/App.routes';
+import { AppProps } from './App.types';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en.json';
 
-function App() {
+TimeAgo.addLocale(en);
+TimeAgo.setDefaultLocale('en');
+
+const App: React.FC<AppProps> = ({
+}) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AppRouter />
+    </>
   );
-}
+};
 
 export default App;
