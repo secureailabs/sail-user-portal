@@ -7,7 +7,6 @@ import type { DataFederationDataFormat } from './DataFederationDataFormat';
 import type { DataFederationState } from './DataFederationState';
 
 export type GetDataFederation_Out = {
-    [x: string]: any;
     name: string;
     description: string;
     data_format: DataFederationDataFormat;

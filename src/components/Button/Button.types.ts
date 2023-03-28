@@ -1,5 +1,5 @@
 type TButton = {
-  children: string;
+  children: string | React.ReactNode;
   button_type: 'primary' | 'secondary';
   type?: 'button' | 'submit' | 'reset';
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;

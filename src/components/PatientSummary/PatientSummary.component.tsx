@@ -15,6 +15,9 @@ import {
 } from 'chart.js';
 import { Doughnut, Bar } from 'react-chartjs-2';
 import { Range, getTrackBackground } from 'react-range';
+import Card from 'src/components/Card';
+import fake_data_json from 'src/assets/fake_data.json';
+import Select from 'react-select';
 
 ChartJS.register(
   ArcElement,
@@ -26,12 +29,6 @@ ChartJS.register(
   ChartDataLabels
 );
 
-import Card from 'src/components/Card';
-
-import fake_data_json from 'src/assets/fake_data.json';
-
-import Select from 'react-select';
-import { GrIndicator } from 'react-icons/gr';
 const STEP = 1;
 const MIN = 0;
 const MAX = 100;
@@ -48,7 +45,6 @@ const PatientSummary = ({
     },
   ];
   const [fake_data, setFakeData] = useState(fake_data_json);
-
 
   const gender_data = {
     labels: Object.keys(_.groupBy(fake_data, 'gender')),

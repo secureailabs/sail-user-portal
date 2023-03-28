@@ -1,38 +1,38 @@
 import React from 'react';
-import { TDataFederationProps } from './DataFederation.types';
 import DataFederationSuccess from './DataFederation.success';
 import DataFederationFailure from './DataFederation.failure';
 import { AxiosError } from 'axios';
-import { useParams } from 'react-router';
 import Spinner from 'src/components/Spinner/SpinnerOnly.component';
 import StandardContent from 'src/components/StandardContent';
 import { useQuery } from 'react-query';
 import { DefaultService, GetDataFederation_Out } from 'src/client';
 
-const DataFederation: React.FC<TDataFederationProps> = () => {
-  const { id } = useParams();
+const DataFederation: React.FC = () => {
 
-  const fetch = async (): Promise<GetDataFederation_Out> => {
-    return await DefaultService.getDataFederation(id || "")
+  const getFederation = async (): Promise<GetDataFederation_Out> => {
+    const allFederations = await DefaultService.getAllDataFederations();
+    console.log(allFederations);
+    // @ts-ignore
+    const id = allFederations.data_federations?.[0]?.id!;
+    return await DefaultService.getDataFederation(id);
   }
+  const queryResult = useQuery<GetDataFederation_Out, AxiosError>(['federation'], () => getFederation());
 
-  const { data, isLoading, status, error } =
-    useQuery<GetDataFederation_Out['DataFederation'], AxiosError>(['unified'], () => fetch());
-
-  if (isLoading) {
+  if (queryResult.isLoading) {
     return <><Spinner /></>
   }
-  if (status === 'success' && data) {
-    console.log(data)
-    return (
-      <StandardContent title={data.Name}>
-        <DataFederationSuccess
-          getDataFederationData={data}
-        />
-      </StandardContent>
-    )
+  if (queryResult.isError) {
+    return <DataFederationFailure error={queryResult.error} />
   }
-  return <DataFederationFailure error={error} />
+  if (!queryResult.data) {
+    return <DataFederationFailure error={"No Data Federation found"}/>
+  }
 
+  return (
+    <StandardContent title={queryResult.data?.name!}>
+      <DataFederationSuccess {...queryResult.data} />
+    </StandardContent>
+  )
 };
+
 export default DataFederation;
