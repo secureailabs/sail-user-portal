@@ -1,7 +1,7 @@
 import React from 'react';
-import Spinner from 'components/Spinner';
+import Spinner from 'src/components/Spinner';
 
-import { ConditionalRender } from 'components/ConditionalRenderRQuery';
+import { ConditionalRender } from 'src/components/ConditionalRenderRQuery';
 import { TDocumentationProps } from './Documentation.types';
 
 import DocumentationSuccess from './Documentation.success';

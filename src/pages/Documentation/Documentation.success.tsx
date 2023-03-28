@@ -1,10 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { TDocumentationSuccessProps } from './Documentation.types';
-
-import StandardContent from 'web-ui/components/StandardContent';
-import Resource from 'web-ui/components/Resource'
-import Text from 'web-ui/components/Text'
+import StandardContent from 'src/components/StandardContent';
+import Resource from 'src/components/Resource'
+import Text from 'src/components/Text'
 
 const Documentationuccess: React.FC<TDocumentationSuccessProps> = ({
     getAllDocumentationData,

@@ -16,7 +16,7 @@ import CustomizableDashboard from 'src/components/CustomizableDashboard';
 // import ViewOrganization from 'pages/ViewOrganization';
 import Downloads from 'src/pages/Downloads/Downloads';
 import Download from 'src/pages/Downloads/Download';
-// import Documentation from 'pages/Documentation';
+import Documentation from 'src/pages/Documentation';
 
 const DashboardRouter: React.FC = (): React.ReactElement => (
   <Routes>
@@ -78,14 +78,14 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
         </ProtectedRoute>
       }
     />
-    {/* <Route
+    <Route
       path="/documentation"
       element={
         <ProtectedRoute redirect="/login">
           <Documentation />
         </ProtectedRoute>
       }
-    /> */}
+    />
     <Route
       path="/downloads"
       element={
