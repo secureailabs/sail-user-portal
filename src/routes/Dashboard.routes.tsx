@@ -6,7 +6,7 @@ import UnProtectedRoute from './UnProtectedRoute';
 import RestrictedRoute from './RestrictedRoute';
 // import Datasets from 'pages/Datasets/Datasets';
 // import Dataset from 'pages/Datasets/Dataset';
-// import SettingsPage from 'pages/Settings';
+import SettingsPage from 'src/pages/Settings';
 // import Organization from 'pages/Organization';
 // import UnderConstruction from 'pages/UnderConstruction';
 // import VirtualMachines from 'pages/VirtualMachines';
@@ -24,7 +24,6 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
       path="/federation"
       element={
         <ProtectedRoute redirect="/login">
-          {/* @ts-ignore */}
           <DataFederation />
         </ProtectedRoute>
       }
@@ -44,7 +43,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
           <ViewOrganization />
         </ProtectedRoute>
       }
-    />
+    /> */}
     <Route
       path="/settings"
       element={
@@ -53,7 +52,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
         </ProtectedRoute>
       }
     />
-    <Route
+    {/* <Route
       path="/my-organization"
       element={
         <ProtectedRoute redirect="/login">

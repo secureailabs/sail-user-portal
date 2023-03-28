@@ -1,46 +1,18 @@
 import React from 'react';
+import StandardContent from 'src/components/StandardContent';
+import Card from 'src/components/Card';
+import Text from 'src/components/Text';
+import Button from 'src/components/Button';
+import Margin from 'src/components/Margin';
+import { useQueryClient } from 'react-query';
+import { UserInfo_Out } from 'src/client';
 
-import type { TSettings } from './Settings.types';
+const Settings: React.FC = () => {
 
-import accessRightsNumberToString from '@utils/accessRightsNumberToString';
+  // Get the user infomation from query
+  const queryClient = useQueryClient()
+  const currentUser: UserInfo_Out = queryClient.getQueryData('userData')!
 
-import StandardContent from 'web-ui/components/StandardContent';
-import Card from 'web-ui/components/Card';
-import Text from 'web-ui/components/Text';
-import Button from 'web-ui/components/Button';
-import Margin from 'web-ui/components/Margin';
-// import UpdateAccessRights from 'components/Settings/UpdateAccessRights';
-
-import InfoDisplay from 'components/InfoDisplay';
-import {
-  removeValues,
-  reorganizeObject,
-  convertObjectToArray,
-  reorganizeArray,
-  changeArrayKeys,
-} from 'components/InfoDisplay/InfoDisplay.utils';
-
-const Settings: React.FC<TSettings> = ({ userData }) => {
-  console.log(userData);
-
-  // if (userData) {
-  //   let newData: Record<string, any> = userData;
-  //   let arrayData = convertObjectToArray(newData);
-  //   arrayData = reorganizeArray(arrayData, [
-  //     'Username',
-  //     'Title',
-  //     'Email',
-  //     'AccessRights',
-  //   ]);
-  //   arrayData = changeArrayKeys(arrayData, [
-  //     'Name',
-  //     'Job Title',
-  //     'Email',
-  //     'Access Rights',
-  //   ]);
-  //   arrayData[3][1] = accessRightsNumberToString(arrayData[3][1]);
-  //   return <></>;
-  // }
   return (
     <>
       <StandardContent title="Settings">
