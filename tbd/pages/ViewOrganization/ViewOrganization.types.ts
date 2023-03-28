@@ -3,7 +3,7 @@ import { AxiosError } from "axios"
 
 export type TViewOrganizationProps = null
 
-export type TUnifiedRegistryError = {
+export type TDataFederationError = {
   error: AxiosError<any> | null
 }
 

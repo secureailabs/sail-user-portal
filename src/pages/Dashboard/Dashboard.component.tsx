@@ -33,9 +33,9 @@ const Dashboard: React.FC<TDashboardProps> = ({ userData, logoutMutationFunction
   console.log("userDataDashboard", userData);
   let primary: any[] = [
     { text: 'Dashboard', Icon: MdDashboard, link: '/dashboard', exact: true },
+    { text: 'Data Federation', Icon: FaServer, link: '/dashboard/federation' },
     { text: 'Datasets', Icon: MdViewColumn, link: '/dashboard/datasets' },
     { text: 'Computational Resources', Icon: HiOutlineDesktopComputer, link: '/dashboard/computational-resources' },
-    { text: 'Unified Registries', Icon: FaServer, link: '/dashboard/registries' },
     {
       text: 'Launch Notebook',
       Icon: MdLaunch,

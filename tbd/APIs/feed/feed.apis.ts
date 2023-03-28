@@ -48,7 +48,7 @@ export const getFeedAPI = ({
 }): Promise<AxiosResponse<{ data: TGetFeedSuccess }> | IDefaults['error']> =>
   axios
     .get(
-      `${axiosProxy()}/api/v1/FeedManager/PullUnifiedRegistry?UnifiedRegistryGuid=${data.ID
+      `${axiosProxy()}/api/v1/FeedManager/PullDataFederation?DataFederationGuid=${data.ID
       }`,
       {
         withCredentials: true,

@@ -10,31 +10,30 @@ import RestrictedRoute from './RestrictedRoute';
 // import Organization from 'pages/Organization';
 // import UnderConstruction from 'pages/UnderConstruction';
 // import VirtualMachines from 'pages/VirtualMachines';
-// import UnifiedRegistries from 'pages/UnifiedRegistries/UnifiedRegistries';
-// import UnifiedRegistry from 'pages/UnifiedRegistries/UnifiedRegistry';
-// import CustomizableDashboard from 'components/CustomizableDashboard';
+import DataFederation from 'src/pages/DataFederation';
+import CustomizableDashboard from 'src/components/CustomizableDashboard';
 // import ViewOrganization from 'pages/ViewOrganizationOld';
 // import ViewOrganization from 'pages/ViewOrganization';
 // import Downloads from 'pages/Downloads/Downloads';
 // import Download from 'pages/Downloads/Download';
 // import Documentation from 'pages/Documentation';
 
-
 const DashboardRouter: React.FC = (): React.ReactElement => (
   <Routes>
-    {/* <Route
-      path="/registries"
+    <Route
+      path="/federation"
       element={
         <ProtectedRoute redirect="/login">
-          <UnifiedRegistries />
+          {/* @ts-ignore */}
+          <DataFederation />
         </ProtectedRoute>
       }
     />
-    <Route
+    {/* <Route
       path="/registries/:id"
       element={
         <ProtectedRoute redirect="/login">
-          <UnifiedRegistry />
+          <DataFederation />
         </ProtectedRoute>
       }
     />
@@ -69,7 +68,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
           <VirtualMachines />
         </ProtectedRoute>
       }
-    />
+    /> */}
 
     <Route
       path="/"
@@ -79,7 +78,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
         </ProtectedRoute>
       }
     />
-    <Route
+    {/* <Route
       path="/documentation"
       element={
         <ProtectedRoute redirect="/login">
@@ -118,10 +117,10 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
           <Dataset />
         </ProtectedRoute>
       }
-    />
+    /> */}
     <Route path="*" element={<Navigate to="/dashboard" />} />
 
-    <Route
+    {/* <Route
       path="/datasets/:id/:version"
       element={
         <ProtectedRoute redirect="/login">

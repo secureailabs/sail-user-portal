@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TDataFederationError } from './ViewOrganization.types';
+import { TDataFederationError } from './DataFederation.types';
 
 const DataFederationFailure: React.FC<TDataFederationError> = ({ error }) => {
   if(error){

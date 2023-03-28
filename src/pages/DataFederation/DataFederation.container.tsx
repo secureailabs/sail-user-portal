@@ -4,13 +4,13 @@
 // import {
 //   getDataFederationStart,
 //   getDataFederationReset,
-// } from 'redux/unifiedRegistry/unifiedRegistry.actions';
-// import { selectDataFederation } from 'redux/unifiedRegistry/unifiedRegistry.selector';
-// import { selectUser } from 'redux/user/user.selectors';
+// } from '@app/redux/unifiedRegistry/unifiedRegistry.actions';
+// import { selectDataFederation } from '@app/redux/unifiedRegistry/unifiedRegistry.selector';
+// import { selectUser } from '@app/redux/user/user.selectors';
 // import DataFederation from './DataFederation.component';
-// import { IState } from 'redux/root-reducer';
-// import { RootAction } from 'redux/root.types';
-// import { TGetDataFederationStart } from 'APIs/unifiedRegistry/unifiedRegistry.types';
+// import { IState } from '@app/redux/root-reducer';
+// import { RootAction } from '@app/redux/root.types';
+// import { TGetDataFederationStart } from '@APIs/unifiedRegistry/unifiedRegistry.types';
 
 // const mapStateToProps = (state: IState) => {
 //   return {
@@ -36,4 +36,4 @@
 //   DataFederation
 // );
 
-export { }
+export {}

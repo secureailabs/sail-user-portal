@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Text from 'web-ui/components/Text';
+import Text from 'src/components/Text';
 import _ from 'lodash';
 import Measure from 'react-measure';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -16,8 +16,6 @@ import {
 import { Doughnut, Bar } from 'react-chartjs-2';
 import { Range, getTrackBackground } from 'react-range';
 
-import HighlightedValue from 'web-ui/components/HighlightedValue';
-
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -28,9 +26,9 @@ ChartJS.register(
   ChartDataLabels
 );
 
-import Card from 'web-ui/components/Card';
+import Card from 'src/components/Card';
 
-import fake_data_json from '@assets/fake_data.json';
+import fake_data_json from 'src/assets/fake_data.json';
 
 import Select from 'react-select';
 import { GrIndicator } from 'react-icons/gr';
@@ -447,7 +445,7 @@ const PatientSummary = ({
                       </Text>
                       <Doughnut
                         data={hospital_data}
-
+                      //@ts-ignore
                       plugins={[ChartDataLabels]}
                         options={{
                           maintainAspectRatio: true,
