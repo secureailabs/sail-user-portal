@@ -2,16 +2,16 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import { TDownloadsSuccessProps } from './Downloads.types';
 
-import StandardContent from 'web-ui/components/StandardContent';
-import Resource from 'web-ui/components/Resource'
-import Text from 'web-ui/components/Text'
+import StandardContent from 'src/components/StandardContent';
+import Resource from 'src/components/Resource'
+import Text from 'src/components/Text'
 
 const Downloadsuccess: React.FC<TDownloadsSuccessProps> = ({
     getAllDownloadsData,
 }) => {
   const navigate = useNavigate();
   // Get all the downloads using the download information api and create a list of Resource components
-  const download_list = getAllDownloadsData.map((download) => {
+  const download_list = getAllDownloadsData.map((download: any) => {
     return (
         <Resource
           key={download.id}

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import StandardContent from 'web-ui/components/StandardContent';
-import Card from 'web-ui/components/Card';
+import StandardContent from 'src/components/StandardContent';
+import Card from 'src/components/Card';
 
 import { TDownloadSuccessProps } from './Download.types';
 import { FiExternalLink } from "react-icons/fi";

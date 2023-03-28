@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
 
-import { TGetAllDownloadsSuccess } from 'APIs/download/download.typeDefs';
-import { getAllDownloadsAPIDemo } from 'APIs/download/download.apis';
+import { TGetAllDownloadsSuccess } from 'src/pages/Downloads/Download/Download.types';
+import { getAllDownloadsAPIDemo } from 'src/pages/Downloads/Download/Download.container';
 
 import Downloads from './Downloads.component';
 

@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
 
-import { IConditionalRender } from 'components/ConditionalRenderRQuery/ConditionalRender/ConditionalRender.types';
-import { TGetAllDownloadsSuccess } from 'APIs/download/download.typeDefs';
+import { IConditionalRender } from 'src/components/ConditionalRenderRQuery/ConditionalRender/ConditionalRender.types';
+import { TGetAllDownloadsSuccess } from 'src/pages/Downloads/Download/Download.types';
 
 export type TDownloadsProps = {
   status: IConditionalRender['status'];

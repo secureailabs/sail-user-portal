@@ -14,8 +14,8 @@ import DataFederation from 'src/pages/DataFederation';
 import CustomizableDashboard from 'src/components/CustomizableDashboard';
 // import ViewOrganization from 'pages/ViewOrganizationOld';
 // import ViewOrganization from 'pages/ViewOrganization';
-// import Downloads from 'pages/Downloads/Downloads';
-// import Download from 'pages/Downloads/Download';
+import Downloads from 'src/pages/Downloads/Downloads';
+import Download from 'src/pages/Downloads/Download';
 // import Documentation from 'pages/Documentation';
 
 const DashboardRouter: React.FC = (): React.ReactElement => (
@@ -85,7 +85,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
           <Documentation />
         </ProtectedRoute>
       }
-    />
+    /> */}
     <Route
       path="/downloads"
       element={
@@ -102,7 +102,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
         </ProtectedRoute>
       }
     />
-    <Route
+    {/* <Route
       path="/datasets"
       element={
         <ProtectedRoute redirect="/login">
