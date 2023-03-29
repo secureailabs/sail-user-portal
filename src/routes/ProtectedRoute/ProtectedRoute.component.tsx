@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
-import { useQueryClient } from 'react-query';
-import { Route, Navigate ,  useLocation } from 'react-router-dom';
+import { Navigate ,  useLocation } from 'react-router-dom';
 
 import { IProtectedRoutes } from './ProtectedRoute.types';
 

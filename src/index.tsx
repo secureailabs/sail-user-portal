@@ -1,7 +1,7 @@
 import React from 'react';
 import App from './App';
 import './index.css';
-import '@secureailabs/web-ui/css/style.css';
+import 'src/web-ui.css';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import * as ReactDOMClient from 'react-dom/client';

@@ -1,9 +1,9 @@
 import { TLoginFormProps } from './Login.types';
-import Page from '@secureailabs/web-ui/layout/Page';
-import ImageBackground from '@secureailabs/web-ui/components/ImageBackground';
-import CardForm from '@secureailabs/web-ui/components/CardForm';
-import Button from '@secureailabs/web-ui/components/Button';
-import Margin from '@secureailabs/web-ui/components/Margin';
+import Page from 'src/layout/Page';
+import ImageBackground from 'src/components/ImageBackground';
+import CardForm from 'src/components/CardForm';
+import Button from 'src/components/Button';
+import Margin from 'src/components/Margin';
 
 // @ts-ignore
 import login_background from '../../assets/login_background.jpg';

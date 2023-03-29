@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Navigate, Routes, Route } from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRoute';
-import UnProtectedRoute from './UnProtectedRoute';
-import RestrictedRoute from './RestrictedRoute';
+// import UnProtectedRoute from './UnProtectedRoute';
+// import RestrictedRoute from './RestrictedRoute';
 // import Datasets from 'pages/Datasets/Datasets';
 // import Dataset from 'pages/Datasets/Dataset';
 import SettingsPage from 'src/pages/Settings';

@@ -2,14 +2,14 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import login_background from '../../assets/login_background.jpg';
-import ImageBackground from '@secureailabs/web-ui/components/ImageBackground';
+import ImageBackground from 'src/components/ImageBackground';
 
 import { TLoginFormProps, IEmailAndPassword } from './Login.types';
 
-import CardForm from '@secureailabs/web-ui/components/CardForm';
-import FormFieldsRenderer from '@secureailabs/web-ui/components/FormFieldsRenderer';
-import Margin from '@secureailabs/web-ui/components/Margin';
-import Page from '@secureailabs/web-ui/layout/Page';
+import CardForm from 'src/components/CardForm';
+import FormFieldsRenderer from 'src/components/FormFieldsRenderer';
+import Margin from 'src/components/Margin';
+import Page from 'src/layout/Page';
 
 import SailLogo from '../../assets/newLogo.png';
 

@@ -4,14 +4,14 @@ import Card from 'src/components/Card';
 import Text from 'src/components/Text';
 import Button from 'src/components/Button';
 import Margin from 'src/components/Margin';
-import { useQueryClient } from 'react-query';
-import { UserInfo_Out } from 'src/client';
+// import { useQueryClient } from 'react-query';
+// import { UserInfo_Out } from 'src/client';
 
 const Settings: React.FC = () => {
 
   // Get the user infomation from query
-  const queryClient = useQueryClient()
-  const currentUser: UserInfo_Out = queryClient.getQueryData('userData')!
+  // const queryClient = useQueryClient()
+  // const currentUser: UserInfo_Out = queryClient.getQueryData('userData')!
 
   return (
     <>
