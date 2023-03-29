@@ -7,7 +7,7 @@ import ProtectedRoute from './ProtectedRoute';
 // import Datasets from 'pages/Datasets/Datasets';
 // import Dataset from 'pages/Datasets/Dataset';
 import SettingsPage from 'src/pages/Settings';
-// import Organization from 'pages/Organization';
+import Organization from 'src/pages/Organization';
 // import UnderConstruction from 'pages/UnderConstruction';
 import VirtualMachines from 'src/pages/VirtualMachines';
 import DataFederation from 'src/pages/DataFederation';
@@ -52,14 +52,14 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
         </ProtectedRoute>
       }
     />
-    {/* <Route
+    <Route
       path="/my-organization"
       element={
         <ProtectedRoute redirect="/login">
           <Organization />
         </ProtectedRoute>
       }
-    /> */}
+    />
     <Route
       path="/computational-resources"
       element={

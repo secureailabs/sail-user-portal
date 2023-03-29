@@ -1,16 +1,6 @@
-//@ts-nocheck
-import React from 'react';
-
-import StandardContent from 'web-ui/components/StandardContent';
-
-import FormFieldsRenderer from 'web-ui/components/FormFieldsRenderer';
-import Card from 'web-ui/components/Card';
-import stageNumberToString from '@utils/stageNumberToString';
-
-import { TDigitalContractSuccessProps } from './DigitalContract.types';
-import getPartnerOrg from '@utils/getPartnerOrg';
-import { useForm, SubmitHandler } from 'react-hook-form';
-
+import FormFieldsRenderer from 'src/components/FormFieldsRenderer';
+import Card from 'src/components/Card';
+import { useForm } from 'react-hook-form';
 
 const UpdateOrganization = ({ organizationData }: any) => {
     const { register, formState } = useForm({
