@@ -1,15 +1,13 @@
 import React from 'react';
-import Spinner from 'components/Spinner';
-
-import { ConditionalRender } from 'components/ConditionalRenderRQuery';
+import Spinner from 'src/components/Spinner';
+import { ConditionalRender } from 'src/components/ConditionalRenderRQuery';
 import { TVirtualMachinesProps } from './VirtualMachines.types';
-
 import VirtualMachinesSuccess from './VirtualMachines.success';
 import VirtualMachinesFailure from './VirtualMachines.failure';
+import StandardContent from 'src/components/StandardContent';
+
 // import Spinner from 'components/Spinner/SpinnerOnly.component';
 // import { HiArrowLeft } from 'react-icons/hi';
-
-import StandardContent from 'web-ui/components/StandardContent';
 
 const VirtualMachines: React.FC<TVirtualMachinesProps> = ({status, getAllVirtualMachinesData, error, userData}) => {
 

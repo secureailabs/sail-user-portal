@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTable, useSortBy, useFlexLayout } from 'react-table';
-import Text from 'web-ui/components/Text';
+import Text from 'src/components/Text';
 import type TTable from './Table.types';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
-
-import Table from 'components/Table';
-
-import { TVirtualMachinesSuccessProps } from './VirtualMachines.types';
-
-import TableFilter from 'web-ui/components/TableFilter';
-
-import Margin from 'web-ui/components/Margin';
+import Table from 'src/components/Table';
+import { TVirtualMachinesSuccessProps, TGetAllVirtualMachinesSuccess } from './VirtualMachines.types';
+import TableFilter from 'src/components/TableFilter';
+import Margin from 'src/components/Margin';
 import { Link } from 'react-router-dom';
-import { TGetAllVirtualMachinesSuccess } from 'APIs/virtualMachineManager/virtualMachineManager.typedefs';
 
 const VirtualMachineSuccess: React.FC<TVirtualMachinesSuccessProps> = ({
     getAllVirtualMachinesData,
@@ -124,44 +119,7 @@ const VirtualMachineSuccess: React.FC<TVirtualMachinesSuccessProps> = ({
   }
 
   const [current_filter, setCurrentFilter] = useState('0');
-
-  // const vmCount = (host: string) => {
-  //     let count = 0;
-      
-  //     // getAllVirtualMachinesData.secure_computation_nodes.forEach((vm) => {
-  //     //   //   if (vm.lauched_by?.)
-  //     // })
-
-  //   // Object.keys(getAllVirtualMachinesData.secure_computation_nodes).map((el) => {
-  //   //   if (el.started_by.user_name == ) {
-  //   //     count += Object.keys(
-  //   //       getAllVirtualMachinesData[el].VirtualMachinesAssociatedWithDc
-  //   //     ).length;
-  //   //   }
-  //   // });
-  //   return count;
-  // };
-
-  // const filters = [
-  //   {
-  //     name: 'Lauched by me',
-  //     value: 'me',
-  //     count: vmCount('me'),
-  //   },
-  //   {
-  //     name: 'Lauched by ' + userData?.organization.name,
-  //     value: 'Data Owner',
-  //     count: vmCount('Data Owner'),
-  //   },
-  //   {
-  //     name: 'Other',
-  //     value: 'er',
-  //     count: 0
-  //   }
-  // ];
-
   filterFunction(getAllVirtualMachinesData)
-
 
   return (
     <>
@@ -180,5 +138,3 @@ const VirtualMachineSuccess: React.FC<TVirtualMachinesSuccessProps> = ({
 };
 
 export default VirtualMachineSuccess;
-
-export { }

@@ -9,7 +9,7 @@ import ProtectedRoute from './ProtectedRoute';
 import SettingsPage from 'src/pages/Settings';
 // import Organization from 'pages/Organization';
 // import UnderConstruction from 'pages/UnderConstruction';
-// import VirtualMachines from 'pages/VirtualMachines';
+import VirtualMachines from 'src/pages/VirtualMachines';
 import DataFederation from 'src/pages/DataFederation';
 import CustomizableDashboard from 'src/components/CustomizableDashboard';
 // import ViewOrganization from 'pages/ViewOrganizationOld';
@@ -59,7 +59,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
           <Organization />
         </ProtectedRoute>
       }
-    />
+    /> */}
     <Route
       path="/computational-resources"
       element={
@@ -67,7 +67,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
           <VirtualMachines />
         </ProtectedRoute>
       }
-    /> */}
+    />
 
     <Route
       path="/"
