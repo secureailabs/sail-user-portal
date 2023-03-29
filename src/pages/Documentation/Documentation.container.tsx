@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
 import { TGetAllDocumentationSuccess, TGetDocumentationSuccess } from './Documentation.types';
-
 import { MdOutlineMoveToInbox, MdOutlineAssessment, MdOutlineSlowMotionVideo } from 'react-icons/md';
+import Documentation from './Documentation.component';
 
 const getting_started: TGetDocumentationSuccess = {
   id: "031a7d42-fdd0-4d3d-9ded-fef985bce107",
@@ -39,9 +39,6 @@ const documentation_data: TGetAllDocumentationSuccess = {
 const getAllDocumentationAPIDemo = async(): Promise<TGetAllDocumentationSuccess['documentation']> => {
   return documentation_data.documentation;
 }
-
-
-import Documentation from './Documentation.component';
 
 const DocumentationContainer: React.FC = () => {
     const { data, isLoading, status, error, refetch} =

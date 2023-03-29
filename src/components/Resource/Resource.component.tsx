@@ -13,9 +13,13 @@ const Resource: React.FC<TResource> = ({
   buttonOnClickUrl,
   tileOnClick,
 }) => {
+
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-    buttonOnClickUrl ? location.href=buttonOnClickUrl : null;
+    if (buttonOnClickUrl)
+    {
+      window.location.href = buttonOnClickUrl;
+    }
   }
 
   let className = "resource";
