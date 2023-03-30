@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type HTTPValidationError = {
-  error?: string;
+    error?: string;
 };
+

@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type RegisterDataFederation_Out = {
-  _id: string;
+    id: string;
 };
+

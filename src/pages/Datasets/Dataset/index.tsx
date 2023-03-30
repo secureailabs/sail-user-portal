@@ -1,3 +1,3 @@
-import Dataset from './Dataset.container';
+import DatasetContainer from './Dataset.container';
 
-export default Dataset;
+export default DatasetContainer;

@@ -4,7 +4,7 @@ import StandardContent from 'src/components/StandardContent';
 import FormFieldsRenderer from 'src/components/FormFieldsRenderer';
 import Card from 'src/components/Card';
 import { TDatasetSuccessProps } from './Dataset.types';
-import Table from 'src/components/Table';
+import DatasetVersions from '../DatasetVersions/';
 
 const DatasetSuccess: React.FC<TDatasetSuccessProps> = ({ getDatasetData }) => {
   const { register, handleSubmit, formState, trigger } = useForm({
@@ -16,35 +16,6 @@ const DatasetSuccess: React.FC<TDatasetSuccessProps> = ({ getDatasetData }) => {
       NumberOfVersions: 1
     }
   });
-
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: 'Version',
-        accessor: 'version',
-        width: 300
-      },
-
-      {
-        Header: 'Publish Date',
-        accessor: 'publish_date',
-        width: 300
-      },
-
-      {
-        Header: 'No. of Patients',
-        accessor: 'NumberOfPatients',
-
-        width: 200
-      },
-      {
-        Header: 'Comments',
-        accessor: 'Comments',
-        width: 200
-      }
-    ],
-    []
-  );
 
   return (
     <div>
@@ -69,22 +40,7 @@ const DatasetSuccess: React.FC<TDatasetSuccessProps> = ({ getDatasetData }) => {
           </div>
         </Card>
       </StandardContent>
-      <StandardContent title={getDatasetData?.name}>
-        <Table
-          // base_url={`/dashboard/datasets/${getDatasetData?.id}`}
-          // id_accessor="key"
-          columns={columns}
-          data={[
-            {
-              version: '1.0',
-              publish_date: getDatasetData.creation_time,
-              NumberOfPatients: 400,
-              Comments:
-                'Initial datastet with patient data from January 1995 to January 2022.'
-            }
-          ]}
-        />
-      </StandardContent>
+      <DatasetVersions />
     </div>
   );
 };

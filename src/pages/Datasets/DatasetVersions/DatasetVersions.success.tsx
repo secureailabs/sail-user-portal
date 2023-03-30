@@ -1,11 +1,13 @@
 import React from 'react';
 import Table from 'src/components/Table';
-import { TDatasetsSuccessProps } from './Datasets.types';
+import { TDatasetVersionsSuccessProps } from './DatasetVersions.types';
 import StandardContent from 'src/components/StandardContent';
+import { useParams } from 'react-router-dom';
 
-const DatasetsSuccess: React.FC<TDatasetsSuccessProps> = ({
-  getAllDatasetsData
+const DatasetVersionsSuccess: React.FC<TDatasetVersionsSuccessProps> = ({
+  getAllDatasetVersionsData
 }) => {
+  const { id } = useParams() as { id: string };
   const columns = React.useMemo(
     () => [
       {
@@ -15,18 +17,8 @@ const DatasetsSuccess: React.FC<TDatasetsSuccessProps> = ({
       },
       {
         Header: 'Publish Date',
-        accessor: 'creation_time',
+        accessor: 'dataset_version_created_time',
         width: 300
-      },
-      {
-        Header: 'Keywords',
-        accessor: 'tags',
-        width: 200
-      },
-      {
-        Header: 'Format',
-        accessor: 'format',
-        width: 200
       },
       {
         Header: 'State',
@@ -38,16 +30,15 @@ const DatasetsSuccess: React.FC<TDatasetsSuccessProps> = ({
   );
 
   return (
-    <StandardContent title="Datasets">
+    <StandardContent title="Versions">
       <Table
-        base_url="/dashboard/datasets"
+        base_url={'/dashboard/datasets/' + id + '/versions'}
         id_accessor="id"
         columns={columns}
-        // @ts-ignore
-        data={getAllDatasetsData?.datasets}
+        data={getAllDatasetVersionsData?.dataset_versions || []}
       />
     </StandardContent>
   );
 };
 
-export default DatasetsSuccess;
+export default DatasetVersionsSuccess;

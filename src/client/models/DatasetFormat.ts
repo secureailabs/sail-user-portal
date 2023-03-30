@@ -6,6 +6,6 @@
  * An enumeration.
  */
 export enum DatasetFormat {
-  FHIR = 'FHIR',
-  CSV = 'CSV'
+    FHIR = 'FHIR',
+    CSV = 'CSV',
 }

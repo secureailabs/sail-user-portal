@@ -119,10 +119,18 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
       }
     />
     <Route
-      path="/datasets/:id/:version"
+      path="/datasets/:id/versions/:version"
       element={
         <ProtectedRoute redirect="/login">
           <DatasetVersion />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path="/datasets/:id/versions"
+      element={
+        <ProtectedRoute redirect="/login">
+          <Dataset />
         </ProtectedRoute>
       }
     />

@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export type QueryResult = {
-  status: string;
-  data: any;
+    status: string;
+    data: any;
 };
+

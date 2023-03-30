@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   MdDashboard,
   MdViewColumn,
@@ -11,33 +10,26 @@ import {
   MdOutlineDocumentScanner,
   MdOutlinePeopleAlt
 } from 'react-icons/md';
-
 import { HiOutlineDesktopComputer } from 'react-icons/hi';
 import { FaServer } from 'react-icons/fa';
-
 import DashboardRouter from 'src/routes/Dashboard.routes';
-
 import Sidebar from 'src/layout/Sidebar';
 import Header from 'src/components/Header';
-
+import BreadcrumbRoutes from 'src/routes/Breadcrumbs/breadcrumbs.routes';
+import { TDashboardProps } from './Dashboard.types';
 // @ts-ignore
 import default_profile_image from '../../assets/user.png';
 // @ts-ignore
 import newLogo from '../../assets/newLogo.png';
 
-import BreadcrumbRoutes from 'src/routes/Breadcrumbs/breadcrumbs.routes';
-
-import { TDashboardProps } from './Dashboard.types';
-
 const Dashboard: React.FC<TDashboardProps> = ({
   userData,
   logoutMutationFunction
 }) => {
-  console.log('userDataDashboard', userData);
-  let primary: any[] = [
+  const primary: any[] = [
     { text: 'Dashboard', Icon: MdDashboard, link: '/dashboard', exact: true },
     { text: 'Data Federation', Icon: FaServer, link: '/dashboard/federation' },
-    { text: 'Datasets', Icon: MdViewColumn, link: '/dashboard/datasets' },
+    { text: 'My Datasets', Icon: MdViewColumn, link: '/dashboard/datasets' },
     {
       text: 'Computational Resources',
       Icon: HiOutlineDesktopComputer,
@@ -53,7 +45,7 @@ const Dashboard: React.FC<TDashboardProps> = ({
     }
   ];
 
-  let secondary: any[] = [
+  const secondary: any[] = [
     {
       text: 'Logout',
       Icon: MdLogout,
@@ -92,7 +84,9 @@ const Dashboard: React.FC<TDashboardProps> = ({
     <Sidebar primary={primary} secondary={secondary} logo={newLogo}>
       <div className="standard-grid-row">
         <Header
-          search={() => {}}
+          search={() => {
+            return null;
+          }}
           username={userData?.name}
           profile_image={default_profile_image}
           organization={userData?.organization.name}

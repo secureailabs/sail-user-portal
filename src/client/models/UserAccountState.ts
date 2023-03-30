@@ -6,7 +6,7 @@
  * An enumeration.
  */
 export enum UserAccountState {
-  ACTIVE = 'ACTIVE',
-  INACTIVE = 'INACTIVE',
-  LOCKED = 'LOCKED'
+    ACTIVE = 'ACTIVE',
+    INACTIVE = 'INACTIVE',
+    LOCKED = 'LOCKED',
 }

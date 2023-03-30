@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import { QueryClient, useQueryClient } from 'react-query';
 import React, { useState } from 'react';
-
 import Breadcrumbs from 'src/components/Breadcrumbs';
 
 const updateBreadcrumb = (
@@ -11,11 +8,11 @@ const updateBreadcrumb = (
   nameKey: string,
   setBreadcrumb: React.Dispatch<React.SetStateAction<string>>,
   queryClient: QueryClient,
-  self: () => {}
+  self: () => void
 ) => {
   const queryState = queryClient.getQueryState(queryKey);
 
-  if (queryState) {
+  if (queryState?.data) {
     // @ts-ignore
     setBreadcrumb(queryState.data[nameKey]);
   }
@@ -27,11 +24,20 @@ const updateBreadcrumb = (
 
 const BreadcrumbRoutes: React.FC = () => {
   const [datasetName, setDatasetName] = useState('');
-  const [registryName, setRegistryName] = useState('');
-  const [organizationName, setOrganizationName] = useState('');
   const [downloadName, setDownloadName] = useState('');
+  const [federationName, setFederationName] = useState('');
+  const [datasetVersionName, setDatasetVersionName] = useState('');
 
   const queryClient = useQueryClient();
+
+  const updateFederationName = () =>
+    updateBreadcrumb(
+      'federation',
+      'name',
+      setFederationName,
+      queryClient,
+      updateFederationName
+    );
 
   const updateDatasetName = () =>
     updateBreadcrumb(
@@ -41,22 +47,16 @@ const BreadcrumbRoutes: React.FC = () => {
       queryClient,
       updateDatasetName
     );
-  const updateRegistryName = () =>
+
+  const updateDatasetVersionName = () =>
     updateBreadcrumb(
-      'unified',
-      'Name',
-      setRegistryName,
-      queryClient,
-      updateRegistryName
-    );
-  const updateOrganizationName = () =>
-    updateBreadcrumb(
-      'organization',
+      'dataset_version',
       'name',
-      setOrganizationName,
+      setDatasetVersionName,
       queryClient,
-      updateOrganizationName
+      updateDatasetVersionName
     );
+
   const updateDownloadName = () =>
     updateBreadcrumb(
       'download',
@@ -76,10 +76,24 @@ const BreadcrumbRoutes: React.FC = () => {
       breadcrumb: 'Home'
     },
     {
+      path: '/dashboard/federation',
+      breadcrumb: () => {
+        updateFederationName();
+        return federationName;
+      }
+    },
+    {
       path: '/dashboard/datasets/:id',
       breadcrumb: () => {
         updateDatasetName();
         return datasetName;
+      }
+    },
+    {
+      path: '/dashboard/datasets/:id/versions/:version',
+      breadcrumb: () => {
+        updateDatasetVersionName();
+        return datasetVersionName;
       }
     },
     {
@@ -91,24 +105,6 @@ const BreadcrumbRoutes: React.FC = () => {
       breadcrumb: () => {
         updateDownloadName();
         return downloadName;
-      }
-    },
-    {
-      path: '/dashboard/registries',
-      breadcrumb: 'Unified Registries'
-    },
-    {
-      path: '/dashboard/registries/:id',
-      breadcrumb: () => {
-        updateRegistryName();
-        return registryName;
-      }
-    },
-    {
-      path: '/dashboard/organizations/:id',
-      breadcrumb: () => {
-        updateOrganizationName();
-        return organizationName;
       }
     },
     {

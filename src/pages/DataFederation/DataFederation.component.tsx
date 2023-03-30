@@ -10,10 +10,9 @@ import { DefaultService, GetDataFederation_Out } from 'src/client';
 const DataFederation: React.FC = () => {
   const getFederation = async (): Promise<GetDataFederation_Out> => {
     const allFederations = await DefaultService.getAllDataFederations();
-    console.log(allFederations);
     // @ts-ignore
-    const id = allFederations.data_federations?.[0]?.id!;
-    return await DefaultService.getDataFederation(id);
+    const id = allFederations.data_federations?.[0]?.id;
+    return await DefaultService.getDataFederation(id!);
   };
   const queryResult = useQuery<GetDataFederation_Out, AxiosError>(
     ['federation'],
@@ -35,7 +34,7 @@ const DataFederation: React.FC = () => {
   }
 
   return (
-    <StandardContent title={queryResult.data?.name!}>
+    <StandardContent title={queryResult.data?.name}>
       <DataFederationSuccess {...queryResult.data} />
     </StandardContent>
   );

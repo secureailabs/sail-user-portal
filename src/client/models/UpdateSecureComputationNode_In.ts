@@ -5,5 +5,6 @@
 import type { SecureComputationNodeState } from './SecureComputationNodeState';
 
 export type UpdateSecureComputationNode_In = {
-  state?: SecureComputationNodeState;
+    state?: SecureComputationNodeState;
 };
+

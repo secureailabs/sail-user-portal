@@ -3,5 +3,6 @@
 /* eslint-disable */
 
 export type RegisterDatasetVersion_Out = {
-  _id: string;
+    id: string;
 };
+

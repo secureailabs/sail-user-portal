@@ -20,7 +20,7 @@ export const checkUserSession = async (): Promise<UserInfo_Out> => {
   try {
     const res = await DefaultService.getCurrentUserInfo();
     console.log('res', res);
-    console.log('res', res._id);
+    console.log('res', res.id);
     return res;
   } catch {
     if (typeof OpenAPI.TOKEN === 'string') {
@@ -41,7 +41,7 @@ export const logoutApi = async () => {
   OpenAPI.TOKEN = '';
 };
 
-const App: React.FC<AppProps> = ({}) => {
+const App: React.FC<AppProps> = () => {
   // @ts-ignore
   useQuery<UserInfo_Out, AxiosError>(['userData'], checkUserSession, {
     retry: false,

@@ -14,7 +14,7 @@
     "rules": {
         "no-console": 1, // Means warning
         "prettier/prettier": 2, // Means error  }
-        "@typescript-eslint/no-empty": "warning",
-        "@typescript-eslint/ban-ts-comment": "warning",
+        "@typescript-eslint/no-empty": 0,
+        "@typescript-eslint/ban-ts-comment": 0
     }
 }

@@ -5,5 +5,6 @@
 import type { InviteState } from './InviteState';
 
 export type PatchInvite_In = {
-  state: InviteState;
+    state: InviteState;
 };
+
