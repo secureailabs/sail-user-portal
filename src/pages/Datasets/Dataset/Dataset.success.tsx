@@ -1,25 +1,19 @@
 import React from 'react';
-
 import { useForm } from 'react-hook-form';
-import StandardContent from 'web-ui/components/StandardContent';
-
-import FormFieldsRenderer from 'web-ui/components/FormFieldsRenderer';
-import Card from 'web-ui/components/Card';
-
+import StandardContent from 'src/components/StandardContent';
+import FormFieldsRenderer from 'src/components/FormFieldsRenderer';
+import Card from 'src/components/Card';
 import { TDatasetSuccessProps } from './Dataset.types';
+import Table from 'src/components/Table';
 
-import Table from 'components/Table';
-
-
-const DatasetSuccess: React.FC<TDatasetSuccessProps> = ({ getDatasetData }) => {
+const DatasetSuccess: React.FC<TDatasetSuccessProps> = ({ getDatasetData }) =>
+{
   const { register, handleSubmit, formState, trigger } = useForm({
     mode: 'onSubmit',
     defaultValues: {
       ...getDatasetData,
       DataOwner: getDatasetData.organization.name,
-      publish_date: new Date(
-        getDatasetData?.publish_date * 1000
-      ).toLocaleDateString('en-US'),
+      publish_date: getDatasetData?.creation_time,
       NumberOfVersions: 1,
     },
   });
@@ -82,17 +76,11 @@ const DatasetSuccess: React.FC<TDatasetSuccessProps> = ({ getDatasetData }) => {
           // id_accessor="key"
           columns={columns}
           data={[{
-            version: '1.0', publish_date: new Date(
-              getDatasetData?.publish_date * 1000
-            ).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            }),
+            version: '1.0', publish_date: getDatasetData.creation_time,
             NumberOfPatients: 400,
             Comments: 'Initial datastet with patient data from January 1995 to January 2022.'
           },
-]}
+          ]}
         />
       </StandardContent>
     </div>

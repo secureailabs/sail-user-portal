@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Table from 'components/Table';
+import Table from 'src/components/Table';
 
 import { TDatasetsSuccessProps } from './Datasets.types';
 
-import StandardContent from 'web-ui/components/StandardContent';
+import StandardContent from 'src/components/StandardContent';
 
 const DatasetsSuccess: React.FC<TDatasetsSuccessProps> = ({
   getAllDatasetsData,
@@ -42,6 +42,7 @@ const DatasetsSuccess: React.FC<TDatasetsSuccessProps> = ({
       return {
         key,
         ...value,
+        // @ts-ignore
         publish_date: new Date(value.publish_date * 1000).toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',

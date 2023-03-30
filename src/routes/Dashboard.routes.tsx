@@ -4,8 +4,9 @@ import { Navigate, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 // import UnProtectedRoute from './UnProtectedRoute';
 // import RestrictedRoute from './RestrictedRoute';
-// import Datasets from 'pages/Datasets/Datasets';
-// import Dataset from 'pages/Datasets/Dataset';
+import Datasets from 'src/pages/Datasets/Datasets';
+import Dataset from 'src/pages/Datasets/Dataset';
+import DatasetVersion from 'src/pages/Datasets/DatasetVersion';
 import SettingsPage from 'src/pages/Settings';
 import Organization from 'src/pages/Organization';
 // import UnderConstruction from 'pages/UnderConstruction';
@@ -101,7 +102,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
         </ProtectedRoute>
       }
     />
-    {/* <Route
+    <Route
       path="/datasets"
       element={
         <ProtectedRoute redirect="/login">
@@ -116,17 +117,17 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
           <Dataset />
         </ProtectedRoute>
       }
-    /> */}
-    <Route path="*" element={<Navigate to="/dashboard" />} />
-
-    {/* <Route
+    />
+    <Route
       path="/datasets/:id/:version"
       element={
         <ProtectedRoute redirect="/login">
           <DatasetVersion />
         </ProtectedRoute>
       }
-    /> */}
+    />
+    <Route path="*" element={<Navigate to="/dashboard" />} />
+
   </Routes >
 );
 

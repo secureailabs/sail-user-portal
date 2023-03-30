@@ -7,7 +7,8 @@ import { DefaultService } from 'src/client';
 import { UserInfo_Out } from 'src/client';
 import { useQueryClient } from 'react-query';
 
-const Organization: React.FC = () => {
+const Organization: React.FC = () =>
+{
   const queryClient = useQueryClient()
   const currentUser: UserInfo_Out = queryClient.getQueryData('userData')!
 
