@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 
 import { TFormFieldsRenderer } from './FormFieldsRenderer.types';
@@ -18,7 +19,7 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
   full,
   description,
   children,
-  button_text,
+  button_text
 }) => {
   return (
     <>

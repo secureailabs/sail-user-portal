@@ -20,5 +20,9 @@ export type TSelectInputProps = {
   // type: string;
   defaultValue?: string;
 
-  options: Array<{ value:string, displayedText?: string, tooltip?: TTooltipProps }>;
+  options: Array<{
+    value: string;
+    displayedText?: string;
+    tooltip?: TTooltipProps;
+  }>;
 };

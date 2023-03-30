@@ -3,6 +3,5 @@
 /* eslint-disable */
 
 export type RegisterOrganization_Out = {
-    _id: string;
+  _id: string;
 };
-

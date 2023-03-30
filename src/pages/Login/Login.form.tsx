@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -14,9 +15,8 @@ import Page from 'src/layout/Page';
 import SailLogo from '../../assets/newLogo.png';
 
 const Login: React.FC<TLoginFormProps> = ({ signInReset, signInStart }) => {
-
   const { register, handleSubmit, formState, trigger } = useForm({
-    mode: 'onSubmit',
+    mode: 'onSubmit'
   });
 
   const onSubmit: SubmitHandler<IEmailAndPassword> = (data) => {
@@ -37,13 +37,13 @@ const Login: React.FC<TLoginFormProps> = ({ signInReset, signInStart }) => {
                   username: {
                     label: 'Email',
                     placeholder: 'Email',
-                    type: 'text',
+                    type: 'text'
                   },
                   password: {
                     label: 'Password',
                     placeholder: 'Password',
-                    type: 'password',
-                  },
+                    type: 'password'
+                  }
                 }}
               >
                 <p
@@ -51,7 +51,7 @@ const Login: React.FC<TLoginFormProps> = ({ signInReset, signInStart }) => {
                     width: '100%',
                     textAlign: 'right',
                     marginTop: '-1rem',
-                    marginBottom: '2rem',
+                    marginBottom: '2rem'
                   }}
                 >
                   <a
@@ -62,7 +62,7 @@ const Login: React.FC<TLoginFormProps> = ({ signInReset, signInStart }) => {
                       fontWeight: 500,
                       lineHeight: '1.7rem',
                       color: 'black',
-                      textDecoration: 'None',
+                      textDecoration: 'None'
                     }}
                   >
                     Forgot Password?
@@ -76,7 +76,7 @@ const Login: React.FC<TLoginFormProps> = ({ signInReset, signInStart }) => {
                 textAlign: 'center',
                 fontWeight: 500,
                 fontSize: '1.4rem',
-                lineHeight: '1.7rem',
+                lineHeight: '1.7rem'
               }}
             >
               Don&apos;t have an account?&nbsp;&nbsp;
@@ -84,7 +84,7 @@ const Login: React.FC<TLoginFormProps> = ({ signInReset, signInStart }) => {
                 href="./signup"
                 style={{
                   color: 'var(--color-primary)',
-                  textDecoration: 'None',
+                  textDecoration: 'None'
                 }}
               >
                 Signup

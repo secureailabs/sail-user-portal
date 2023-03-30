@@ -10,7 +10,7 @@ const ConditionalRender: React.FC<IConditionalRender> = ({
   failure,
   Loading,
   children,
-  spinnerOnly = false,
+  spinnerOnly = false
 }): ReactElement => {
   switch (state) {
     case 'success':

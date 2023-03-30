@@ -17,7 +17,7 @@ const Feed: React.FC<TFeedProps> = ({
   // getAllFeedsStart,
   // getAllFeedsState,
   limit,
-  containerHeight,
+  containerHeight
 }) => {
   // useEffect(() => {
   //   getAllFeedsReset();

@@ -29,8 +29,8 @@ export type TDownloadSuccessProps = {
 };
 
 export type TDownloadFailure = {
-  error: AxiosError<any> | null
-}
+  error: AxiosError<any> | null;
+};
 
 export type TGetAllDownloadsSuccess = {
   downloads: Array<TGetDownloadSuccess>;

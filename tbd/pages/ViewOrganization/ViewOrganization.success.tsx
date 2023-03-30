@@ -6,7 +6,7 @@ import Margin from 'web-ui/components/Margin';
 import type { TViewOrganizationSuccessProps } from './ViewOrganization.types';
 
 const ViewOrganizationSuccess: React.FC<TViewOrganizationSuccessProps> = ({
-  getOrganizationData,
+  getOrganizationData
 }) => {
   return (
     <>

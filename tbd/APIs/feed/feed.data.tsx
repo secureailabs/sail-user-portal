@@ -12,7 +12,8 @@ export const demo_data = {
       ID: 'uuid1',
       Title: (
         <p>
-          <Link to="/dashboard/organizations/1">Cancer Research Hospital</Link> published a{' '}
+          <Link to="/dashboard/organizations/1">Cancer Research Hospital</Link>{' '}
+          published a{' '}
           <Link to="/dashboard/datasets/uuid1/uuid1_1">new version</Link> of the{' '}
           <Link to="/dashboard/registries/uuid1">KCA consortium</Link> data set
         </p>
@@ -21,7 +22,7 @@ export const demo_data = {
       avatar: 'Cancer Research Hospital',
       avatar_color: '#FF0000',
       CreatedAt: faker.date.recent(3),
-      UpdatedAt: new Date(),
+      UpdatedAt: new Date()
     },
     uuid2: {
       ID: 'uuid2',
@@ -31,7 +32,7 @@ export const demo_data = {
       Image: mayo,
 
       CreatedAt: faker.date.recent(3),
-      UpdatedAt: new Date(),
+      UpdatedAt: new Date()
     },
     uuid3: {
       ID: 'uuid3',
@@ -43,7 +44,7 @@ export const demo_data = {
       CreatedAt: faker.date.recent(3),
       UpdatedAt: new Date(),
 
-      Link: '/dashboard/datasets/uuid1',
+      Link: '/dashboard/datasets/uuid1'
     },
     uuid4: {
       ID: 'uuid4',
@@ -54,7 +55,7 @@ export const demo_data = {
       CreatedAt: faker.date.recent(3),
       UpdatedAt: new Date(),
 
-      Link: '/dashboard/datasets/uuid1',
+      Link: '/dashboard/datasets/uuid1'
     },
     uuid5: {
       ID: 'uuid5',
@@ -66,7 +67,7 @@ export const demo_data = {
       CreatedAt: faker.date.recent(3),
       UpdatedAt: new Date(),
 
-      Link: '/dashboard/datasets/uuid1',
-    },
-  },
+      Link: '/dashboard/datasets/uuid1'
+    }
+  }
 };

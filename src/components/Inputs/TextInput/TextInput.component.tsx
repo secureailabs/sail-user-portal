@@ -10,41 +10,40 @@ const TextInput: React.FC<TTextInputProps> = (props) => {
   // Extract the onChange from register so we can add something to it
   const { register, onChange, ...otherProps } = props;
   // console.log(props.title)
-      
+
   return (
     <div className="text-input" id={`${props.label}_inputdiv`}>
       <label className="text-input__label">{props.title}</label>
       {'tooltip' in props && <Tooltip {...props.tooltip} />}
       <input
         {...register(props.label)}
-            // onChange={(e) => {
-            //   onChange && onChange(e);
-            //   if (props.onChange) {
-            //     props.onChange(e);
-            //   }
-            // }}
+        // onChange={(e) => {
+        //   onChange && onChange(e);
+        //   if (props.onChange) {
+        //     props.onChange(e);
+        //   }
+        // }}
         {...otherProps}
-        autoComplete='off'
+        autoComplete="off"
         readOnly
         onFocus={(e) => {
-          const input:any = e.target
+          const input: any = e.target;
           if (input.hasAttribute('readonly')) {
             input.removeAttribute('readonly');
-            
+
             // show safari virtual keyboard
             input.blur();
-            input.focus(); 
+            input.focus();
           }
-          }
-        }
+        }}
       />
       {props.errorMessage &&
         props.tooltip?.icon != '?' &&
         props.tooltip?.icon != undefined && (
           <ErrorMessage errorMessage={props.errorMessage} />
-      )}
+        )}
     </div>
-      )
+  );
 };
 
 //   return (

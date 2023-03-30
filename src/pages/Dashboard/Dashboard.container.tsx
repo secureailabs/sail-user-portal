@@ -6,18 +6,22 @@ import { OpenAPI } from 'src/client';
 
 const logout = async () => {
   OpenAPI.TOKEN = '';
-}
+};
 
 const DashboardContainer: React.FC = () => {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
   const logoutMutation = useMutation(logout, {
     onSettled: () => {
       queryClient.invalidateQueries('userData');
-    }, retry: false
-  })
+    },
+    retry: false
+  });
 
-  // @ts-ignore
-  return Dashboard({ userData: queryClient.getQueryData('userData'), logoutMutationFunction: logoutMutation.mutate })
-}
+  return Dashboard({
+    // @ts-ignore
+    userData: queryClient.getQueryData('userData'),
+    logoutMutationFunction: logoutMutation.mutate
+  });
+};
 
-export default DashboardContainer
+export default DashboardContainer;

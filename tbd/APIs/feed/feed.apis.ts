@@ -12,13 +12,13 @@ import {
   TGetAllFeedsStart,
   TGetFeedStart,
   TDeleteFeedSuccess,
-  TDeleteFeedStart,
+  TDeleteFeedStart
 } from './feed.types';
 
 import type { IDefaults } from 'APIs/typedefs';
 
 export const postFeedAPI = ({
-  data,
+  data
 }: {
   data: TPostFeedStart;
 }): Promise<AxiosResponse<{ data: TPostFeedSuccess }> | IDefaults['error']> =>
@@ -28,30 +28,29 @@ export const postFeedAPI = ({
       { ...data },
       { withCredentials: true }
     )
-    .then(
-      (res): AxiosResponse<{ data: TPostFeedSuccess }> => {
-        // The backend sometimes returns status 200 or 204 even when the contract couldnt be registered
-        console.log(res);
-        if (res.data.Status != 201) {
-          throw new Error('Backend didnt return 201');
-        }
-        return res;
+    .then((res): AxiosResponse<{ data: TPostFeedSuccess }> => {
+      // The backend sometimes returns status 200 or 204 even when the contract couldnt be registered
+      console.log(res);
+      if (res.data.Status != 201) {
+        throw new Error('Backend didnt return 201');
       }
-    )
+      return res;
+    })
     .catch((err): IDefaults['error'] => {
       throw err;
     });
 export const getFeedAPI = ({
-  data,
+  data
 }: {
   data: TGetFeedStart;
 }): Promise<AxiosResponse<{ data: TGetFeedSuccess }> | IDefaults['error']> =>
   axios
     .get(
-      `${axiosProxy()}/api/v1/FeedManager/PullDataFederation?DataFederationGuid=${data.ID
+      `${axiosProxy()}/api/v1/FeedManager/PullDataFederation?DataFederationGuid=${
+        data.ID
       }`,
       {
-        withCredentials: true,
+        withCredentials: true
       }
     )
     .then((res): AxiosResponse<{ data: TGetFeedSuccess }> => res)
@@ -60,7 +59,7 @@ export const getFeedAPI = ({
     });
 
 export const getAllFeedsAPI = ({
-  data,
+  data
 }: {
   data: TGetAllFeedsStart;
 }): Promise<
@@ -71,7 +70,7 @@ export const getAllFeedsAPI = ({
   return axios
     .get(`${axiosProxy()}/api/v1/Feed/Organization/Users`, {
       params: data,
-      withCredentials: true,
+      withCredentials: true
     })
     .then((res): AxiosResponse<{ data: TGetAllFeedsSuccess }> => res)
     .catch((err): IDefaults['error'] => {
@@ -80,7 +79,7 @@ export const getAllFeedsAPI = ({
 };
 
 export const deleteFeedAPI = ({
-  data,
+  data
 }: {
   data: TDeleteFeedStart;
 }): Promise<
@@ -90,7 +89,7 @@ export const deleteFeedAPI = ({
   return axios
     .delete(`${axiosProxy()}/api/v1/Feed/Remove/User`, {
       params: data,
-      withCredentials: true,
+      withCredentials: true
     })
     .then((res): AxiosResponse<{ data: TDeleteFeedSuccess }> => res)
     .catch((err): IDefaults['error'] => {
@@ -99,13 +98,13 @@ export const deleteFeedAPI = ({
 };
 
 export const putFeedAPI = ({
-  data,
+  data
 }: {
   data: TPutFeedStart;
 }): Promise<AxiosResponse<{ data: TPutFeedSuccess }> | IDefaults['error']> => {
   return axios
     .put(`${axiosProxy()}/api/v1/Feed/Update/RecoverUser`, data, {
-      withCredentials: true,
+      withCredentials: true
     })
     .then((res): AxiosResponse<{ data: TPutFeedSuccess }> => res)
     .catch((err): IDefaults['error'] => {

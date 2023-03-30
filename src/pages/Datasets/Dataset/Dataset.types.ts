@@ -11,7 +11,6 @@ export type TDatasetSuccessProps = {
   getDatasetData: GetDataset_Out;
 };
 
-
 export type TDatasetFailure = {
-  error: ApiError | null
-}
+  error: ApiError | null;
+};

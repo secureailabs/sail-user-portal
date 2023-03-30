@@ -2,7 +2,7 @@ import {
   TColor,
   ILetterSpacingTypes,
   ILineHeightTypes,
-  ITextStyle,
+  ITextStyle
 } from 'src/utils/index';
 export type IHeadingProps = Partial<TColor> &
   Partial<ILetterSpacingTypes> &

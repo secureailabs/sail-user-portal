@@ -9,7 +9,7 @@ const Button: React.FC<TButton> = ({
   height = '5rem',
   padded = true,
   button_type,
-  onClick,
+  onClick
 }) => {
   return (
     <button
@@ -19,7 +19,7 @@ const Button: React.FC<TButton> = ({
       }`}
       onClick={onClick}
       style={{
-        height: height,
+        height: height
       }}
     >
       {children}

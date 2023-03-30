@@ -3,6 +3,5 @@
 /* eslint-disable */
 
 export type HTTPException = {
-    detail?: string;
+  detail?: string;
 };
-

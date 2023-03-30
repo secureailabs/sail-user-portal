@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { TLoginFormProps } from './Login.types';
 import Page from 'src/layout/Page';
 import ImageBackground from 'src/components/ImageBackground';
@@ -10,15 +11,24 @@ import login_background from '../../assets/login_background.jpg';
 // @ts-ignore
 import SailLogo from '../../assets/newLogo.png';
 
-const LoginFailure = ({ signInReset, }: { signInReset: TLoginFormProps['signInReset']; }) => {
+const LoginFailure = ({
+  signInReset
+}: {
+  signInReset: TLoginFormProps['signInReset'];
+}) => {
   return (
     <Page pageType="full">
       <ImageBackground image={login_background}>
         <CardForm image={SailLogo}>
           <>
-            <p style={{ textAlign: 'center', fontSize: '1.25rem' }}>Login has failed. Please check your credentials and/or try again later.</p>
+            <p style={{ textAlign: 'center', fontSize: '1.25rem' }}>
+              Login has failed. Please check your credentials and/or try again
+              later.
+            </p>
             <Margin size={5} />
-            <Button full button_type='primary' onClick={signInReset}>Go Back to Login Page</Button>
+            <Button full button_type="primary" onClick={signInReset}>
+              Go Back to Login Page
+            </Button>
           </>
         </CardForm>
       </ImageBackground>

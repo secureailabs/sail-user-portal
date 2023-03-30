@@ -12,13 +12,13 @@ import {
   TGetAllUnifiedRegistriesStart,
   TGetUnifiedRegistryStart,
   TDeleteUnifiedRegistrySuccess,
-  TDeleteUnifiedRegistryStart,
+  TDeleteUnifiedRegistryStart
 } from './unifiedRegistry.types';
 
 import type { IDefaults } from '@APIs/typedefs';
 
 export const postUnifiedRegistryAPI = ({
-  data,
+  data
 }: {
   data: TPostUnifiedRegistryStart;
 }): Promise<
@@ -30,21 +30,19 @@ export const postUnifiedRegistryAPI = ({
       { ...data },
       { withCredentials: true }
     )
-    .then(
-      (res): AxiosResponse<{ data: TPostUnifiedRegistrySuccess }> => {
-        // The backend sometimes returns status 200 or 204 even when the contract couldnt be registered
-        console.log(res);
-        if (res.data.Status != 201) {
-          throw new Error('Backend didnt return 201');
-        }
-        return res;
+    .then((res): AxiosResponse<{ data: TPostUnifiedRegistrySuccess }> => {
+      // The backend sometimes returns status 200 or 204 even when the contract couldnt be registered
+      console.log(res);
+      if (res.data.Status != 201) {
+        throw new Error('Backend didnt return 201');
       }
-    )
+      return res;
+    })
     .catch((err): IDefaults['error'] => {
       throw err;
     });
 export const getUnifiedRegistryAPI = ({
-  data,
+  data
 }: {
   data: TGetUnifiedRegistryStart;
 }): Promise<
@@ -52,10 +50,11 @@ export const getUnifiedRegistryAPI = ({
 > =>
   axios
     .get(
-      `${axiosProxy()}/api/v1/UnifiedRegistryManager/PullUnifiedRegistry?UnifiedRegistryGuid=${data.ID
+      `${axiosProxy()}/api/v1/UnifiedRegistryManager/PullUnifiedRegistry?UnifiedRegistryGuid=${
+        data.ID
       }`,
       {
-        withCredentials: true,
+        withCredentials: true
       }
     )
     .then((res): AxiosResponse<{ data: TGetUnifiedRegistrySuccess }> => res)
@@ -64,7 +63,7 @@ export const getUnifiedRegistryAPI = ({
     });
 
 export const getAllUnifiedRegistriesAPI = ({
-  data,
+  data
 }: {
   data: TGetAllUnifiedRegistriesStart;
 }): Promise<
@@ -75,7 +74,7 @@ export const getAllUnifiedRegistriesAPI = ({
   return axios
     .get(`${axiosProxy()}/api/v1/UnifiedRegistry/Organization/Users`, {
       params: data,
-      withCredentials: true,
+      withCredentials: true
     })
     .then(
       (res): AxiosResponse<{ data: TGetAllUnifiedRegistriesSuccess }> => res
@@ -86,7 +85,7 @@ export const getAllUnifiedRegistriesAPI = ({
 };
 
 export const deleteUnifiedRegistryAPI = ({
-  data,
+  data
 }: {
   data: TDeleteUnifiedRegistryStart;
 }): Promise<
@@ -96,7 +95,7 @@ export const deleteUnifiedRegistryAPI = ({
   return axios
     .delete(`${axiosProxy()}/api/v1/UnifiedRegistry/Remove/User`, {
       params: data,
-      withCredentials: true,
+      withCredentials: true
     })
     .then((res): AxiosResponse<{ data: TDeleteUnifiedRegistrySuccess }> => res)
     .catch((err): IDefaults['error'] => {
@@ -105,7 +104,7 @@ export const deleteUnifiedRegistryAPI = ({
 };
 
 export const putUnifiedRegistryAPI = ({
-  data,
+  data
 }: {
   data: TPutUnifiedRegistryStart;
 }): Promise<
@@ -113,7 +112,7 @@ export const putUnifiedRegistryAPI = ({
 > => {
   return axios
     .put(`${axiosProxy()}/api/v1/UnifiedRegistry/Update/RecoverUser`, data, {
-      withCredentials: true,
+      withCredentials: true
     })
     .then((res): AxiosResponse<{ data: TPutUnifiedRegistrySuccess }> => res)
     .catch((err): IDefaults['error'] => {

@@ -17,6 +17,6 @@ const LoginScheme = yup.object({
     // .minUppercase(1, 'Password must have at least one uppercase')
     // .minNumbers(1, 'Password must have at least one number')
     // .minSymbols(1, 'Password must have at least one punctuation')
-    .required('Password field is required'),
+    .required('Password field is required')
 });
 export default LoginScheme;

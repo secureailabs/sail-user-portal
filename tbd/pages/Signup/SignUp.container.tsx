@@ -24,4 +24,4 @@
 // });
 
 // export default compose(connect(mapStateToProps, mapDispatchToProps))(SignUp);
-export { }
+export {};

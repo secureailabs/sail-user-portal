@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import password from 'yup-password';
 import 'yup-phone';
 
-const phoneRegExp = /^[^a-zA-Z]*$/
+const phoneRegExp = /^[^a-zA-Z]*$/;
 
 // Adds password methods to yup
 password(yup);
@@ -12,9 +12,7 @@ const SignupScheme = yup.object({
     .string()
     .required('Email field is required')
     .email('Invalid email address'),
-  organizationName: yup
-    .string()
-    .required('Organization field is required'),
+  organizationName: yup.string().required('Organization field is required'),
   password: yup
     .string()
     .required('Password field is required')
@@ -35,17 +33,13 @@ const SignupScheme = yup.object({
     .minUppercase(1, 'Password must have at least one uppercase')
     .minNumbers(1, 'Password must have at least one number')
     .minSymbols(1, 'Password must have at least one punctuation'),
-  name: yup
-    .string()
-    .required('Name field is required'),
+  name: yup.string().required('Name field is required'),
   phoneNumber: yup
     .string()
     .required('Phone number field is required')
     // .phone(undefined, undefined, 'Invalid phone number')
     .matches(phoneRegExp, 'A phone number cannot contain any letters'),
-  title: yup
-    .string()
-    .required('Title field is required'),
+  title: yup.string().required('Title field is required'),
   primaryContactName: yup
     .string()
     .required('Primary contact name field is required'),
@@ -79,8 +73,7 @@ const SignupScheme = yup.object({
   organizationAddressLine1: yup
     .string()
     .required('Organization address line 1 field is required'),
-  organizationAddressLine2: yup
-    .string(),
+  organizationAddressLine2: yup.string(),
   organizationAddressCity: yup
     .string()
     .required('Organization city field is required'),
@@ -92,7 +85,7 @@ const SignupScheme = yup.object({
     .required('Organization zip/postal code field is required'),
   organizationAddressCountry: yup
     .string()
-    .required('Organization country field is required'),
+    .required('Organization country field is required')
 });
 
 export default SignupScheme;

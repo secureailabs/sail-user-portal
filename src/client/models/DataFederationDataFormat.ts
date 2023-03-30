@@ -6,6 +6,6 @@
  * An enumeration.
  */
 export enum DataFederationDataFormat {
-    CSV = 'CSV',
-    FHIR = 'FHIR',
+  CSV = 'CSV',
+  FHIR = 'FHIR'
 }

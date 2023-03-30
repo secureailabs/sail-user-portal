@@ -5,6 +5,5 @@
 import type { GetDataFederation_Out } from './GetDataFederation_Out';
 
 export type GetMultipleDataFederation_Out = {
-    data_federations?: Array<GetDataFederation_Out>;
+  data_federations?: Array<GetDataFederation_Out>;
 };
-

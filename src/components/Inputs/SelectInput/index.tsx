@@ -1,6 +1,5 @@
 import SelectInput from './SelectInput.component';
-import {TSelectInputProps} from './SelectInput.types';
-
+import { TSelectInputProps } from './SelectInput.types';
 
 export default SelectInput;
-export type {TSelectInputProps};
+export type { TSelectInputProps };

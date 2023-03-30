@@ -9,7 +9,7 @@ import {
   MdLogout,
   MdSystemUpdateAlt,
   MdOutlineDocumentScanner,
-  MdOutlinePeopleAlt,
+  MdOutlinePeopleAlt
 } from 'react-icons/md';
 
 import { HiOutlineDesktopComputer } from 'react-icons/hi';
@@ -29,18 +29,28 @@ import BreadcrumbRoutes from 'src/routes/Breadcrumbs/breadcrumbs.routes';
 
 import { TDashboardProps } from './Dashboard.types';
 
-const Dashboard: React.FC<TDashboardProps> = ({ userData, logoutMutationFunction }) => {
-  console.log("userDataDashboard", userData);
+const Dashboard: React.FC<TDashboardProps> = ({
+  userData,
+  logoutMutationFunction
+}) => {
+  console.log('userDataDashboard', userData);
   let primary: any[] = [
     { text: 'Dashboard', Icon: MdDashboard, link: '/dashboard', exact: true },
     { text: 'Data Federation', Icon: FaServer, link: '/dashboard/federation' },
     { text: 'Datasets', Icon: MdViewColumn, link: '/dashboard/datasets' },
-    { text: 'Computational Resources', Icon: HiOutlineDesktopComputer, link: '/dashboard/computational-resources' },
+    {
+      text: 'Computational Resources',
+      Icon: HiOutlineDesktopComputer,
+      link: '/dashboard/computational-resources'
+    },
     {
       text: 'Launch Notebook',
       Icon: MdLaunch,
-      onClick: () => { window.location.href = "http://52.152.225.54:8080/lab?token=fa8dfcf5a8cfd55402f687698847adabced336cd0423172c" },
-    },
+      onClick: () => {
+        window.location.href =
+          'http://52.152.225.54:8080/lab?token=fa8dfcf5a8cfd55402f687698847adabced336cd0423172c';
+      }
+    }
   ];
 
   let secondary: any[] = [
@@ -48,8 +58,8 @@ const Dashboard: React.FC<TDashboardProps> = ({ userData, logoutMutationFunction
       text: 'Logout',
       Icon: MdLogout,
       onClick: () => {
-        logoutMutationFunction()
-      },
+        logoutMutationFunction();
+      }
     },
     {
       text: 'Downloads',
@@ -64,24 +74,25 @@ const Dashboard: React.FC<TDashboardProps> = ({ userData, logoutMutationFunction
     {
       text: 'Settings',
       Icon: MdSettings,
-      link: '/dashboard/settings',
+      link: '/dashboard/settings'
     },
     {
       text: 'My Organization',
       Icon: MdOutlinePeopleAlt,
-      link: '/dashboard/my-organization',
+      link: '/dashboard/my-organization'
     },
     {
       text: 'Help',
       Icon: MdHelpOutline,
-      link: '/dashboard/help',
-    }];
+      link: '/dashboard/help'
+    }
+  ];
 
   return (
     <Sidebar primary={primary} secondary={secondary} logo={newLogo}>
       <div className="standard-grid-row">
         <Header
-          search={() => { }}
+          search={() => {}}
           username={userData?.name}
           profile_image={default_profile_image}
           organization={userData?.organization.name}

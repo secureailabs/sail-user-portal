@@ -12,4 +12,4 @@
 //   signUpReset(): void;
 // };
 
-export { }
+export {};

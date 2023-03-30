@@ -1,4 +1,4 @@
 export type TTooltipProps = {
-    tooltiptext?: string;
-    icon?: string;
-  };
+  tooltiptext?: string;
+  icon?: string;
+};

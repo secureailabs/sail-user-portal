@@ -3,6 +3,5 @@
 /* eslint-disable */
 
 export type RegisterDataset_Out = {
-    _id: string;
+  _id: string;
 };
-

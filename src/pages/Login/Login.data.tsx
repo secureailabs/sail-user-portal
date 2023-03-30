@@ -10,14 +10,14 @@ export const formData: (
     email: {
       type: 'text',
       tooltip: {
-        icon: setFormIcon(formState, 'email', false, true, false),
-      },
+        icon: setFormIcon(formState, 'email', false, true, false)
+      }
     },
     password: {
       type: 'password',
       tooltip: {
-        icon: setFormIcon(formState, 'password', false, true, false),
-      },
-    },
+        icon: setFormIcon(formState, 'password', false, true, false)
+      }
+    }
   };
 };

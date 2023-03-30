@@ -6,7 +6,7 @@
  * An enumeration.
  */
 export enum InviteState {
-    PENDING = 'PENDING',
-    ACCEPTED = 'ACCEPTED',
-    REJECTED = 'REJECTED',
+  PENDING = 'PENDING',
+  ACCEPTED = 'ACCEPTED',
+  REJECTED = 'REJECTED'
 }

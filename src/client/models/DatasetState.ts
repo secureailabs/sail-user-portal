@@ -6,8 +6,8 @@
  * An enumeration.
  */
 export enum DatasetState {
-    CREATING_STORAGE = 'CREATING_STORAGE',
-    ACTIVE = 'ACTIVE',
-    INACTIVE = 'INACTIVE',
-    ERROR = 'ERROR',
+  CREATING_STORAGE = 'CREATING_STORAGE',
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE',
+  ERROR = 'ERROR'
 }

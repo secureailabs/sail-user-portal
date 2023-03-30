@@ -5,11 +5,12 @@ import { IRestrictedRoutesContainer } from './RestrictedRoute.types';
 
 import RestrictedRoute from './RestrictedRoute.component';
 
+const RestrictedRouteContainer: React.FC<IRestrictedRoutesContainer> = (
+  props
+) => {
+  const userState = useQueryClient().getQueryState('userData');
 
-const RestrictedRouteContainer: React.FC<IRestrictedRoutesContainer> = (props) => {
-  const userState = useQueryClient().getQueryState('userData')
-
-  return RestrictedRoute({ ...props, userState: userState})
-}
+  return RestrictedRoute({ ...props, userState: userState });
+};
 
 export default RestrictedRouteContainer;

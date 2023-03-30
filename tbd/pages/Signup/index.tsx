@@ -2,4 +2,4 @@
 
 // export default Signup;
 
-export {}
+export {};

@@ -12,11 +12,11 @@ const lineHeightValues: { [name: string]: { value: string } } = {
   leading8: { value: '3.2rem' },
   leading9: { value: '3.6rem' },
   leading10: { value: '4rem' },
-  leading11: { value: '7rem' },
+  leading11: { value: '7rem' }
 };
 
 export const lineHeightPicker = ({
-  lineHeight,
+  lineHeight
 }: {
   lineHeight: ILineHeightTypes['lineHeight'];
 }): string => {

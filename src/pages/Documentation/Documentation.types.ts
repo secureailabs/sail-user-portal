@@ -10,7 +10,7 @@ export type TDocumentationProps = {
 
 export type TDocumentationFailureProps = {
   error: AxiosError<any>;
-}
+};
 
 export type TDocumentationSuccessProps = {
   getAllDocumentationData: TGetAllDocumentationSuccess['documentation'];

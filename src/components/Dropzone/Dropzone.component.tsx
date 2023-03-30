@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-nocheck
-import React, {useMemo} from 'react';
-import {useDropzone} from 'react-dropzone';
+import React, { useMemo } from 'react';
+import { useDropzone } from 'react-dropzone';
 
 const baseStyle = {
   flex: 1,
@@ -31,34 +32,27 @@ const rejectStyle = {
 };
 
 const Dropzone = () => {
-  const {
-    getRootProps,
-    getInputProps,
-    isFocused,
-    isDragAccept,
-    isDragReject
-  } = useDropzone({accept: 'image/*'});
+  const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
+    useDropzone({ accept: 'image/*' });
 
-  const style = useMemo(() => ({
-    ...baseStyle,
-    ...(isFocused ? focusedStyle : {}),
-    ...(isDragAccept ? acceptStyle : {}),
-    ...(isDragReject ? rejectStyle : {})
-  }), [
-    isFocused,
-    isDragAccept,
-    isDragReject
-  ]);
+  const style = useMemo(
+    () => ({
+      ...baseStyle,
+      ...(isFocused ? focusedStyle : {}),
+      ...(isDragAccept ? acceptStyle : {}),
+      ...(isDragReject ? rejectStyle : {})
+    }),
+    [isFocused, isDragAccept, isDragReject]
+  );
 
   return (
     <div className="container">
-
-      <div {...getRootProps({style})}>
+      <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop some files here, or click to select files</p>
       </div>
     </div>
   );
-}
+};
 
 export default Dropzone;

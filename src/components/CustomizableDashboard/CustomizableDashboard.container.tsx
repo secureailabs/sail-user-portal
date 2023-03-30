@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 
 import Customizabledashboard from './CustomizableDashboard.component';
 import { useQueryClient } from 'react-query';
 
 const CustomizableDashboardContainer: React.FC = () => {
-  
-  // @ts-ignore
-  return Customizabledashboard({userData: useQueryClient().getQueryData('userData') })
-}
+  return Customizabledashboard({
+    // @ts-ignore
+    userData: useQueryClient().getQueryData('userData')
+  });
+};
 
-export default CustomizableDashboardContainer
+export default CustomizableDashboardContainer;

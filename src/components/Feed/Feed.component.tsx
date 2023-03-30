@@ -21,7 +21,7 @@ const Feed: React.FC<TFeed> = ({ feed, title, secondary, containerHeight }) => {
               date,
               onClick,
               avatar,
-              avatar_color,
+              avatar_color
             },
             index
           ) => (

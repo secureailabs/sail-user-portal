@@ -14,12 +14,14 @@ import { useQueryClient } from 'react-query';
 // @ts-ignore
 import kca_logo from '../../assets/kca.png';
 
-const DataFederationSuccess: React.FC<GetDataFederation_Out> = (getDataFederationData: GetDataFederation_Out) => {
-
+const DataFederationSuccess: React.FC<GetDataFederation_Out> = (
+  getDataFederationData: GetDataFederation_Out
+) => {
   // Get the user infomation from query
-  const queryClient = useQueryClient()
-  const currentUser: UserInfo_Out = queryClient.getQueryData('userData')!
-  const owner = currentUser.organization.id === getDataFederationData.organization.id
+  const queryClient = useQueryClient();
+  const currentUser: UserInfo_Out = queryClient.getQueryData('userData')!;
+  const owner =
+    currentUser.organization.id === getDataFederationData.organization.id;
 
   const [editMode, setEditMode] = useState(false);
   const [providersOpen, setProvidersOpen] = useState(false);
@@ -27,29 +29,40 @@ const DataFederationSuccess: React.FC<GetDataFederation_Out> = (getDataFederatio
 
   const { register, formState, reset } = useForm({
     mode: 'onSubmit',
-    defaultValues: getDataFederationData,
+    defaultValues: getDataFederationData
   });
 
   // useEffect(() => reset(getDataFederationData), [getDataFederationData])
 
-  return !editMode ?
+  return !editMode ? (
     <>
-      {owner && <div className='edit-button-container'>
-        <Button onClick={() => setEditMode(true)} button_type='secondary' height='5rem' full={false}>
-          <div className='edit-button-container__button-div'><ImPencil size={12} />
-            <p>Edit Info</p>
-          </div>
-        </Button>
-      </div>
-      }
+      {owner && (
+        <div className="edit-button-container">
+          <Button
+            onClick={() => setEditMode(true)}
+            button_type="secondary"
+            height="5rem"
+            full={false}
+          >
+            <div className="edit-button-container__button-div">
+              <ImPencil size={12} />
+              <p>Edit Info</p>
+            </div>
+          </Button>
+        </div>
+      )}
       <Card primaryText="">
         <div className="unified-registry-card">
           <div className="unified-registry-card__header">
             <img src={kca_logo} />
-            <div className='unified-registry-card__title-and-org'>
-              <p className="unified-registry-card__title">{getDataFederationData.name}</p>
+            <div className="unified-registry-card__title-and-org">
+              <p className="unified-registry-card__title">
+                {getDataFederationData.name}
+              </p>
               <div>
-                <p className="unified-registry-card__owner">Owned by {getDataFederationData.organization.name}</p>
+                <p className="unified-registry-card__owner">
+                  Owned by {getDataFederationData.organization.name}
+                </p>
               </div>
             </div>
           </div>
@@ -57,7 +70,7 @@ const DataFederationSuccess: React.FC<GetDataFederation_Out> = (getDataFederatio
             <p className="unified-registry-card__description">
               {getDataFederationData.description}
             </p>
-            <div className='unified-registry-card__moreinfo'>
+            <div className="unified-registry-card__moreinfo">
               <a className="unified-registry-card__link">
                 Data Model Spec
                 <HiOutlineExternalLink />
@@ -78,28 +91,95 @@ const DataFederationSuccess: React.FC<GetDataFederation_Out> = (getDataFederatio
 
       <Margin size={5} />
 
-      <Card primaryText='Data Providers' secondaryText={providersOpen ? '\u25b2' : '\u25bc'} secondaryTextColor='black' secondaryTextOnClick={() => setProvidersOpen(!providersOpen)}>{providersOpen ?
-        <div className='unified-registry-section'>
-          <div className='unified-registry-section__rows--providers'>
-            {
-              // @ts-ignore
-              getDataFederationData.data_submitter_organizations?.map((elem) => (elem.buttonText != 'Revoke Invite' || owner) && <div className='unified-registry-section__row'><Text fontWeight={500}>{elem.name}</Text><Text color='primary'>{(elem.buttonText == 'Revoke Invite') ? 'Invite Pending' : ''}</Text>{owner && <Button button_type='secondary' height='3.6rem' padded={false} full onClick={() => { }}>{elem.buttonText}</Button>}</div>)
-            }
+      <Card
+        primaryText="Data Providers"
+        secondaryText={providersOpen ? '\u25b2' : '\u25bc'}
+        secondaryTextColor="black"
+        secondaryTextOnClick={() => setProvidersOpen(!providersOpen)}
+      >
+        {providersOpen ? (
+          <div className="unified-registry-section">
+            <div className="unified-registry-section__rows--providers">
+              {
+                // @ts-ignore
+                getDataFederationData.data_submitter_organizations?.map(
+                  (elem) =>
+                    // @ts-ignore
+                    (elem.buttonText != 'Revoke Invite' || owner) && (
+                      <div className="unified-registry-section__row">
+                        <Text fontWeight={500}>{elem.name}</Text>
+                        <Text color="primary">
+                          {/* @ts-ignore */}
+                          {elem.buttonText == 'Revoke Invite'
+                            ? 'Invite Pending'
+                            : ''}
+                        </Text>
+                        {owner && (
+                          <Button
+                            button_type="secondary"
+                            height="3.6rem"
+                            padded={false}
+                            full
+                            onClick={() => {}}
+                          >
+                            {/* @ts-ignore */}
+                            {elem.buttonText}
+                          </Button>
+                        )}
+                      </div>
+                    )
+                )
+              }
+            </div>
+            {owner && (
+              <div className="unified-registry-section__bottom-button-container">
+                <Button
+                  button_type="secondary"
+                  height="3.6rem"
+                  full
+                  onClick={() => {}}
+                >
+                  + Invite New Data Provider
+                </Button>
+              </div>
+            )}
           </div>
-          {owner && <div className='unified-registry-section__bottom-button-container'><Button button_type='secondary' height='3.6rem' full onClick={() => { }}>+ Invite New Data Provider</Button></div>}
-        </div>
-        : undefined
-      }</Card>
+        ) : undefined}
+      </Card>
 
       <Margin size={5} />
 
-      <Card primaryText='Data Users' secondaryText={usersOpen ? '\u25b2' : '\u25bc'} secondaryTextColor='black' secondaryTextOnClick={() => setUsersOpen(!usersOpen)}>{usersOpen ?
-        <div className='unified-registry-section__rows--users'>
-          {getDataFederationData.research_organizations?.map((elem) => <div className='unified-registry-section__row'><Text fontWeight={500}>{elem.name}</Text><Text className='access-details-text' color='primary'>Dataset Access Details</Text></div>)}
-          {owner && <div className='unified-registry-section__bottom-button-container'><Button button_type='secondary' height='3.6rem' full onClick={() => { }}>+ Add New Data Users</Button></div>}
-        </div>
-        : undefined
-      }</Card>
+      <Card
+        primaryText="Data Users"
+        secondaryText={usersOpen ? '\u25b2' : '\u25bc'}
+        secondaryTextColor="black"
+        secondaryTextOnClick={() => setUsersOpen(!usersOpen)}
+      >
+        {usersOpen ? (
+          <div className="unified-registry-section__rows--users">
+            {getDataFederationData.research_organizations?.map((elem) => (
+              <div className="unified-registry-section__row">
+                <Text fontWeight={500}>{elem.name}</Text>
+                <Text className="access-details-text" color="primary">
+                  Dataset Access Details
+                </Text>
+              </div>
+            ))}
+            {owner && (
+              <div className="unified-registry-section__bottom-button-container">
+                <Button
+                  button_type="secondary"
+                  height="3.6rem"
+                  full
+                  onClick={() => {}}
+                >
+                  + Add New Data Users
+                </Button>
+              </div>
+            )}
+          </div>
+        ) : undefined}
+      </Card>
 
       <Margin size={5} />
       <PatientSummary containerHeight={false} />
@@ -108,29 +188,64 @@ const DataFederationSuccess: React.FC<GetDataFederation_Out> = (getDataFederatio
       {/* // @ts-ignore */}
       {/* <DatasetsSuccess getAllDatasetsData={getDataFederationData.Datasets} /> */}
     </>
-    :
+  ) : (
     <>
-      <Card primaryText=''>
+      <Card primaryText="">
         <div className="unified-registry-card">
           <div className="unified-registry-card__header">
             <img src={kca_logo} />
-            <div className='unified-registry-card__header__image-edit-icon-div'><label htmlFor='image-upload'><ImPencil color='white' size={15} /></label><input type='file' id='image-upload' /></div>
+            <div className="unified-registry-card__header__image-edit-icon-div">
+              <label htmlFor="image-upload">
+                <ImPencil color="white" size={15} />
+              </label>
+              <input type="file" id="image-upload" />
+            </div>
           </div>
-          <div className='registry-modification-form'>
+          <div className="registry-modification-form">
             <FormFieldsRenderer
               formState={formState}
               register={register}
               // @ts-ignore
-              fields={{ owner_org: { label: 'Organization Name', placeholder: getDataFederationData.organization.name || 'Organization Name', type: 'text' }, Description: { label: 'Description', placeholder: getDataFederationData.Description || 'Description', 'type': 'textarea' }, dataModelSpec: { label: 'Data Model Specifications', placeholder: 'Enter Url', type: 'text' }, owner_org_url: { label: 'Request Access', placeholder: 'Enter Url', type: 'text' } }} />
+              fields={{
+                owner_org: {
+                  label: 'Organization Name',
+                  placeholder:
+                    getDataFederationData.organization.name ||
+                    'Organization Name',
+                  type: 'text'
+                },
+                Description: {
+                  label: 'Description',
+                  placeholder:
+                    getDataFederationData.description || 'Description',
+                  type: 'textarea'
+                },
+                dataModelSpec: {
+                  label: 'Data Model Specifications',
+                  placeholder: 'Enter Url',
+                  type: 'text'
+                },
+                owner_org_url: {
+                  label: 'Request Access',
+                  placeholder: 'Enter Url',
+                  type: 'text'
+                }
+              }}
+            />
           </div>
         </div>
       </Card>
       <Margin size={5} />
-      <div className='unified-registry-edit-page-buttons-div'>
-        <Button button_type='primary' full onClick={() => setEditMode(false)}>Save Changes</Button>
-        <Button button_type='secondary' full onClick={() => setEditMode(false)}>Reset Changes</Button>
+      <div className="unified-registry-edit-page-buttons-div">
+        <Button button_type="primary" full onClick={() => setEditMode(false)}>
+          Save Changes
+        </Button>
+        <Button button_type="secondary" full onClick={() => setEditMode(false)}>
+          Reset Changes
+        </Button>
       </div>
-    </>;
+    </>
+  );
 };
 
 export default DataFederationSuccess;

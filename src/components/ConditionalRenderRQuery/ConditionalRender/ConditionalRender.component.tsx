@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { ReactElement } from 'react';
 
 import Spinner, { SpinnerOnly } from '../../Spinner';
@@ -10,7 +11,7 @@ const ConditionalRender: React.FC<IConditionalRender> = ({
   failure,
   loading,
   children,
-  spinnerOnly = false,
+  spinnerOnly = false
 }): ReactElement => {
   switch (status) {
     case 'success':

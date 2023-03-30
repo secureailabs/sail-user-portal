@@ -3,6 +3,5 @@
 /* eslint-disable */
 
 export type RefreshToken_In = {
-    refresh_token: string;
+  refresh_token: string;
 };
-

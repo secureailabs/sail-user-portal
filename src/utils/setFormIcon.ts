@@ -6,20 +6,20 @@ const setFormIcon = (
   controlled = false,
   defaultHidden = false,
   showSuccess = true,
-  isOnSubmit = false,
+  isOnSubmit = false
 ): string | undefined => {
   const dirty = formState.dirtyFields[field];
   const touched = formState.touchedFields[field];
   const error = formState.errors[field];
-  console.log(`setFormIcon: ${field}`)
-  console.log(formState)
-  console.log(dirty)
-  console.log(touched)
-  console.log(error)
-  
+  console.log(`setFormIcon: ${field}`);
+  console.log(formState);
+  console.log(dirty);
+  console.log(touched);
+  console.log(error);
+
   // Update field icon
   if (dirty && (controlled || touched) && !error) {
-    return showSuccess ? 'V' : (!defaultHidden ? '?' : undefined);
+    return showSuccess ? 'V' : !defaultHidden ? '?' : undefined;
   } else if ((touched || (dirty && controlled) || isOnSubmit) && error) {
     return 'X';
   } else {

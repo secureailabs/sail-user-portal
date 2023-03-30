@@ -1,6 +1,5 @@
 import TextAreaInput from './TextAreaInput.component';
-import {TTextAreaInputProps} from './TextAreaInput.types';
-
+import { TTextAreaInputProps } from './TextAreaInput.types';
 
 export default TextAreaInput;
-export type {TTextAreaInputProps};
+export type { TTextAreaInputProps };

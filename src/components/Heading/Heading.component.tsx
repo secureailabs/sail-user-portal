@@ -5,7 +5,7 @@ import { IHeadingProps } from './Heading.types';
 import {
   colorPicker,
   letterSpacingPicker,
-  lineHeightPicker,
+  lineHeightPicker
 } from 'src/utils/index';
 
 export const Heading: React.FC<IHeadingProps> = ({
@@ -19,7 +19,7 @@ export const Heading: React.FC<IHeadingProps> = ({
   className,
   inline = false,
   color = 'black',
-  fontStyle,
+  fontStyle
 }): ReactElement => {
   const styleSwitch: () => string = (): string => {
     className = `${className} heading`;
@@ -37,7 +37,7 @@ export const Heading: React.FC<IHeadingProps> = ({
     lineHeight: lineHeight && lineHeightPicker({ lineHeight }),
     textAlign,
     fontStyle,
-    textDecoration,
+    textDecoration
   });
 
   const renderSwitch = (

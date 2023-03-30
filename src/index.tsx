@@ -9,7 +9,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-const queryClient = new QueryClient({ defaultOptions: { queries: { refetchOnWindowFocus: false } } })
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { refetchOnWindowFocus: false } }
+});
 
 const container = document.getElementById('root');
 if (!container) {
@@ -27,5 +29,5 @@ root.render(
         {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </BrowserRouter>
     </QueryClientProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

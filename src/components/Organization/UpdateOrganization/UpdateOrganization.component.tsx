@@ -2,11 +2,10 @@ import FormFieldsRenderer from 'src/components/FormFieldsRenderer';
 import Card from 'src/components/Card';
 import { useForm } from 'react-hook-form';
 
-const UpdateOrganization = ({ organizationData }: any) =>
-{
+const UpdateOrganization = ({ organizationData }: any) => {
   const { register, formState } = useForm({
     mode: 'onSubmit',
-    defaultValues: organizationData,
+    defaultValues: organizationData
   });
   return (
     <>
@@ -19,60 +18,60 @@ const UpdateOrganization = ({ organizationData }: any) =>
               OrganizationName: {
                 label: 'Organization Name',
                 placeholder: 'Organization Name',
-                type: 'text',
+                type: 'text'
               },
               OrganizationAddress: {
                 label: 'Organization Address',
                 placeholder: 'Organization Address',
-                type: 'text',
+                type: 'text'
               },
               PrimaryContactName: {
                 label: 'Primary Contact Name',
                 placeholder: 'Priamry Contact Job Title',
-                type: 'text',
+                type: 'text'
               },
               PriamryContactPhoneNumber: {
                 label: 'Primary Contact Phone Number',
                 placeholder: 'Primary Contact Phone Number',
-                type: 'text',
+                type: 'text'
               },
               SecondaryContactName: {
                 label: 'Secondary Contact Name',
                 placeholder: 'Secondary Contact Name',
-                type: 'text',
+                type: 'text'
               },
               SecondaryContactJobTitle: {
                 label: 'Secondary Contact Job Title',
                 placeholder: 'Secondary Contact Job Title',
-                type: 'text',
+                type: 'text'
               },
 
               SecondaryContactEmail: {
                 label: 'Secondary Contact Email',
                 placeholder: 'Secondary Contact Email',
-                type: 'text',
+                type: 'text'
               },
               SecondaryContactPhoneNumber: {
                 label: 'Secondary Contact Phone Number',
                 placeholder: 'Number of Virtual CPUs',
-                type: 'text',
+                type: 'text'
               },
               Description: {
                 label: 'Description',
                 placeholder: 'Description',
-                type: 'text',
+                type: 'text'
               },
               Logo: {
                 label: 'Logo',
                 placeholder: 'Logo',
-                type: 'image',
-              },
+                type: 'image'
+              }
             }}
           />
         </div>
       </Card>
     </>
-  )
+  );
 };
 
 export default UpdateOrganization;

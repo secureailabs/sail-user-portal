@@ -12,7 +12,6 @@ import Form from 'components/Form';
 
 import Button from 'components/Button';
 
-
 const checkIfCanContinue = (
   errors: TMultiPartForm['formState']['errors'],
   fields: TMultiPartForm['forms'][0][1],
@@ -25,9 +24,9 @@ const checkIfCanContinue = (
   // console.log(Object.keys(dirtyFields));
   // console.log('can continue?');
   // console.log(
-    // Object.keys(errors).length == 0 &&
-      // Object.keys(fields).every((val) => Object.keys(dirtyFields).includes(val)) &&
-      Object.keys(errors).every((val) => !Object.keys(fields).includes(val))
+  // Object.keys(errors).length == 0 &&
+  // Object.keys(fields).every((val) => Object.keys(dirtyFields).includes(val)) &&
+  Object.keys(errors).every((val) => !Object.keys(fields).includes(val));
   // );
   // const sim = _.intersectionWith(
   //   Object.keys(fields),
@@ -47,7 +46,7 @@ const checkIfCanContinue = (
 const MultiPartForm: React.FC<TMultiPartForm> = ({
   forms,
   formState,
-  register,
+  register
 }) => {
   const [part, updatePart] = useState<number>(0);
   // console.log('drity')
@@ -56,7 +55,7 @@ const MultiPartForm: React.FC<TMultiPartForm> = ({
   return (
     <Form>
       <>
-      <Logo />
+        <Logo />
         {forms.map((form, index) => {
           if (index === part) {
             return (
@@ -82,16 +81,16 @@ const MultiPartForm: React.FC<TMultiPartForm> = ({
         })}
 
         {part > 0 && (
-          <div className='gobackbuttoncontainer'>
+          <div className="gobackbuttoncontainer">
             <Button
-            key="go back"
-            type="button"
-            onClick={() => {
-              updatePart(part - 1);
-            }}
-          >
-            Go back
-          </Button>
+              key="go back"
+              type="button"
+              onClick={() => {
+                updatePart(part - 1);
+              }}
+            >
+              Go back
+            </Button>
           </div>
         )}
         {part !== forms.length - 1 ? (
@@ -128,7 +127,8 @@ const MultiPartForm: React.FC<TMultiPartForm> = ({
                 forms[part][1],
                 formState.dirtyFields
               )
-            }>
+            }
+          >
             Signup
           </button>
         )}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 
 import type TCard from './Card.types';
@@ -11,7 +12,7 @@ const Card: React.FC<TCard> = ({
   secondaryTextOnClick = () => {},
   secondaryTextColor = 'primary',
   containerHeight,
-  widthMaxContent,
+  widthMaxContent
 }) => {
   return (
     <div

@@ -5,7 +5,7 @@ import type {
   IBorderColorSupportExportType,
   IBorderColorSupportInputType,
   IBorderRadiusType,
-  IBorderTypes,
+  IBorderTypes
 } from './border.utils';
 
 import { colorPicker, TColor } from './color.utils';
@@ -15,7 +15,7 @@ import { ITextStyle } from './textStyle.utils';
 
 import {
   ILetterSpacingTypes,
-  letterSpacingPicker,
+  letterSpacingPicker
 } from './letterSpacing.utils';
 
 import { ILineHeightTypes, lineHeightPicker } from './lineHeight.utils';
@@ -32,7 +32,7 @@ export {
   colorPicker,
   letterSpacingPicker,
   lineHeightPicker,
-  transitionSupport,
+  transitionSupport
 };
 
 export type {
@@ -48,5 +48,5 @@ export type {
   ILetterSpacingTypes,
   ILineHeightTypes,
   TTextSize,
-  ITransitionTypes,
+  ITransitionTypes
 };

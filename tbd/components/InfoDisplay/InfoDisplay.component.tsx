@@ -16,7 +16,7 @@ const InfoDisplay: React.FC<TInfoDisplay> = ({ title, data }) => {
               data_parser,
               conditional = true,
               to_locale_date_string,
-              color = 'black',
+              color = 'black'
             },
             index
           ) => {
@@ -30,7 +30,7 @@ const InfoDisplay: React.FC<TInfoDisplay> = ({ title, data }) => {
                 {
                   year: 'numeric',
                   month: 'long',
-                  day: 'numeric',
+                  day: 'numeric'
                 }
               );
             }

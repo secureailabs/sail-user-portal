@@ -6,16 +6,20 @@ import { AbsoluteSpinner } from 'src/components/Spinner';
 
 const UnProtectedRoute: React.FC<IUnProtectedRoutes> = ({
   children,
-  redirect,
+  redirect
 }): ReactElement => {
-
-  const userState = useQueryClient().getQueryState('userData')
+  const userState = useQueryClient().getQueryState('userData');
 
   // check if user finished loading, else run spinner
   if (!userState?.isFetching) {
     // if there is not user, render register page
     if (userState?.data !== undefined && !userState.error) {
-      return <Navigate replace to={window.localStorage.getItem("login-redirect") || redirect} />;
+      return (
+        <Navigate
+          replace
+          to={window.localStorage.getItem('login-redirect') || redirect}
+        />
+      );
     }
     // if there is a user, redirect to dashboard dashboard
     return children;

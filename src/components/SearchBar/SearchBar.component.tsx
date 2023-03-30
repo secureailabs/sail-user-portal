@@ -7,7 +7,7 @@ import { MdOutlineSearch } from 'react-icons/md';
 const SearchBar: React.FC<TSearchBar> = ({
   Icon = MdOutlineSearch,
   placeholder = 'Search...',
-  search,
+  search
 }) => {
   const [value, updateValue] = useState<string>('');
   return (

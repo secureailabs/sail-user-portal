@@ -17,44 +17,45 @@ import { TGetOrganizationSuccess } from 'APIs/organization/organization.typeDefs
 import { axiosProxy } from 'APIs/utils';
 import { useQuery } from 'react-query';
 
-const mode = localStorage.getItem("mode")
+const mode = localStorage.getItem('mode');
 
 const ViewOrganization: React.FC<TViewOrganizationProps> = () => {
   const { id } = useParams();
 
-
   const fetch = (): TGetOrganizationSuccess => {
     //@ts-nocheck
     // if(mode == "demo"){
-    console.log(demo_data)
+    console.log(demo_data);
     // @ts-ignore
-    return demo_data.organizations[parseInt(id?.slice(-1) - 1 || '0')]
+    return demo_data.organizations[parseInt(id?.slice(-1) - 1 || '0')];
     // }
-  //   const res = axios.get<TGetViewOrganizationSuccess>
-  //   (`${axiosProxy()}/api/v1/DatasetManager/PullDataset?DatasetGuid=${id}`, 
-  //   {
-  //     withCredentials: true,
-  //   });
-  //   return res.data.ViewOrganization;
-  }
+    //   const res = axios.get<TGetViewOrganizationSuccess>
+    //   (`${axiosProxy()}/api/v1/DatasetManager/PullDataset?DatasetGuid=${id}`,
+    //   {
+    //     withCredentials: true,
+    //   });
+    //   return res.data.ViewOrganization;
+  };
 
-  const { data, isLoading, status, error } =
-    useQuery<TGetOrganizationSuccess, AxiosError>(['organization'], () => fetch());
-
+  const { data, isLoading, status, error } = useQuery<
+    TGetOrganizationSuccess,
+    AxiosError
+  >(['organization'], () => fetch());
 
   if (isLoading) {
-    return <><Spinner /></>
+    return (
+      <>
+        <Spinner />
+      </>
+    );
   }
   if (status === 'success' && data) {
     return (
       <StandardContent title="Organization">
-        <ViewOrganizationSuccess
-          getOrganizationData={data}
-        />
+        <ViewOrganizationSuccess getOrganizationData={data} />
       </StandardContent>
-    )
+    );
   }
-  return <ViewOrganizationFailure error={error} />
-
+  return <ViewOrganizationFailure error={error} />;
 };
 export default ViewOrganization;

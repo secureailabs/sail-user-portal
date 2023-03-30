@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 import React, { ReactElement } from 'react';
 
@@ -13,7 +14,7 @@ const RestrictedRoute: React.FC<IRestrictedRoutes> = ({
   children,
   redirect,
   path,
-  requiredAccessRights,
+  requiredAccessRights
 }): ReactElement => (
   <>
     {exact ? (

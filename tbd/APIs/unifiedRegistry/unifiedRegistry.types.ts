@@ -26,8 +26,8 @@ export type TGetUnifiedRegistrySuccess = {
     ID: string;
     Name: string;
     Description: string;
-    NumberOfDataOwner: number,
-    NumberOfPatients: number,
+    NumberOfDataOwner: number;
+    NumberOfPatients: number;
     Image: string;
     CreatedAt: Date;
     UpdateAt: Date;
@@ -44,12 +44,11 @@ export type TGetUnifiedRegistrySuccess = {
         name: string;
         buttonText: string;
         invite_pending?: boolean;
-      }[]
-      ,
+      }[];
       users: {
         name: string;
-      }[]
-    }
+      }[];
+    };
   };
 };
 

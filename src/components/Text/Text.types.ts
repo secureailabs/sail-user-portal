@@ -5,7 +5,7 @@ import {
   ILineHeightTypes,
   TTextSize,
   ITextStyle,
-  ITransitionTypes,
+  ITransitionTypes
 } from 'src/utils';
 import { ReactElement, ReactNode } from 'react';
 

@@ -4,7 +4,7 @@ import { TUserManagerList } from './UserManagerList.types';
 import { useTable, useSortBy, useFlexLayout } from 'react-table';
 
 const DatasetList: React.FC<TUserManagerList> = () => {
-// = ({ Datasets, setDatasetID }) 
+  // = ({ Datasets, setDatasetID })
 
   // console.log(Datasets);
 
@@ -13,42 +13,37 @@ const DatasetList: React.FC<TUserManagerList> = () => {
       {
         Header: 'Name',
         accessor: 'DatasetName',
-        width: 150,
+        width: 150
       },
       {
         Header: 'Publish Date',
         accessor: 'PublishDate',
-        width: 50,
+        width: 50
       },
       {
         Header: 'Keywords',
         accessor: 'Keywords',
-        width: 300,
+        width: 300
       },
       {
         Header: 'Dataset Owner',
         accessor: 'OrganizationName',
-        width: 150,
-      },
+        width: 150
+      }
     ],
     []
   );
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable(
-    {
-      //@ts-ignore
-      columns,
-      //@ts-ignore
-      data: Datasets,
-    },
-    useSortBy,
-    useFlexLayout
-  );
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable(
+      {
+        //@ts-ignore
+        columns,
+        //@ts-ignore
+        data: Datasets
+      },
+      useSortBy,
+      useFlexLayout
+    );
 
   return (
     <></>

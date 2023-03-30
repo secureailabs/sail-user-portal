@@ -18,7 +18,7 @@ const colorValues: { [name: string]: { color: string } } = {
   grey: { color: '#869EA6' },
   whitish: { color: '#f7fbfc' },
   blackish: { color: '#000000cc' },
-  backgroundWhite: { color: '#d8E4E8' },
+  backgroundWhite: { color: '#d8E4E8' }
 };
 
 export const colorPicker = (color: TColor['color']): string => {

@@ -11,7 +11,6 @@ export type TDatasetsSuccessProps = {
   getAllDatasetsData: GetMultipleDataset_Out;
 };
 
-
 export type TDatasetsFailure = {
   error: ApiError;
-}
+};

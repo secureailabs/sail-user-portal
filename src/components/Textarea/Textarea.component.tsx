@@ -9,7 +9,7 @@ const Input: React.FC<TTextarea> = ({
   full,
   name,
   register,
-  rows,
+  rows
 }) => {
   return (
     <div className={`input ${full ? 'input--full' : ''}`}>

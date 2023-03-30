@@ -27,7 +27,7 @@ export interface ITransitionExportTypes {
 export const transitionSupport = ({
   transitionDelay,
   transitionDuration,
-  transitionTimingFunction,
+  transitionTimingFunction
 }: Partial<ITransitionTypes>): ITransitionExportTypes => {
   let final: ITransitionExportTypes = {};
 

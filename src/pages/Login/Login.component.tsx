@@ -8,11 +8,7 @@ import LoginSuccess from './Login.success';
 import LoginFailure from './Login.failure';
 import { AbsoluteSpinner } from 'src/components/Spinner';
 
-const Login: React.FC<TLoginProps> = ({
-  signInReset,
-  signInStart,
-  status,
-}) => {
+const Login: React.FC<TLoginProps> = ({ signInReset, signInStart, status }) => {
   return (
     <ConditionalRender
       status={status}

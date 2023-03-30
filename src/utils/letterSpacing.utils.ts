@@ -10,11 +10,11 @@ const borderStyleValues: { [name: string]: { value: string } } = {
   trackingNormal: { value: '0em' },
   trackingWide: { value: '0.025em' },
   trackingWider: { value: '0.05em' },
-  trackingWidest: { value: '0.1em' },
+  trackingWidest: { value: '0.1em' }
 };
 
 export const letterSpacingPicker = ({
-  letterSpacing,
+  letterSpacing
 }: {
   letterSpacing: ILetterSpacingTypes['letterSpacing'];
 }): string => {

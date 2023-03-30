@@ -8,7 +8,7 @@ const SidebarLink: React.FC<TSidebarLink> = ({
   Icon,
   onClick = () => {},
   link,
-  exact = false,
+  exact = false
 }) => {
   const location = useLocation();
   const navigate = useNavigate();

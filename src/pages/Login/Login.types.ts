@@ -8,12 +8,22 @@ export interface IEmailAndPassword {
 }
 
 export type TLoginProps = {
-  signInStart: UseMutateFunction<LoginSuccess_Out, AxiosError<any>, void, unknown>;
+  signInStart: UseMutateFunction<
+    LoginSuccess_Out,
+    AxiosError<any>,
+    void,
+    unknown
+  >;
   signInReset(): void;
   status: 'success' | 'error' | 'loading' | 'idle';
 };
 
 export type TLoginFormProps = {
-  signInStart: UseMutateFunction<LoginSuccess_Out, AxiosError<any>, void, unknown>;
+  signInStart: UseMutateFunction<
+    LoginSuccess_Out,
+    AxiosError<any>,
+    void,
+    unknown
+  >;
   signInReset(): void;
 };

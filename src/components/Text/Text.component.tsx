@@ -4,7 +4,7 @@ import {
   colorPicker,
   letterSpacingPicker,
   lineHeightPicker,
-  transitionSupport,
+  transitionSupport
 } from 'src/utils';
 
 import TText from './Text.types';
@@ -26,7 +26,7 @@ export const Text: React.FC<TText> = ({
   transitionDuration,
   transitionTimingFunction,
   textAlign,
-  className = '',
+  className = ''
 }): ReactElement => {
   const styleSwitch: () => string = (): string => {
     const class_name = `text ${className}`;
@@ -51,8 +51,8 @@ export const Text: React.FC<TText> = ({
         ...transitionSupport({
           transitionDelay,
           transitionDuration,
-          transitionTimingFunction,
-        }),
+          transitionTimingFunction
+        })
       }}
       className={styleSwitch()}
     >

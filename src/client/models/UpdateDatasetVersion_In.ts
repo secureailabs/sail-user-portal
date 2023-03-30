@@ -5,7 +5,6 @@
 import type { DatasetVersionState } from './DatasetVersionState';
 
 export type UpdateDatasetVersion_In = {
-    description?: string;
-    state?: DatasetVersionState;
+  description?: string;
+  state?: DatasetVersionState;
 };
-

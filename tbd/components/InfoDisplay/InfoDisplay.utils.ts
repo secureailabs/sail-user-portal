@@ -55,4 +55,4 @@ export const changeArrayKeys = (
     array[i][0] = newKeys[i];
   }
   return array;
-}
+};

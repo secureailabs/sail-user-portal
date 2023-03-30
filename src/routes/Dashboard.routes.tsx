@@ -127,8 +127,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
       }
     />
     <Route path="*" element={<Navigate to="/dashboard" />} />
-
-  </Routes >
+  </Routes>
 );
 
 export default DashboardRouter;

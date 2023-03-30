@@ -9,7 +9,7 @@ const Stats: React.FC<TStats> = ({
   title,
   secondary,
   containerHeight,
-  widthMaxContent,
+  widthMaxContent
 }) => {
   return (
     <Card

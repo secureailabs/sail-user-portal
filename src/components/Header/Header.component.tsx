@@ -8,7 +8,7 @@ const Header: React.FC<THeader> = ({
   search,
   username,
   organization,
-  profile_image,
+  profile_image
 }) => {
   return (
     <div className="header">

@@ -11,7 +11,7 @@ const Input: React.FC<TInput> = ({
   onChange,
   register,
   name,
-  type = 'text',
+  type = 'text'
 }) => {
   return (
     <div className={`input ${full ? 'input--full' : ''}`}>

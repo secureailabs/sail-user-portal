@@ -11,7 +11,7 @@ export type TDownloadsProps = {
 
 export type TDownloadsFailureProps = {
   error: AxiosError<any>;
-}
+};
 
 export type TDownloadsSuccessProps = {
   getAllDownloadsData: TGetAllDownloadsSuccess['downloads'];

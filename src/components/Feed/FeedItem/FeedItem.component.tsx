@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 
 import Text from 'src/components/Text';
@@ -13,7 +14,7 @@ const FeedItem: React.FC<TFeed> = ({
   date,
   onClick,
   avatar,
-  avatar_color,
+  avatar_color
 }) => {
   return (
     <div className="feed-item" onClick={onClick}>

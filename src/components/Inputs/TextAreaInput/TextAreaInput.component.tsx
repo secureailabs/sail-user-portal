@@ -9,28 +9,28 @@ const TextAreaInput: React.FC<TTextAreaInputProps> = (props) => {
 
   // Extract the onChange from register so we can add something to it
   const { register, onChange, ...otherProps } = props;
-      return (
-      <div className="textarea-input" id={`${props.label}_inputdiv`}>
-        <label className='text-input__label'>{props.title}</label>
-        {'tooltip' in props && <Tooltip {...props.tooltip} />}
-        <textarea
-          placeholder={props.placeholder}
-          // onChange={(e) => {
-          //   onChange && onChange(e);
-          //   if (props.onChange) {
-          //     props.onChange(e);
-          //   }
-          // }}
-          {...register(props.label)}
-          autoComplete='off'
-        />
-        {props.errorMessage &&
-          props.tooltip?.icon != '?' &&
-          props.tooltip?.icon != undefined && (
-            <ErrorMessage errorMessage={props.errorMessage} />
+  return (
+    <div className="textarea-input" id={`${props.label}_inputdiv`}>
+      <label className="text-input__label">{props.title}</label>
+      {'tooltip' in props && <Tooltip {...props.tooltip} />}
+      <textarea
+        placeholder={props.placeholder}
+        // onChange={(e) => {
+        //   onChange && onChange(e);
+        //   if (props.onChange) {
+        //     props.onChange(e);
+        //   }
+        // }}
+        {...register(props.label)}
+        autoComplete="off"
+      />
+      {props.errorMessage &&
+        props.tooltip?.icon != '?' &&
+        props.tooltip?.icon != undefined && (
+          <ErrorMessage errorMessage={props.errorMessage} />
         )}
-      </div>
-  )
+    </div>
+  );
 };
 
 export default TextAreaInput;

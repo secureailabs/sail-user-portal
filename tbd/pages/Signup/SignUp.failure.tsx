@@ -2,7 +2,6 @@
 // import LoginLinkView from 'components/LoginLinkView';
 // import { TSignUpFormProps } from './SignUp.types';
 
-
 // const SignUpFailure = ({
 //   signUpReset,
 // }: {
@@ -13,4 +12,4 @@
 
 // export default SignUpFailure;
 
-export { }
+export {};

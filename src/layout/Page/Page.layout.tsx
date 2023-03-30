@@ -5,7 +5,7 @@ import type TPage from './Page.types';
 const Page: React.FC<TPage> = ({
   pageType,
   children,
-  padding,
+  padding
 }): ReactElement => (
   <div className={`page page--${pageType} ${padding ? 'page--padding' : ''} `}>
     {children}

@@ -33,4 +33,4 @@
 //   Organization
 // );
 
-export { }
+export {};

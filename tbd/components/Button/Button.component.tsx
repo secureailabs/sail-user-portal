@@ -7,7 +7,7 @@ const Button: React.FC<TButton> = ({
   onClick,
   children,
   type,
-  size,
+  size
 }) => {
   return (
     <button

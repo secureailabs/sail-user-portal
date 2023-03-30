@@ -7,7 +7,7 @@ import type TUserInfo from './UserInfo.types';
 const UserInfo: React.FC<TUserInfo> = ({
   username,
   organization,
-  profile_image,
+  profile_image
 }) => {
   return (
     <div className="user-info">

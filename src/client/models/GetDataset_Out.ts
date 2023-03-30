@@ -7,14 +7,13 @@ import type { DatasetFormat } from './DatasetFormat';
 import type { DatasetState } from './DatasetState';
 
 export type GetDataset_Out = {
-    name: string;
-    description: string;
-    tags: string;
-    format: DatasetFormat;
-    _id: string;
-    creation_time?: string;
-    organization: BasicObjectInfo;
-    state: DatasetState;
-    note?: string;
+  name: string;
+  description: string;
+  tags: string;
+  format: DatasetFormat;
+  _id: string;
+  creation_time?: string;
+  organization: BasicObjectInfo;
+  state: DatasetState;
+  note?: string;
 };
-

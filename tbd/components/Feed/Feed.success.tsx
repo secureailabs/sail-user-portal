@@ -17,7 +17,7 @@ import _ from 'lodash';
 const FeedSuccess: React.FC<TFeedSuccessProps> = ({
   getAllFeedsData,
   limit,
-  containerHeight,
+  containerHeight
 }) => {
   const navigate = useNavigate();
   const parsed_data = Object.entries(getAllFeedsData.Feeds)
@@ -28,7 +28,7 @@ const FeedSuccess: React.FC<TFeedSuccessProps> = ({
         date: timeAgo.format(value.CreatedAt),
         image: value.Image,
         avatar: value.avatar,
-        avatar_color: value.avatar_color,
+        avatar_color: value.avatar_color
       };
     })
     .slice(0, limit);

@@ -1,4 +1,4 @@
-import { UserInfo_Out } from "src/client";
+import { UserInfo_Out } from 'src/client';
 
 const getPartnerOrg = (
   userData: UserInfo_Out,
@@ -6,7 +6,9 @@ const getPartnerOrg = (
   DOOName: string,
   ROName: string
 ): string => {
-  return userData?.organization.name == dataOwnerOrganization ? ROName : DOOName;
+  return userData?.organization.name == dataOwnerOrganization
+    ? ROName
+    : DOOName;
 };
 
 export default getPartnerOrg;

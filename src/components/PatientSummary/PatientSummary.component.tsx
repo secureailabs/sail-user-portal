@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useEffect, useState } from 'react';
 
 import Text from 'src/components/Text';
@@ -11,7 +12,7 @@ import {
   Legend,
   LinearScale,
   BarElement,
-  CategoryScale,
+  CategoryScale
 } from 'chart.js';
 import { Doughnut, Bar } from 'react-chartjs-2';
 import { Range, getTrackBackground } from 'react-range';
@@ -35,15 +36,11 @@ const MAX = 100;
 const rtl = false;
 
 const PatientSummary = ({
-  containerHeight = true,
+  containerHeight = true
 }: {
   containerHeight?: boolean;
 }) => {
-  const plugins = [
-    {
-   
-    },
-  ];
+  const plugins = [{}];
   const [fake_data, setFakeData] = useState(fake_data_json);
 
   const gender_data = {
@@ -57,16 +54,16 @@ const PatientSummary = ({
         backgroundColor: [
           'rgba(243, 115, 36, 0.8)',
           'rgba(134, 158, 166, 0.8)',
-          'rgba(0, 0, 0, 0.8)',
+          'rgba(0, 0, 0, 0.8)'
         ],
         borderColor: [
           'rgba(243, 115, 36, 1)',
           'rgba(134, 158, 166, 1)',
-          'rgba(0, 0, 0, 1)',
+          'rgba(0, 0, 0, 1)'
         ],
-        borderWidth: 2,
-      },
-    ],
+        borderWidth: 2
+      }
+    ]
   };
 
   const race_data = {
@@ -80,16 +77,16 @@ const PatientSummary = ({
         backgroundColor: [
           'rgba(243, 115, 36, 0.8)',
           'rgba(134, 158, 166, 0.8)',
-          'rgba(0, 0, 0, 0.8)',
+          'rgba(0, 0, 0, 0.8)'
         ],
         borderColor: [
           'rgba(243, 115, 36, 1)',
           'rgba(134, 158, 166, 1)',
-          'rgba(0, 0, 0, 1)',
+          'rgba(0, 0, 0, 1)'
         ],
-        borderWidth: 2,
-      },
-    ],
+        borderWidth: 2
+      }
+    ]
   };
 
   const hospital_data = {
@@ -103,16 +100,16 @@ const PatientSummary = ({
         backgroundColor: [
           'rgba(243, 115, 36, 0.8)',
           'rgba(134, 158, 166, 0.8)',
-          'rgba(0, 0, 0, 0.8)',
+          'rgba(0, 0, 0, 0.8)'
         ],
         borderColor: [
           'rgba(243, 115, 36, 1)',
           'rgba(134, 158, 166, 1)',
-          'rgba(0, 0, 0, 1)',
+          'rgba(0, 0, 0, 1)'
         ],
-        borderWidth: 2,
-      },
-    ],
+        borderWidth: 2
+      }
+    ]
   };
 
   const disease_data = {
@@ -126,31 +123,31 @@ const PatientSummary = ({
         backgroundColor: [
           'rgba(243, 115, 36, 0.8)',
           'rgba(134, 158, 166, 0.8)',
-          'rgba(0, 0, 0, 0.8)',
+          'rgba(0, 0, 0, 0.8)'
         ],
         borderColor: [
           'rgba(243, 115, 36, 1)',
           'rgba(134, 158, 166, 1)',
-          'rgba(0, 0, 0, 1)',
+          'rgba(0, 0, 0, 1)'
         ],
-        borderWidth: 2,
-      },
-    ],
+        borderWidth: 2
+      }
+    ]
   };
 
   const options = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const,
+        position: 'top' as const
       },
       title: {
         display: true,
-        text: 'Chart.js Bar Chart',
-      },
-    },
+        text: 'Chart.js Bar Chart'
+      }
+    }
   };
-  
+
   const labels = Object.keys(
     _.groupBy(fake_data, function (o) {
       return Math.floor(o.age / 10) * 10;
@@ -166,77 +163,69 @@ const PatientSummary = ({
             return Math.floor(o.age / 10) * 10;
           })
         ).map((el) => el.length),
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-    ],
+        backgroundColor: 'rgba(255, 99, 132, 0.5)'
+      }
+    ]
   };
 
   const [age_filter, setAgeFilter] = useState([0, 100]);
-  const [cancer_type_filter, setCancerTypeFilter] = useState<
-    Array<string>
-  >([]);
-  const [gender_filter, setGenderFilter] = useState<Array<string>>(
-    []
-  );
-  const [hospital_filter, setHospitalFilter] = useState<Array<string>>(
-    []
-  );
-  const [race_filter, setRaceFilter] = useState<Array<string>>(
-    []
-  );
+  const [cancer_type_filter, setCancerTypeFilter] = useState<Array<string>>([]);
+  const [gender_filter, setGenderFilter] = useState<Array<string>>([]);
+  const [hospital_filter, setHospitalFilter] = useState<Array<string>>([]);
+  const [race_filter, setRaceFilter] = useState<Array<string>>([]);
   const splitByWordCount = (str: string, count: number): string[] => {
-  const arr = str.split(' ')
-  const r = [];
-  while (arr.length) {
-    r.push(arr.splice(0, count).join(' '))
-  }
-  return r;
-}
+    const arr = str.split(' ');
+    const r = [];
+    while (arr.length) {
+      r.push(arr.splice(0, count).join(' '));
+    }
+    return r;
+  };
   const [dimensions, setDimensions] = useState({ width: 150, height: 150 });
   const applyFilters = (): void => {
-    const filters = [{
-        filter_key: "gender",
+    const filters = [
+      {
+        filter_key: 'gender',
         filter: gender_filter,
-        filter_function: "equality"
-      }, 
-      { 
-        filter_key: "cancer_type", 
+        filter_function: 'equality'
+      },
+      {
+        filter_key: 'cancer_type',
         filter: cancer_type_filter,
-        filter_function: "equality" 
+        filter_function: 'equality'
       },
-      { 
-        filter_key: "hospital", 
+      {
+        filter_key: 'hospital',
         filter: hospital_filter,
-        filter_function: "equality" 
+        filter_function: 'equality'
       },
-      { 
-        filter_key: "race", 
+      {
+        filter_key: 'race',
         filter: race_filter,
-        filter_function: "equality" 
+        filter_function: 'equality'
       },
-      { 
-        filter_key: "age", 
+      {
+        filter_key: 'age',
         filter: age_filter,
-        filter_function: "in-between" 
+        filter_function: 'in-between'
       }
-        ];
+    ];
 
     let filtered_data = fake_data_json;
-    for(const { filter_key, filter_function, filter} of filters){
-          filtered_data = _.filter((filtered_data), function(o){
-            if(filter_function === "equality" && filter.length !== 0){
-              //@ts-ignore
-            return filter.includes(o[filter_key]);
-              }  else if (filter_function === "in-between") {
-                  return filter[0] <= o.age && filter[1] >= o.age;
-                }
- 
-              return true; 
-            })
+    for (const { filter_key, filter_function, filter } of filters) {
+      filtered_data = _.filter(filtered_data, function (o) {
+        if (filter_function === 'equality' && filter.length !== 0) {
+          //@ts-ignore
+          return filter.includes(o[filter_key]);
+        } else if (filter_function === 'in-between') {
+          return filter[0] <= o.age && filter[1] >= o.age;
         }
+
+        return true;
+      });
+    }
     setFakeData(filtered_data);
   };
-
 
   useEffect(() => {
     applyFilters();
@@ -245,7 +234,7 @@ const PatientSummary = ({
     cancer_type_filter,
     gender_filter,
     hospital_filter,
-    race_filter,
+    race_filter
   ]);
 
   return (
@@ -263,14 +252,20 @@ const PatientSummary = ({
           <Card containerHeight={containerHeight} primaryText="No. of Patients">
             <>
               <div className="patient-summary">
-                <div className="patient-summary__top" style={{ display: 'grid', gridTemplateColumns: '1fr 4fr 1fr 4 fr'}}>
+                <div
+                  className="patient-summary__top"
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 4fr 1fr 4 fr'
+                  }}
+                >
                   <Text>Hospital</Text>
                   <div>
                     <Select
                       isClearable={true}
                       isMulti={true}
                       onChange={(el) => {
-                          setHospitalFilter(el.map((e) => e.value));
+                        setHospitalFilter(el.map((e) => e.value));
                       }}
                       className="react-select-container"
                       options={Object.keys(
@@ -278,7 +273,7 @@ const PatientSummary = ({
                       ).map((el) => {
                         return {
                           value: el,
-                          label: el,
+                          label: el
                         };
                       })}
                     />
@@ -290,7 +285,7 @@ const PatientSummary = ({
                       isClearable={true}
                       isMulti={true}
                       onChange={(el) => {
-                          setGenderFilter(el.map((e) => e.value));
+                        setGenderFilter(el.map((e) => e.value));
                       }}
                       className="react-select-container"
                       options={Object.keys(
@@ -298,7 +293,7 @@ const PatientSummary = ({
                       ).map((el) => {
                         return {
                           value: el,
-                          label: el,
+                          label: el
                         };
                       })}
                     />
@@ -309,7 +304,7 @@ const PatientSummary = ({
                       isClearable={true}
                       isMulti={true}
                       onChange={(el) => {
-                          setRaceFilter(el.map((e) => e.value));
+                        setRaceFilter(el.map((e) => e.value));
                       }}
                       className="react-select-container"
                       options={Object.keys(
@@ -317,7 +312,7 @@ const PatientSummary = ({
                       ).map((el) => {
                         return {
                           value: el,
-                          label: el,
+                          label: el
                         };
                       })}
                     />
@@ -330,25 +325,23 @@ const PatientSummary = ({
                       isMulti={true}
                       className="react-select-container"
                       onChange={(el) => {
-                          setCancerTypeFilter(el.map((e) => e.value));
+                        setCancerTypeFilter(el.map((e) => e.value));
                       }}
                       options={Object.keys(
                         _.groupBy(fake_data_json, 'cancer_type')
                       ).map((el) => {
                         return {
                           value: el,
-                          label: el,
+                          label: el
                         };
                       })}
                     />
                   </div>
-                  
-                 
                 </div>
                 <div
                   style={{
                     display: 'flex',
-                    alignItems: 'center',
+                    alignItems: 'center'
                   }}
                 >
                   <Text>Age&nbsp;&nbsp;&nbsp;</Text>
@@ -358,7 +351,6 @@ const PatientSummary = ({
                     max={MAX}
                     values={age_filter}
                     onChange={(el) => {
-
                       setAgeFilter(el);
                     }}
                     renderTrack={({ props, children }) => (
@@ -369,7 +361,7 @@ const PatientSummary = ({
                           ...props.style,
                           height: '36px',
                           display: 'flex',
-                          width: '100%',
+                          width: '100%'
                         }}
                       >
                         <div
@@ -383,9 +375,9 @@ const PatientSummary = ({
                               colors: ['#ccc', '#F37324', '#ccc'],
                               min: MIN,
                               max: MAX,
-                              rtl,
+                              rtl
                             }),
-                            alignSelf: 'center',
+                            alignSelf: 'center'
                           }}
                         >
                           {children}
@@ -405,7 +397,7 @@ const PatientSummary = ({
                           justifyContent: 'center',
                           alignItems: 'center',
                           border: '2px solid #F37324',
-                          boxShadow: '0px 2px 6px #AAA',
+                          boxShadow: '0px 2px 6px #AAA'
                         }}
                       >
                         <div
@@ -419,7 +411,7 @@ const PatientSummary = ({
                               'Arial,Helvetica Neue,Helvetica,sans-serif',
                             padding: '4px',
                             borderRadius: '4px',
-                            backgroundColor: '#F37324',
+                            backgroundColor: '#F37324'
                           }}
                         >
                           {age_filter[index].toFixed(0)}
@@ -430,7 +422,7 @@ const PatientSummary = ({
                 </div>
                 <div className="patient-summary__bottom">
                   <div className="patient-summary__charts">
-                     <div>
+                    <div>
                       <Text
                         fontWeight={600}
                         fontSize="1.4rem"
@@ -441,23 +433,23 @@ const PatientSummary = ({
                       </Text>
                       <Doughnut
                         data={hospital_data}
-                      //@ts-ignore
-                      plugins={[ChartDataLabels]}
+                        //@ts-ignore
+                        plugins={[ChartDataLabels]}
                         options={{
                           maintainAspectRatio: true,
                           responsive: true,
                           plugins: {
                             legend: {
-                              display: false,
+                              display: false
                             },
                             tooltip: {
-                                callbacks: {
-                                    label: function(e){
-                                      return splitByWordCount(e.label,2)
-                                    }
-                                  },
+                              callbacks: {
+                                label: function (e) {
+                                  return splitByWordCount(e.label, 2);
+                                }
                               }
-                          },
+                            }
+                          }
                         }}
                       />
                     </div>
@@ -480,20 +472,19 @@ const PatientSummary = ({
 
                           plugins: {
                             legend: {
-                              display: false,
+                              display: false
                             },
                             tooltip: {
-                                callbacks: {
-                                    label: function(e){
-                                      return splitByWordCount(e.label,2)
-                                    }
-                                  },
+                              callbacks: {
+                                label: function (e) {
+                                  return splitByWordCount(e.label, 2);
+                                }
                               }
-                          },
+                            }
+                          }
                         }}
                       />
                     </div>
-               
                   </div>
                   <div className="patient-summary__charts">
                     <div>
@@ -514,20 +505,20 @@ const PatientSummary = ({
                           responsive: true,
                           plugins: {
                             legend: {
-                              display: false,
+                              display: false
                             },
-                             tooltip: {
-                                callbacks: {
-                                    label: function(e){
-                                      return splitByWordCount(e.label,3)
-                                    }
-                                  },
+                            tooltip: {
+                              callbacks: {
+                                label: function (e) {
+                                  return splitByWordCount(e.label, 3);
+                                }
                               }
-                          },
+                            }
+                          }
                         }}
                       />
                     </div>
-                        <div>
+                    <div>
                       <Text
                         fontWeight={600}
                         fontSize="1.4rem"
@@ -538,27 +529,24 @@ const PatientSummary = ({
                       </Text>
                       <Doughnut
                         data={disease_data}
-                       
                         options={{
                           maintainAspectRatio: true,
                           responsive: true,
                           plugins: {
                             legend: {
-                              display: false,
+                              display: false
                             },
                             tooltip: {
-                                callbacks: {
-                                    label: function(e){
-                                      return e.label
-                                    }
-                                      
-                                  },
+                              callbacks: {
+                                label: function (e) {
+                                  return e.label;
+                                }
                               }
-                          },
+                            }
+                          }
                         }}
                       />
                     </div>
-
                   </div>
                 </div>
               </div>

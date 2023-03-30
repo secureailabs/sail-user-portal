@@ -62,7 +62,7 @@ const borderStyleValues: { [name: string]: { borderStyle: string } } = {
   borderInset: { borderStyle: 'inset' },
   borderOutset: { borderStyle: 'outset' },
   borderRidge: { borderStyle: 'ridge' },
-  borderSolid: { borderStyle: 'solid' },
+  borderSolid: { borderStyle: 'solid' }
 };
 
 export const borderColorSupport = ({
@@ -70,37 +70,37 @@ export const borderColorSupport = ({
   borderColor,
   borderTopColor,
   borderLeftColor,
-  borderRightColor,
+  borderRightColor
 }: IBorderColorSupportInputType): IBorderColorSupportExportType => {
   let final: IBorderColorSupportExportType = {};
   if (borderColor) {
     final = {
       ...final,
-      borderColor: borderColor && colorPicker(borderColor),
+      borderColor: borderColor && colorPicker(borderColor)
     };
   }
   if (borderBottomColor) {
     final = {
       ...final,
-      borderBottomColor: borderBottomColor && colorPicker(borderBottomColor),
+      borderBottomColor: borderBottomColor && colorPicker(borderBottomColor)
     };
   }
   if (borderTopColor) {
     final = {
       ...final,
-      borderTopColor: borderTopColor && colorPicker(borderTopColor),
+      borderTopColor: borderTopColor && colorPicker(borderTopColor)
     };
   }
   if (borderLeftColor) {
     final = {
       ...final,
-      borderLeftColor: borderLeftColor && colorPicker(borderLeftColor),
+      borderLeftColor: borderLeftColor && colorPicker(borderLeftColor)
     };
   }
   if (borderRightColor) {
     final = {
       ...final,
-      borderRightColor: borderRightColor && colorPicker(borderRightColor),
+      borderRightColor: borderRightColor && colorPicker(borderRightColor)
     };
   }
 
@@ -108,7 +108,7 @@ export const borderColorSupport = ({
 };
 
 export const borderStylePicker = ({
-  borderStyle,
+  borderStyle
 }: {
   borderStyle: IStyleTypes['borderStyle'];
 }): string => {

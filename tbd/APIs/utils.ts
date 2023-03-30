@@ -4,9 +4,9 @@ export const axiosProxy = (): string => {
   console.log(import.meta.env);
   // console.log(import.meta.env);
   if (import.meta.env.MODE === 'development') {
-    return import.meta.env.VITE_PUBLIC_API_URL_DEV?.toString() || "";
+    return import.meta.env.VITE_PUBLIC_API_URL_DEV?.toString() || '';
   } else {
-    return import.meta.env.VITE_PUBLIC_API_URL_PROD?.toString() || "";
+    return import.meta.env.VITE_PUBLIC_API_URL_PROD?.toString() || '';
   }
 };
 
@@ -34,8 +34,8 @@ export const tokenConfig = () => {
   const config = {
     headers: {
       'Content-type': 'application/json',
-      authorization: '',
-    },
+      authorization: ''
+    }
   };
 
   // If token, add to headers

@@ -10,49 +10,53 @@ const Table: React.FC<TTable> = ({
   columns,
   id_accessor,
   base_url,
-  show_head = true,
+  show_head = true
 }) => {
   const navigate = useNavigate();
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable(
-    {
-      columns,
-      data,
-      initialState: initial_state,
-    },
-    useSortBy
-  );
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable(
+      {
+        columns,
+        data,
+        initialState: initial_state
+      },
+      useSortBy
+    );
 
   return (
     <table className="table" {...getTableProps()}>
-      {show_head && <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              // Add the sorting props to control sorting. For this example
-              // we can add them into the header props
-              // @ts-ignore
-              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                <Text className='table__column_header' fontSize="12px" fontWeight={600}>
-                  {column.render('Header')}
-                </Text>
-                {/* Add a sort direction indicator */}
-                <span>
-                  {
-                    // @ts-ignore
-                    column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''
-                  }
-                </span>
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>}
+      {show_head && (
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                // Add the sorting props to control sorting. For this example
+                // we can add them into the header props
+                // @ts-ignore
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  <Text
+                    className="table__column_header"
+                    fontSize="12px"
+                    fontWeight={600}
+                  >
+                    {column.render('Header')}
+                  </Text>
+                  {/* Add a sort direction indicator */}
+                  <span>
+                    {/* @ts-ignore */}
+                    {column.isSorted
+                      ? // @ts-ignore
+                        column.isSortedDesc
+                        ? ' 🔽'
+                        : ' 🔼'
+                      : ''}
+                  </span>
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+      )}
       <tbody {...getTableBodyProps()}>
         {rows.map((row: any, i) => {
           prepareRow(row);
@@ -67,7 +71,7 @@ const Table: React.FC<TTable> = ({
             >
               {row.cells.map((cell: any) => {
                 return (
-                  <td {...cell.getCellProps()} onClick={() => { }}>
+                  <td {...cell.getCellProps()}>
                     <Text fontSize="12px" fontWeight={500}>
                       {cell.render('Cell')}
                     </Text>

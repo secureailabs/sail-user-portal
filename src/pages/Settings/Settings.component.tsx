@@ -8,7 +8,6 @@ import Margin from 'src/components/Margin';
 // import { UserInfo_Out } from 'src/client';
 
 const Settings: React.FC = () => {
-
   // Get the user infomation from query
   // const queryClient = useQueryClient()
   // const currentUser: UserInfo_Out = queryClient.getQueryData('userData')!

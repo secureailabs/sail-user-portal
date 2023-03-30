@@ -6,6 +6,6 @@
  * An enumeration.
  */
 export enum DataFederationState {
-    ACTIVE = 'ACTIVE',
-    INACTIVE = 'INACTIVE',
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE'
 }

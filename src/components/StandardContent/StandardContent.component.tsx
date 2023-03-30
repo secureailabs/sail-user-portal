@@ -10,7 +10,7 @@ const StandardContent: React.FC<TStandardContent> = ({
   title,
   children,
   HeaderButton = <></>,
-  back,
+  back
 }) => {
   const navigate = useNavigate();
 

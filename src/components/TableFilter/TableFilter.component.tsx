@@ -7,7 +7,7 @@ import Text from 'src/components/Text';
 const TableFilter: React.FC<TTableFilter> = ({
   filters,
   setCurrentFilter,
-  current_filter,
+  current_filter
 }) => {
   return (
     <div className="table-filter">
