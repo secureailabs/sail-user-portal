@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Table from 'src/components/Table';
 import { TDatasetsSuccessProps } from './Datasets.types';
 import StandardContent from 'src/components/StandardContent';
+import RegisterDataset from './RegisterDataset';
 
 const DatasetsSuccess: React.FC<TDatasetsSuccessProps> = ({
   getAllDatasetsData
@@ -39,13 +40,16 @@ const DatasetsSuccess: React.FC<TDatasetsSuccessProps> = ({
 
   return (
     <StandardContent title="Datasets">
-      <Table
-        base_url="/dashboard/datasets"
-        id_accessor="id"
-        columns={columns}
-        // @ts-ignore
-        data={getAllDatasetsData?.datasets}
-      />
+      <>
+        <RegisterDataset />
+        <Table
+          base_url="/dashboard/datasets"
+          id_accessor="id"
+          columns={columns}
+          // @ts-ignore
+          data={getAllDatasetsData?.datasets}
+        />
+      </>
     </StandardContent>
   );
 };

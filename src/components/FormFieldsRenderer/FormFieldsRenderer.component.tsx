@@ -1,53 +1,44 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
-
 import { TFormFieldsRenderer } from './FormFieldsRenderer.types';
-
 import Input from 'src/components/Input';
 import Textarea from 'src/components/Textarea';
 import Button from 'src/components/Button';
-
 import { headerCase } from 'change-case';
-
 import Text from 'src/components/Text';
-
 import Dropzone from 'src/components/Dropzone';
+import { MenuItem, TextField } from '@mui/material';
+import Select from '@mui/material/Select';
 
 const FormRenderer: React.FC<TFormFieldsRenderer> = ({
   fields,
   register,
-  full,
-  description,
+  full = true,
   children,
   button_text
 }) => {
   return (
     <>
-      {description && description != '' && (
-        <div className="formsfieldsdescription">{description}</div>
-      )}
       {Object.entries(fields).map(([key, value], index) => {
+        const key_label = value.label
+          ? value.label
+          : headerCase(key, { delimiter: ' ' });
+        const key_placeholder = value.placeholder
+          ? value.placeholder
+          : headerCase(key, { delimiter: ' ' });
+
         switch (value.type) {
           case 'textarea': {
             return (
               <Textarea
                 key={index}
                 name={key}
-                full={full || true}
-                placeholder={
-                  value.placeholder
-                    ? value.placeholder
-                    : headerCase(key, { delimiter: ' ' })
-                }
-                label={value.label}
+                full={full}
+                label={key_label}
                 rows={5}
-                // @ts-ignore
+                placeholder={key_placeholder}
                 register={register}
-                // type={value.type}
-                // errorMessage={formState.errors[key]?.message}
               />
             );
-            break;
           }
           case 'image':
             return (
@@ -64,9 +55,24 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
                 )}
               </div>
             );
-
           case 'date':
             return <input type="date" {...register(key)} />;
+          case 'select': {
+            return (
+              <div className={`input ${full ? 'input--full' : ''}`}>
+                <Text fontWeight={500} fontSize="14px" lineHeight={5}>
+                  {key_label}
+                </Text>
+                <Select {...register(key)} defaultValue={value.options?.[0]}>
+                  {value.options?.map((option) => (
+                    <MenuItem key={option} value={option}>
+                      {option}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </div>
+            );
+          }
           case 'text':
           case 'password':
           case 'number':
@@ -75,22 +81,11 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
               <Input
                 {...register(key)}
                 key={index}
-                placeholder={
-                  value.placeholder
-                    ? value.placeholder
-                    : headerCase(key, { delimiter: ' ' })
-                }
-                label={
-                  value.label
-                    ? value.label
-                    : headerCase(key, { delimiter: ' ' })
-                }
-                // @ts-ignore
+                placeholder={key_placeholder}
+                label={key_label}
                 register={register}
                 type={value.type}
-                full={full || true}
-                // errorMessage={formState.errors[key]?.message}
-                // onChange={value?.onChange}
+                full={full}
               />
             );
         }

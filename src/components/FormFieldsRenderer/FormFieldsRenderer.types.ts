@@ -18,11 +18,11 @@ export type TFormFieldsRenderer = {
       label?: string;
       placeholder?: string;
       errorMessage?: string;
+      options?: string[];
     }
   >;
   register: UseFormRegister<any>;
   formState: FormState<any>;
-  description?: string;
   button_text?: string;
 
   children?: ReactElement;

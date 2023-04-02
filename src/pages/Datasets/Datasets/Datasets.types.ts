@@ -3,12 +3,12 @@ import { ApiError, GetMultipleDataset_Out } from 'src/client';
 
 export type TDatasetsProps = {
   status: IConditionalRender['status'];
-  getAllDatasetsData: GetMultipleDataset_Out | null;
+  getAllDatasetsData: GetMultipleDataset_Out;
   error: ApiError | null;
 };
 
 export type TDatasetsSuccessProps = {
-  getAllDatasetsData: GetMultipleDataset_Out | null;
+  getAllDatasetsData: GetMultipleDataset_Out;
 };
 
 export type TDatasetsFailure = {

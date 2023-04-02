@@ -6,7 +6,9 @@ import Text from 'src/components/Text';
 const SidebarLink: React.FC<TSidebarLink> = ({
   text,
   Icon,
-  onClick = () => {},
+  onClick = () => {
+    return null;
+  },
   link,
   exact = false
 }) => {

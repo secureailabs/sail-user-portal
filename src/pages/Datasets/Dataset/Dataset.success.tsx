@@ -13,7 +13,8 @@ const DatasetSuccess: React.FC<TDatasetSuccessProps> = ({ getDatasetData }) => {
       ...getDatasetData,
       DataOwner: getDatasetData.organization.name,
       publish_date: getDatasetData?.creation_time,
-      NumberOfVersions: 1
+      NumberOfVersions: 1,
+      keywords: getDatasetData?.tags
     }
   });
 

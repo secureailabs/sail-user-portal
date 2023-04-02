@@ -3,6 +3,7 @@ import Table from 'src/components/Table';
 import { TDatasetVersionsSuccessProps } from './DatasetVersions.types';
 import StandardContent from 'src/components/StandardContent';
 import { useParams } from 'react-router-dom';
+import RegisterDatasetVersion from './RegisterDatasetVersion';
 
 const DatasetVersionsSuccess: React.FC<TDatasetVersionsSuccessProps> = ({
   getAllDatasetVersionsData
@@ -31,12 +32,15 @@ const DatasetVersionsSuccess: React.FC<TDatasetVersionsSuccessProps> = ({
 
   return (
     <StandardContent title="Versions">
-      <Table
-        base_url={'/dashboard/datasets/' + id + '/versions'}
-        id_accessor="id"
-        columns={columns}
-        data={getAllDatasetVersionsData?.dataset_versions || []}
-      />
+      <>
+        <RegisterDatasetVersion />
+        <Table
+          base_url={'/dashboard/datasets/' + id + '/versions'}
+          id_accessor="id"
+          columns={columns}
+          data={getAllDatasetVersionsData?.dataset_versions || []}
+        />
+      </>
     </StandardContent>
   );
 };

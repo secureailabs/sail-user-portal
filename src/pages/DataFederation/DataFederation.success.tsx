@@ -120,7 +120,9 @@ const DataFederationSuccess: React.FC<GetDataFederation_Out> = (
                             height="3.6rem"
                             padded={false}
                             full
-                            onClick={() => {}}
+                            onClick={() => {
+                              return null;
+                            }}
                           >
                             {/* @ts-ignore */}
                             {elem.buttonText}
@@ -137,7 +139,9 @@ const DataFederationSuccess: React.FC<GetDataFederation_Out> = (
                   button_type="secondary"
                   height="3.6rem"
                   full
-                  onClick={() => {}}
+                  onClick={() => {
+                    return null;
+                  }}
                 >
                   + Invite New Data Provider
                 </Button>
@@ -171,7 +175,9 @@ const DataFederationSuccess: React.FC<GetDataFederation_Out> = (
                   button_type="secondary"
                   height="3.6rem"
                   full
-                  onClick={() => {}}
+                  onClick={() => {
+                    return null;
+                  }}
                 >
                   + Add New Data Users
                 </Button>
