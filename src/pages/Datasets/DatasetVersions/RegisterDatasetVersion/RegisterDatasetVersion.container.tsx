@@ -36,7 +36,6 @@ const RegisterDatasetVersionContainer: React.FC = () => {
         onClose={handleHideRegisterModal}
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
-        // center the modal
         sx={{
           display: 'flex',
           alignItems: 'center',

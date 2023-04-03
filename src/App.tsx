@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import './sass/main.scss';
 import AppRouter from 'src/routes/App.routes';
@@ -7,6 +6,7 @@ import { useQuery } from 'react-query';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en.json';
 import {
+  ApiError,
   DefaultService,
   OpenAPI,
   RefreshToken_In,
@@ -19,8 +19,6 @@ TimeAgo.setDefaultLocale('en');
 export const checkUserSession = async (): Promise<UserInfo_Out> => {
   try {
     const res = await DefaultService.getCurrentUserInfo();
-    console.log('res', res);
-    console.log('res', res.id);
     return res;
   } catch {
     if (typeof OpenAPI.TOKEN === 'string') {
@@ -42,8 +40,7 @@ export const logoutApi = async () => {
 };
 
 const App: React.FC<AppProps> = () => {
-  // @ts-ignore
-  useQuery<UserInfo_Out, AxiosError>(['userData'], checkUserSession, {
+  useQuery<UserInfo_Out, ApiError>(['userData'], checkUserSession, {
     retry: false,
     refetchInterval: 600000,
     staleTime: 600000
