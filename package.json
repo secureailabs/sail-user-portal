@@ -53,6 +53,7 @@
     "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "build_container": "docker build -t user-portal .",
     "generate-client": "openapi --input openapi.json --output ./src/client --client axios",
+    "generate-dataset-upload-client": "openapi --input openapi.json --output ./src/datasetUpload --client axios",
     "run_container": "docker run -it -rm --name userportal -p 3000:3000 -v $(pwd):/app userportal",
     "attach_container": "docker exec -it userportal /bin/bash"
   },

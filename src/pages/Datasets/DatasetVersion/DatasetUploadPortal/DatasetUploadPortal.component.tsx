@@ -6,6 +6,8 @@ import Select from '@mui/material/Select';
 import CsvDisplay from './CsvDisplay';
 import papaparse from 'papaparse';
 import Text from 'src/components/Text';
+import { uploadAndPublish } from './DatasetUploadPortal.utils';
+import { useParams } from 'react-router-dom';
 
 const DatasetUploadComponent: React.FC = () => {
   const [selectedFiles, setSelectedFile] = React.useState<FileList | null>(
@@ -16,6 +18,7 @@ const DatasetUploadComponent: React.FC = () => {
   const [sample_csv_data, setSampleCsvData] = React.useState<Array<any>>([]);
   const [logs, setLogs] = React.useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { version } = useParams() as { version: string };
 
   function handleButtonClick() {
     fileInputRef.current?.click();
@@ -90,16 +93,6 @@ const DatasetUploadComponent: React.FC = () => {
       setSelectedFile(files);
       setCurrentFile(files[0]);
       previewFile();
-    }
-  }
-
-  function uploadAndPublish() {
-    if (selectedFiles) {
-      for (let i = 0; i < selectedFiles.length; i++) {
-        setLogs(
-          (prev) => prev + '\nUploading ' + selectedFiles[i].name + '...'
-        );
-      }
     }
   }
 
@@ -181,7 +174,7 @@ const DatasetUploadComponent: React.FC = () => {
           )}
           {allFilesValidated && (
             <Button
-              onClick={uploadAndPublish}
+              onClick={() => uploadAndPublish(version, selectedFiles, setLogs)}
               button_type="primary"
               full={false}
             >

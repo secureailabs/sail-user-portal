@@ -42,8 +42,8 @@ export const logoutApi = async () => {
 const App: React.FC<AppProps> = () => {
   useQuery<UserInfo_Out, ApiError>(['userData'], checkUserSession, {
     retry: false,
-    refetchInterval: 600000,
-    staleTime: 600000
+    refetchInterval: Infinity,
+    staleTime: Infinity
   });
 
   return <AppRouter />;
