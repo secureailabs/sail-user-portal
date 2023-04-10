@@ -17,6 +17,7 @@ import CustomizableDashboard from 'src/components/CustomizableDashboard';
 // import ViewOrganization from 'pages/ViewOrganization';
 import Downloads from 'src/pages/Downloads/Downloads';
 import Download from 'src/pages/Downloads/Download';
+import DataModel from 'src/pages/DataModels';
 import Documentation from 'src/pages/Documentation';
 
 const DashboardRouter: React.FC = (): React.ReactElement => (
@@ -107,6 +108,14 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
       element={
         <ProtectedRoute redirect="/login">
           <Datasets />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path="/data-models"
+      element={
+        <ProtectedRoute redirect="/login">
+          <DataModel />
         </ProtectedRoute>
       }
     />

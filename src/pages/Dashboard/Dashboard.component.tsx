@@ -31,6 +31,11 @@ const Dashboard: React.FC<TDashboardProps> = ({
     { text: 'Data Federation', Icon: FaServer, link: '/dashboard/federation' },
     { text: 'My Datasets', Icon: MdViewColumn, link: '/dashboard/datasets' },
     {
+      text: 'My DataModels',
+      Icon: MdViewColumn,
+      link: '/dashboard/data-models'
+    },
+    {
       text: 'Computational Resources',
       Icon: HiOutlineDesktopComputer,
       link: '/dashboard/computational-resources'
