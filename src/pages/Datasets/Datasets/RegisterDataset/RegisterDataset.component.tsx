@@ -36,6 +36,7 @@ const RegisterDatasetComponent: React.FC<any> = ({ close }) => {
           (response) => {
             // Respond with success
             console.log(response);
+            close();
           }
         );
       });

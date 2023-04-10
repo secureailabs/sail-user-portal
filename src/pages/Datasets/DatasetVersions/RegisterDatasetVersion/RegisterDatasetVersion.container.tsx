@@ -33,7 +33,9 @@ const RegisterDatasetVersionContainer: React.FC = () => {
       </Button>
       <Modal
         open={showRegisterModal}
-        onClose={handleHideRegisterModal}
+        onClose={() => {
+          handleHideRegisterModal();
+        }}
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
         sx={{
