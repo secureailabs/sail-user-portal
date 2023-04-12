@@ -1320,8 +1320,8 @@ export class DefaultService {
 
     /**
      * Get All Data Model Info
-     * Get all data model SCNs
-     * @returns GetMultipleDataModel_Out All Data model information for the current organization or federation
+     * Get all data model
+     * @returns GetMultipleDataModel_Out All Data model information for the current organization
      * @throws ApiError
      */
     public static getAllDataModelInfo(): CancelablePromise<GetMultipleDataModel_Out> {
@@ -1529,22 +1529,13 @@ export class DefaultService {
     /**
      * Get All Data Model Series Info
      * Get all data model series SCNs
-     * @param dataModelDataframeId Data model Id
      * @returns GetMultipleDataModelSeries_Out All Data model series information for the current organization or data model
      * @throws ApiError
      */
-    public static getAllDataModelSeriesInfo(
-        dataModelDataframeId?: string,
-    ): CancelablePromise<GetMultipleDataModelSeries_Out> {
+    public static getAllDataModelSeriesInfo(): CancelablePromise<GetMultipleDataModelSeries_Out> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/data-models-series',
-            query: {
-                'data_model_dataframe_id': dataModelDataframeId,
-            },
-            errors: {
-                422: `Validation Error`,
-            },
         });
     }
 

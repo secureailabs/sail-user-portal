@@ -2,7 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { BasicObjectInfo } from './BasicObjectInfo';
 import type { DataModelDataframeState } from './DataModelDataframeState';
 
 export type GetDataModelDataframe_Out = {
@@ -11,7 +10,7 @@ export type GetDataModelDataframe_Out = {
     id: string;
     creation_time?: string;
     organization_id: string;
-    data_model_series: Array<BasicObjectInfo>;
+    data_model_series: Array<string>;
     state: DataModelDataframeState;
 };
 

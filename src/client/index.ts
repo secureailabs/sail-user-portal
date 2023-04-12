@@ -70,6 +70,7 @@ export type { RegisterUser_In } from './models/RegisterUser_In';
 export type { RegisterUser_Out } from './models/RegisterUser_Out';
 export { SecureComputationNodeSize } from './models/SecureComputationNodeSize';
 export { SecureComputationNodeState } from './models/SecureComputationNodeState';
+export type { SeriesDataModelSchema } from './models/SeriesDataModelSchema';
 export type { UpdateDataFederation_In } from './models/UpdateDataFederation_In';
 export type { UpdateDataModel_In } from './models/UpdateDataModel_In';
 export type { UpdateDataModelDataframe_In } from './models/UpdateDataModelDataframe_In';
