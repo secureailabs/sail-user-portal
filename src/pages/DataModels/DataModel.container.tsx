@@ -1,32 +1,24 @@
 import React from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 import DataModel from './DataModel.component';
-import { ApiError, GetDataset_Out } from 'src/client';
+import { ApiError, DefaultService, GetMultipleDataModel_Out } from 'src/client';
 
 const DataModelContainer: React.FC = () => {
   const queryClient = useQueryClient();
 
   const { data, isLoading, status, error, refetch } = useQuery<
-    GetDataset_Out | null,
+    GetMultipleDataModel_Out,
     ApiError
-  >(
-    ['dataset'],
-    () => {
-      return null;
-    },
-    {
-      refetchOnMount: 'always'
-    }
-  );
+  >(['dataModels'], DefaultService.getAllDataModelInfo, {
+    refetchOnMount: 'always'
+  });
 
   return DataModel({
     status: status,
-    // @ts-ignore
-    getDataModelData: data,
-    refetch: refetch,
-    // @ts-ignore
-    error: error,
-    userData: queryClient.getQueryData('userData')
+    getDataModelData: data?.data_models?.[0],
+    // refetch: refetch,
+    error: error
+    // userData: queryClient.getQueryData('userData')
   });
 };
 

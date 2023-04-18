@@ -1,17 +1,11 @@
 import { IConditionalRender } from 'src/components/ConditionalRenderRQuery/ConditionalRender/ConditionalRender.types';
 import { ApiError } from 'src/client';
-
-export type GetDataModel_Out = {
-  id: string;
-  name: string;
-  description: string;
-  created: string;
-};
+import { GetDataModel_Out } from 'src/client';
 
 export type TDataModelProps = {
   status: IConditionalRender['status'];
-  getDataModelData: GetDataModel_Out;
-  error: ApiError;
+  getDataModelData: GetDataModel_Out | undefined;
+  error: ApiError | null;
 };
 
 export type TDataModelSuccessProps = {

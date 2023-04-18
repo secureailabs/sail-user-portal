@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import Spinner from 'src/components/Spinner';
 import { TDataModelProps } from './DataModel.types';
 import DataModelSuccess from './DataModel.success';
@@ -14,7 +13,13 @@ const DataModel: React.FC<TDataModelProps> = ({
   return (
     <ConditionalRender
       status={status}
-      success={() => <DataModelSuccess getDataModelData={getDataModelData} />}
+      success={() =>
+        getDataModelData ? (
+          <DataModelSuccess getDataModelData={getDataModelData} />
+        ) : (
+          <DataModelFailure error={error} />
+        )
+      }
       failure={() => <DataModelFailure error={error} />}
     >
       <Spinner />
