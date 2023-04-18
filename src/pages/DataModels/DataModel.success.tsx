@@ -11,7 +11,7 @@ const DataModelSuccess: React.FC<TDataModelSuccessProps> = ({
       <StandardContent title={getDataModelData.name}>
         <>
           {getDataModelData.data_model_dataframes.map((dataframe_id) => (
-            <DataFrame dataframe_id={dataframe_id} />
+            <DataFrame key={dataframe_id} dataframe_id={dataframe_id} />
           ))}
         </>
       </StandardContent>

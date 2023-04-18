@@ -8,6 +8,7 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import { TAccordionProps } from './Accordion.types';
 import React from 'react';
+
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -49,18 +50,15 @@ const AccordionContainer: React.FC<TAccordionProps> = ({
   description,
   children
 }) => {
-  const [dataframe, setDataframe] = React.useState<string | false>('');
+  const [expand, setExpand] = React.useState<boolean>(false);
 
   const handleDataframeChange =
-    (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-      setDataframe(newExpanded ? panel : false);
+    () => (event: React.SyntheticEvent, newExpanded: boolean) => {
+      setExpand(newExpanded ? true : false);
     };
 
   return (
-    <Accordion
-      expanded={dataframe === 'panel2'}
-      onChange={handleDataframeChange('panel2')}
-    >
+    <Accordion expanded={expand} onChange={handleDataframeChange()}>
       <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
         <Typography>
           {title}:{description}
