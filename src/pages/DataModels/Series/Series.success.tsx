@@ -17,6 +17,7 @@ const SeriesSuccess: React.FC<TSeriesSuccessProps> = ({ getSeriesData }) => {
     mode: 'onSubmit',
     defaultValues: {
       name: seriesName,
+      description: getSeriesData.description,
       type: seriesType,
       values: getSeriesData.series_schema.list_value,
       min: getSeriesData.series_schema.min,
@@ -28,6 +29,9 @@ const SeriesSuccess: React.FC<TSeriesSuccessProps> = ({ getSeriesData }) => {
 
   let fields: FormFields = {
     name: {
+      type: 'text'
+    },
+    description: {
       type: 'text'
     },
     type: {
