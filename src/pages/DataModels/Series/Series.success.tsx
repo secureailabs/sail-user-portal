@@ -6,14 +6,18 @@ import { useForm } from 'react-hook-form';
 import { FormFields } from 'src/components/FormFieldsRenderer/FormFieldsRenderer.types';
 
 const SeriesSuccess: React.FC<TSeriesSuccessProps> = ({ getSeriesData }) => {
-  const [series_type, setSeriesType] = React.useState<string>(
+  const [seriesType, setSeriesType] = React.useState<string>(
     getSeriesData.series_schema.type
+  );
+  const [seriesName, setSeriesName] = React.useState<string>(
+    getSeriesData.name
   );
 
   const { register, handleSubmit, formState, watch } = useForm({
     mode: 'onSubmit',
     defaultValues: {
-      type: series_type,
+      name: seriesName,
+      type: seriesType,
       values: getSeriesData.series_schema.list_value,
       min: getSeriesData.series_schema.min,
       max: getSeriesData.series_schema.max,
@@ -23,6 +27,9 @@ const SeriesSuccess: React.FC<TSeriesSuccessProps> = ({ getSeriesData }) => {
   });
 
   let fields: FormFields = {
+    name: {
+      type: 'text'
+    },
     type: {
       type: 'select',
       label: 'Type',
@@ -33,24 +40,27 @@ const SeriesSuccess: React.FC<TSeriesSuccessProps> = ({ getSeriesData }) => {
         'SeriesDataModelInterval',
         'SeriesDataModelUnique'
       ],
-      defaultValue: series_type
+      defaultValue: seriesType
     }
   };
 
-  // re-render when type changes
-  const watchType = watch('type');
+  const [type, name] = watch(['type', 'name']);
   React.useEffect(() => {
-    setSeriesType(watchType);
-  }, [watchType]);
+    setSeriesType(type);
+  }, [type]);
 
-  if (series_type === 'SeriesDataModelCategorical') {
+  React.useEffect(() => {
+    setSeriesName(name);
+  }, [name]);
+
+  if (seriesType === 'SeriesDataModelCategorical') {
     fields = {
       ...fields,
       values: {
         type: 'text'
       }
     };
-  } else if (series_type === 'SeriesDataModelInterval') {
+  } else if (seriesType === 'SeriesDataModelInterval') {
     fields = {
       ...fields,
       min: {
@@ -69,7 +79,7 @@ const SeriesSuccess: React.FC<TSeriesSuccessProps> = ({ getSeriesData }) => {
   }
 
   return (
-    <Accordion title={getSeriesData.name} description="">
+    <Accordion title={seriesName} description="" backgroundColour="orange">
       <div className="form-double">
         <FormFieldsRenderer
           register={register}

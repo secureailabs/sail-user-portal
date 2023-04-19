@@ -6,6 +6,7 @@ import { OpenAPI } from 'src/client';
 
 const logout = async () => {
   OpenAPI.TOKEN = '';
+  localStorage.removeItem('token');
 };
 
 const DashboardContainer: React.FC = () => {

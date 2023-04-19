@@ -48,7 +48,8 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 const AccordionContainer: React.FC<TAccordionProps> = ({
   title,
   description,
-  children
+  children,
+  backgroundColour
 }) => {
   const [expand, setExpand] = React.useState<boolean>(false);
 
@@ -59,7 +60,11 @@ const AccordionContainer: React.FC<TAccordionProps> = ({
 
   return (
     <Accordion expanded={expand} onChange={handleDataframeChange()}>
-      <AccordionSummary>
+      <AccordionSummary
+        style={{
+          backgroundColor: backgroundColour
+        }}
+      >
         <Typography style={{ fontSize: '12px' }}>
           {title} {description}
         </Typography>

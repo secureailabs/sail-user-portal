@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { TLoginFormProps } from './Login.types';
 import Page from 'src/layout/Page';
 import ImageBackground from 'src/components/ImageBackground';

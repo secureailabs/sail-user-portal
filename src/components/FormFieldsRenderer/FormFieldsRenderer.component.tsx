@@ -18,7 +18,7 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
 }) => {
   return (
     <>
-      {Object.entries(fields).map(([key, value], index) => {
+      {Object.entries(fields).map(([key, value]) => {
         const key_label = value.label
           ? value.label
           : headerCase(key, { delimiter: ' ' });
@@ -30,7 +30,7 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
           case 'textarea': {
             return (
               <Textarea
-                key={index}
+                key={key_label}
                 name={key}
                 full={full}
                 label={key_label}
@@ -42,7 +42,7 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
           }
           case 'image':
             return (
-              <div>
+              <div key={key}>
                 {value.label ? (
                   <>
                     <InputLabel style={{ fontSize: '18px' }}>
@@ -56,10 +56,10 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
               </div>
             );
           case 'date':
-            return <input type="date" {...register(key)} />;
+            return <input key={key} type="date" {...register(key)} />;
           case 'select': {
             return (
-              <div>
+              <div key={key}>
                 <InputLabel style={{ fontSize: '14px' }}>
                   {key_label}
                 </InputLabel>
@@ -87,8 +87,8 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
           default:
             return (
               <Input
-                {...register(key)}
-                key={index}
+                name={key}
+                key={key_label}
                 placeholder={key_placeholder}
                 label={key_label}
                 register={register}

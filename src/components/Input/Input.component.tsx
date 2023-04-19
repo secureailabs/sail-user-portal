@@ -6,24 +6,14 @@ const Input: React.FC<TInput> = ({
   label,
   placeholder,
   full,
-  onChange,
   register,
   name,
   type = 'text'
 }) => {
   return (
     <div className={`input ${full ? 'input--full' : ''}`}>
-      {label ? (
-        <InputLabel style={{ fontSize: '14px' }}>{label}</InputLabel>
-      ) : (
-        <></>
-      )}
-      <input
-        {...register(name)}
-        placeholder={placeholder}
-        onChange={onChange}
-        type={type}
-      />
+      <InputLabel style={{ fontSize: '14px' }}>{label}</InputLabel>
+      <input {...register(name)} placeholder={placeholder} type={type} />
     </div>
   );
 };

@@ -1,12 +1,12 @@
 import { UseFormRegister } from 'react-hook-form';
 
 type TInput = {
-  onChange(e: React.FormEvent<HTMLInputElement>): void;
-  label?: string;
+  label: string;
   placeholder?: string;
   full?: boolean;
   register: UseFormRegister<any>;
   name: string;
+  key: string;
   type?: React.HTMLInputTypeAttribute;
 };
 

@@ -5,38 +5,21 @@ import { AppProps } from './App.types';
 import { useQuery } from 'react-query';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en.json';
-import {
-  ApiError,
-  DefaultService,
-  OpenAPI,
-  RefreshToken_In,
-  UserInfo_Out
-} from 'src/client';
+import { ApiError, DefaultService, OpenAPI, UserInfo_Out } from 'src/client';
 
 TimeAgo.addLocale(en);
 TimeAgo.setDefaultLocale('en');
 
 export const checkUserSession = async (): Promise<UserInfo_Out> => {
-  try {
-    const res = await DefaultService.getCurrentUserInfo();
-    return res;
-  } catch {
-    if (typeof OpenAPI.TOKEN === 'string') {
-      const refresh_token_req: RefreshToken_In = {
-        refresh_token: OpenAPI.TOKEN
-      };
-      const res = await DefaultService.getRefreshToken(refresh_token_req);
-      OpenAPI.TOKEN = res.access_token;
-      const response = await DefaultService.getCurrentUserInfo();
-      return response;
-    } else {
-      throw new Error('No token found');
-    }
-  }
+  OpenAPI.TOKEN = localStorage.getItem('token') as string;
+  const res = await DefaultService.getCurrentUserInfo();
+  return res;
 };
 
 export const logoutApi = async () => {
   OpenAPI.TOKEN = '';
+  localStorage.removeItem('token');
+  localStorage.removeItem('refresh_token');
 };
 
 const App: React.FC<AppProps> = () => {
