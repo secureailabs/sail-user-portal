@@ -9,10 +9,12 @@ const Button: React.FC<TButton> = ({
   height = '5rem',
   padded = true,
   button_type,
+  disabled = false,
   onClick
 }) => {
   return (
     <button
+      disabled={disabled}
       type={type}
       className={`button button--${button_type} ${full ? 'button--full' : ''} ${
         padded ? 'button--padded' : ''

@@ -6,6 +6,7 @@ type TButton = {
   full: boolean;
   height?: '3.6rem' | '5rem';
   padded?: boolean;
+  disabled?: boolean;
 };
 
 export default TButton;

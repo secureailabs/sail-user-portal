@@ -4,15 +4,15 @@ import Input from 'src/components/Input';
 import Textarea from 'src/components/Textarea';
 import Button from 'src/components/Button';
 import { headerCase } from 'change-case';
-import Text from 'src/components/Text';
 import Dropzone from 'src/components/Dropzone';
-import { MenuItem, TextField } from '@mui/material';
+import { InputLabel, MenuItem } from '@mui/material';
 import Select from '@mui/material/Select';
 
 const FormRenderer: React.FC<TFormFieldsRenderer> = ({
   fields,
   register,
   full = true,
+  formState,
   children,
   button_text
 }) => {
@@ -45,9 +45,9 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
               <div>
                 {value.label ? (
                   <>
-                    <Text fontWeight={500} fontSize="14px" lineHeight={5}>
-                      {value.label}
-                    </Text>
+                    <InputLabel style={{ fontSize: '18px' }}>
+                      {key_label}
+                    </InputLabel>
                     <Dropzone />
                   </>
                 ) : (
@@ -59,13 +59,21 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
             return <input type="date" {...register(key)} />;
           case 'select': {
             return (
-              <div className={`input ${full ? 'input--full' : ''}`}>
-                <Text fontWeight={500} fontSize="14px" lineHeight={5}>
+              <div>
+                <InputLabel style={{ fontSize: '14px' }}>
                   {key_label}
-                </Text>
-                <Select {...register(key)} defaultValue={value.options?.[0]}>
+                </InputLabel>
+                <Select
+                  {...register(key)}
+                  defaultValue={value.defaultValue}
+                  style={{ width: '100%', fontSize: '12px' }}
+                >
                   {value.options?.map((option) => (
-                    <MenuItem key={option} value={option}>
+                    <MenuItem
+                      key={option}
+                      value={option}
+                      style={{ width: '100%', fontSize: '12px' }}
+                    >
                       {option}
                     </MenuItem>
                   ))}
@@ -92,7 +100,12 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
       })}
       {children}
       {button_text && (
-        <Button full={true} button_type="primary" type="submit">
+        <Button
+          full={true}
+          disabled={!formState.isDirty}
+          button_type="primary"
+          type="submit"
+        >
           {button_text}
         </Button>
       )}

@@ -23,7 +23,7 @@ const Accordion = styled((props: AccordionProps) => (
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary
-    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '1rem' }} />}
     {...props}
   />
 ))(({ theme }) => ({
@@ -59,9 +59,9 @@ const AccordionContainer: React.FC<TAccordionProps> = ({
 
   return (
     <Accordion expanded={expand} onChange={handleDataframeChange()}>
-      <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-        <Typography>
-          {title}:{description}
+      <AccordionSummary>
+        <Typography style={{ fontSize: '12px' }}>
+          {title} {description}
         </Typography>
       </AccordionSummary>
       <AccordionDetails>{children}</AccordionDetails>

@@ -1,8 +1,6 @@
 import React from 'react';
-
-import Text from 'src/components/Text';
-
 import type TInput from './Input.types';
+import InputLabel from '@mui/material/InputLabel';
 
 const Input: React.FC<TInput> = ({
   label,
@@ -16,9 +14,7 @@ const Input: React.FC<TInput> = ({
   return (
     <div className={`input ${full ? 'input--full' : ''}`}>
       {label ? (
-        <Text fontWeight={500} fontSize="14px" lineHeight={5}>
-          {label}
-        </Text>
+        <InputLabel style={{ fontSize: '14px' }}>{label}</InputLabel>
       ) : (
         <></>
       )}
