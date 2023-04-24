@@ -16,4 +16,9 @@ RUN apt-get update && \
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
   apt-get install -y nodejs
 
-ENTRYPOINT ["/bin/bash"]
+WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+COPY ./ ./
+RUN npm i
+CMD ["npm", "run", "start"]
