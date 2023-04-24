@@ -49,9 +49,12 @@ const AccordionContainer: React.FC<TAccordionProps> = ({
   title,
   description,
   children,
-  backgroundColour
+  backgroundColour,
+  expanded
 }) => {
-  const [expand, setExpand] = React.useState<boolean>(false);
+  const [expand, setExpand] = React.useState<boolean>(
+    expanded ? expanded : false
+  );
 
   const handleDataframeChange =
     () => (event: React.SyntheticEvent, newExpanded: boolean) => {

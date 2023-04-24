@@ -83,7 +83,18 @@ const SeriesSuccess: React.FC<TSeriesSuccessProps> = ({ getSeriesData }) => {
   }
 
   return (
-    <Accordion title={seriesName} description="" backgroundColour="orange">
+    <Accordion
+      expanded={getSeriesData.id === 'new' ? true : false}
+      title={seriesName}
+      description=""
+      backgroundColour={
+        getSeriesData.id === 'new'
+          ? 'lightgreen'
+          : formState.isDirty
+          ? 'orange'
+          : '#BBBBBB'
+      }
+    >
       <div className="form-double">
         <FormFieldsRenderer
           register={register}

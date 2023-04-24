@@ -16,6 +16,10 @@ const DataFrameSuccess: React.FC<TDataFrameSuccessProps> = ({
   const [dataframeDescription, setDataframeDescription] =
     React.useState<string>(getDataFrameData.description);
 
+  const [seriesList, setSeriesList] = React.useState<string[]>(
+    getDataFrameData.data_model_series
+  );
+
   const { register, handleSubmit, formState, watch } = useForm({
     mode: 'onSubmit',
     defaultValues: {
@@ -42,22 +46,41 @@ const DataFrameSuccess: React.FC<TDataFrameSuccessProps> = ({
     }
   };
 
+  const addNewSeries = () => {
+    setSeriesList([...seriesList, 'new']);
+  };
+
   return (
-    <Accordion title={dataframeName} description={dataframeDescription}>
+    <Accordion
+      title={dataframeName}
+      description={dataframeDescription}
+      backgroundColour={
+        getDataFrameData.id === 'new'
+          ? 'lightgreen'
+          : formState.isDirty
+          ? 'orange'
+          : '#BBBBBB'
+      }
+    >
       <>
         <div className="form-double">
           <FormFieldsRenderer
             register={register}
             formState={formState}
             fields={fields}
-            button_text="Update"
+            button_text={getDataFrameData.id === 'new' ? 'Create' : 'Update'}
           />
         </div>
-        {getDataFrameData.data_model_series.map((series_id) => (
+        {seriesList.map((series_id) => (
           <Series key={series_id} series_id={series_id} />
         ))}
-        <Button button_type="primary" full={true}>
-          Create
+        <Button
+          button_type="primary"
+          full={true}
+          disabled={getDataFrameData.id === 'new'}
+          onClick={addNewSeries}
+        >
+          Add New Series
         </Button>
       </>
     </Accordion>

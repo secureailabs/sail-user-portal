@@ -19,6 +19,10 @@ const DataModelSuccess: React.FC<TDataModelSuccessProps> = ({
     }
   });
 
+  const [dataframeList, setDataframeList] = React.useState<string[]>(
+    getDataModelData.data_model_dataframes
+  );
+
   const fields: FormFields = {
     name: {
       type: 'text'
@@ -34,6 +38,10 @@ const DataModelSuccess: React.FC<TDataModelSuccessProps> = ({
     }
   };
 
+  const addNewDataframe = () => {
+    setDataframeList([...dataframeList, 'new']);
+  };
+
   return (
     <div>
       <StandardContent title={getDataModelData.name}>
@@ -46,11 +54,11 @@ const DataModelSuccess: React.FC<TDataModelSuccessProps> = ({
               button_text="Update"
             />
           </div>
-          {getDataModelData.data_model_dataframes.map((dataframe_id) => (
+          {dataframeList.map((dataframe_id) => (
             <DataFrame key={dataframe_id} dataframe_id={dataframe_id} />
           ))}
-          <Button button_type="primary" full={true}>
-            Create
+          <Button button_type="primary" full={true} onClick={addNewDataframe}>
+            Add new DataFrame
           </Button>
         </>
       </StandardContent>

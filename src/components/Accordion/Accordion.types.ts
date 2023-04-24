@@ -3,4 +3,5 @@ export type TAccordionProps = {
   description: string;
   children: React.ReactNode;
   backgroundColour?: string;
+  expanded?: boolean;
 };
