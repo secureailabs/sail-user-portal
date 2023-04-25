@@ -21,4 +21,10 @@ COPY package.json ./
 COPY package-lock.json ./
 COPY ./ ./
 RUN npm i
-CMD ["npm", "run", "start"]
+
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+
+COPY docker/Entrypoint.sh /Entrypoint.sh
+RUN chmod +x /Entrypoint.sh
+
+ENTRYPOINT [ "/Entrypoint.sh" ]

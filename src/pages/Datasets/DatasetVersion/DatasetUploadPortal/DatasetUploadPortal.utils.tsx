@@ -9,7 +9,10 @@ export function uploadAndPublish(
   selectedFiles: FileList | null,
   setLogs: React.Dispatch<React.SetStateAction<string>>
 ) {
-  OpenAPI.BASE = 'http://127.0.0.1:8000';
+  if (!process.env.REACT_APP_SAIL_DATA_UPLOAD_SERVICE_URL)
+    throw new Error('REACT_APP_SAIL_DATA_UPLOAD_SERVICE_URL not set');
+
+  OpenAPI.BASE = process.env.REACT_APP_SAIL_DATA_UPLOAD_SERVICE_URL;
   OpenAPI.TOKEN = localStorage.getItem('token') || '';
   if (selectedFiles) {
     const file_blobs: Body_upload_dataset = {

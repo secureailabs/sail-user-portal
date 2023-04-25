@@ -8,7 +8,11 @@ import { DefaultService, Body_login } from 'src/client';
 
 const LoginContainer: React.FC = () => {
   async function post(data: IEmailAndPassword): Promise<LoginSuccess_Out> {
-    OpenAPI.BASE = 'https://172.20.100.8:8000';
+    // OpenAPI.BASE = 'https://172.20.100.8:8000';
+    if (!process.env.REACT_APP_SAIL_API_SERVICE_URL)
+      throw new Error('REACT_APP_SAIL_API_SERVICE_URL not set');
+
+    OpenAPI.BASE = process.env.REACT_APP_SAIL_API_SERVICE_URL;
     const login_req: Body_login = {
       username: data.username,
       password: data.password
