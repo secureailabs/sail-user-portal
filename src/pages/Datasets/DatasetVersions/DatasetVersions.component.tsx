@@ -8,6 +8,7 @@ import DatasetVersionsFailure from './DatasetVersions.failure';
 const DatasetVersions: React.FC<TDatasetVersionsProps> = ({
   status,
   getAllDatasetVersionsData,
+  refetch,
   error
 }) => (
   <ConditionalRender
@@ -15,6 +16,7 @@ const DatasetVersions: React.FC<TDatasetVersionsProps> = ({
     success={() => (
       <DatasetVersionsSuccess
         getAllDatasetVersionsData={getAllDatasetVersionsData}
+        refetch={refetch}
       />
     )}
     failure={() => <DatasetVersionsFailure error={error} />}

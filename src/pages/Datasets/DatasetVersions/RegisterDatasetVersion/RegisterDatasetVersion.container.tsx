@@ -3,14 +3,18 @@ import Button from 'src/components/Button';
 import Modal from '@mui/material/Modal';
 import RegisterDatasetVersionComponent from './RegisterDatasetVersion.component';
 import { Container } from '@mui/material';
+import { TRegisterDatasetVersionProps } from './RegisterDatasetVersion.types';
 
-const RegisterDatasetVersionContainer: React.FC = () => {
+const RegisterDatasetVersionContainer: React.FC<
+  TRegisterDatasetVersionProps
+> = ({ refetch }) => {
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const handleShowRegisterModal = () => {
     setShowRegisterModal(true);
   };
   const handleHideRegisterModal = () => {
     setShowRegisterModal(false);
+    refetch();
   };
 
   return (
@@ -33,9 +37,7 @@ const RegisterDatasetVersionContainer: React.FC = () => {
       </Button>
       <Modal
         open={showRegisterModal}
-        onClose={() => {
-          handleHideRegisterModal();
-        }}
+        onClose={handleHideRegisterModal}
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
         sx={{

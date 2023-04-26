@@ -19,6 +19,7 @@ const DatasetVersionsContainer: React.FC = () => {
   return DatasetVersions({
     status: status,
     getAllDatasetVersionsData: data!,
+    refetch: refetch,
     error: error
   });
 };

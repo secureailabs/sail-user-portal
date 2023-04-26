@@ -3,7 +3,6 @@ import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { MdClose } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
-import { colors } from 'react-select/dist/declarations/src/theme';
 import { DefaultService, RegisterDatasetVersion_In } from 'src/client';
 import Card from 'src/components/Card';
 import FormFieldsRenderer from 'src/components/FormFieldsRenderer';

@@ -8,11 +8,17 @@ import DatasetsFailure from './Datasets.failure';
 const Datasets: React.FC<TDatasetsProps> = ({
   status,
   getAllDatasetsData,
+  refetch,
   error
 }) => (
   <ConditionalRender
     status={status}
-    success={() => <DatasetsSuccess getAllDatasetsData={getAllDatasetsData} />}
+    success={() => (
+      <DatasetsSuccess
+        getAllDatasetsData={getAllDatasetsData}
+        refetch={refetch}
+      />
+    )}
     failure={() => <DatasetsFailure error={error} />}
   >
     <Spinner />

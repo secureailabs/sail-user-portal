@@ -6,7 +6,8 @@ import { useParams } from 'react-router-dom';
 import RegisterDatasetVersion from './RegisterDatasetVersion';
 
 const DatasetVersionsSuccess: React.FC<TDatasetVersionsSuccessProps> = ({
-  getAllDatasetVersionsData
+  getAllDatasetVersionsData,
+  refetch
 }) => {
   const { id } = useParams() as { id: string };
   const columns = React.useMemo(
@@ -33,7 +34,7 @@ const DatasetVersionsSuccess: React.FC<TDatasetVersionsSuccessProps> = ({
   return (
     <StandardContent title="Versions">
       <>
-        <RegisterDatasetVersion />
+        <RegisterDatasetVersion refetch={refetch} />
         <Table
           base_url={'/dashboard/datasets/' + id + '/versions'}
           id_accessor="id"

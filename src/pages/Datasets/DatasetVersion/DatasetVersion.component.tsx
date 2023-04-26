@@ -8,13 +8,17 @@ import { ConditionalRender } from 'src/components/ConditionalRenderRQuery';
 const DatasetVersion: React.FC<TDatasetVersionProps> = ({
   status,
   getDatasetVersionData,
+  refetch,
   error
 }) => {
   return (
     <ConditionalRender
       status={status}
       success={() => (
-        <DatasetVersionSuccess getDatasetVersionData={getDatasetVersionData} />
+        <DatasetVersionSuccess
+          getDatasetVersionData={getDatasetVersionData}
+          refetch={refetch}
+        />
       )}
       failure={() => <DatasetVersionFailure error={error} />}
     >

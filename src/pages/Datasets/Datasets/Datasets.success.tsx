@@ -5,7 +5,8 @@ import StandardContent from 'src/components/StandardContent';
 import RegisterDataset from './RegisterDataset';
 
 const DatasetsSuccess: React.FC<TDatasetsSuccessProps> = ({
-  getAllDatasetsData
+  getAllDatasetsData,
+  refetch
 }) => {
   const columns = React.useMemo(
     () => [
@@ -41,7 +42,7 @@ const DatasetsSuccess: React.FC<TDatasetsSuccessProps> = ({
   return (
     <StandardContent title="Datasets">
       <>
-        <RegisterDataset />
+        <RegisterDataset refetch={refetch} />
         <Table
           base_url="/dashboard/datasets"
           id_accessor="id"

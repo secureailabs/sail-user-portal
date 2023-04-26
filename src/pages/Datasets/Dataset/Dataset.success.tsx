@@ -27,11 +27,6 @@ const DatasetSuccess: React.FC<TDatasetSuccessProps> = ({ getDatasetData }) => {
               register={register}
               formState={formState}
               fields={{
-                NumberOfVersions: {
-                  label: 'No. of Versions',
-                  placeholder: 'No. of Versions',
-                  type: 'text'
-                },
                 publish_date: {},
                 DataOwner: {},
                 keywords: {},

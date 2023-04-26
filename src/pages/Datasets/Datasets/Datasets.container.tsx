@@ -14,6 +14,7 @@ const DatasetsContainer: React.FC = () => {
   return Datasets({
     status: status,
     getAllDatasetsData: data!,
+    refetch: refetch,
     error: error
   });
 };

@@ -3,14 +3,18 @@ import Button from 'src/components/Button';
 import Modal from '@mui/material/Modal';
 import RegisterDatasetComponent from './RegisterDataset.component';
 import { Container } from '@mui/material';
+import { TRegisterDatasetContainerProps } from './RegisterDataset.types';
 
-const RegisterDatasetContainer: React.FC = () => {
+const RegisterDatasetContainer: React.FC<TRegisterDatasetContainerProps> = ({
+  refetch
+}) => {
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const handleShowRegisterModal = () => {
     setShowRegisterModal(true);
   };
   const handleHideRegisterModal = () => {
     setShowRegisterModal(false);
+    refetch();
   };
 
   return (
