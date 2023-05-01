@@ -9,22 +9,34 @@ import Text from 'src/components/Text';
 import { uploadAndPublish } from './DatasetUploadPortal.utils';
 import { validateFile } from './Validate';
 import { useParams } from 'react-router-dom';
+import { DefaultService } from 'src/client';
+import {
+  TDataFrameDataModel,
+  TDataframeValidationState,
+  TDataModel
+} from './DatasetUploadPortal.types';
+import Heading from 'src/components/Heading';
 
 const DatasetUploadComponent: React.FC = () => {
   const [selectedFiles, setSelectedFile] = React.useState<FileList | null>(
     null
   );
+  // State to keep track of the validation state of the dataframes
+  const [validataionState, setValidationState] =
+    React.useState<TDataframeValidationState>({});
   const [currentFile, setCurrentFile] = React.useState<File | null>(null);
   const [allFilesValidated, setAllFilesValidated] = React.useState(false);
   const [sample_csv_data, setSampleCsvData] = React.useState<Array<any>>([]);
-  const [logs, setLogs] = React.useState<string>('');
+  const [logs, setLogs] = React.useState<string>(
+    'Wait.. Fetching data model..'
+  );
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { version } = useParams() as { version: string };
+  const [dataModel, setDataModel] = React.useState<TDataModel | null>(null);
 
   function handleButtonClick() {
     fileInputRef.current?.click();
   }
-
   React.useEffect(() => {
     previewFile();
   }, [currentFile]);
@@ -37,10 +49,101 @@ const DatasetUploadComponent: React.FC = () => {
     setLogs((prev) => prev + '\n' + message);
   }
 
+  // Function to fetch all the dataframes from the backend for the data federation
+  async function fetchDataModel() {
+    const datamodels = await DefaultService.getAllDataModelInfo();
+    const datamodel = datamodels.data_models[0];
+
+    const data_model: TDataModel = {
+      data_model_id: datamodel.id,
+      data_model_name: datamodel.name,
+      data_model_dataframes: []
+    };
+
+    const data_frame_validation_state: TDataframeValidationState = {};
+
+    for (const dataframe_id of datamodel.data_model_dataframes) {
+      const dataframe = await DefaultService.getDataModelDataframeInfo(
+        dataframe_id
+      );
+      // Create a data frame data model object
+      const data_frame_data_model: TDataFrameDataModel = {
+        data_frame_name: dataframe.name,
+        data_frame_data_model_id: dataframe.id,
+        type: dataframe.name,
+        list_series_data_model: []
+      };
+
+      // Fetch the data model series info
+      const promises = dataframe.data_model_series.map(async (seriesId) => {
+        const seriesInfo = await DefaultService.getDataModelSeriesInfo(
+          seriesId
+        );
+        data_frame_data_model.list_series_data_model.push(
+          seriesInfo.series_schema
+        );
+      });
+      await Promise.all(promises);
+
+      // Add the data frame data model object to the data model object
+      data_model.data_model_dataframes.push(data_frame_data_model);
+
+      // Assign the validation state for the data frame to be false
+      data_frame_validation_state[dataframe_id] = false;
+    }
+
+    // Set the data model and the validation state
+    setValidationState(data_frame_validation_state);
+
+    // Set the data model
+    setDataModel(data_model);
+
+    // Add a log message
+    setLogs('Data model fetched successfully.');
+    setTimeout(() => {
+      setLogs('');
+    }, 1000);
+  }
+
+  React.useEffect(() => {
+    fetchDataModel();
+  }, []);
+
   function validateFiles() {
-    if (selectedFiles) {
+    if (selectedFiles && dataModel) {
+      // Add to log message the name of all the dataframes that are missing
+      const missingDataframes = dataModel.data_model_dataframes
+        .filter(
+          (dataframe) =>
+            !Array.from(selectedFiles).some(
+              (file) => file.name.split('.')[0] === dataframe.data_frame_name
+            )
+        )
+        .map((dataframe) => dataframe.data_frame_name);
+      if (missingDataframes.length > 0) {
+        setLogs(
+          'The following dataframes are missing: ' +
+            missingDataframes +
+            '. Kindly add all the dataframes together and try again.'
+        );
+        setAllFilesValidated(false);
+        return;
+      }
       for (let i = 0; i < selectedFiles.length; i++) {
-        validateFile(selectedFiles[i], addLogMessage)
+        const dataframeDataModel = dataModel.data_model_dataframes.find(
+          (dataframe) =>
+            dataframe.data_frame_name === selectedFiles[i].name.split('.')[0]
+        );
+        if (!dataframeDataModel) {
+          addLogMessage(
+            'Dataframe ' +
+              selectedFiles[i].name +
+              ' is not present in the data model. Ignoring the file.'
+          );
+          continue;
+        }
+        // Validate the file
+        validateFile(selectedFiles[i], dataframeDataModel, addLogMessage)
           .then((result) => {
             if (result === true) {
               addLogMessage(
@@ -55,10 +158,9 @@ const DatasetUploadComponent: React.FC = () => {
           })
           .catch((error) => {
             addLogMessage(
-              'Validation process ' +
+              'Unexpected validation failure for ' +
                 selectedFiles[i].name +
-                ' failed! ' +
-                error
+                error.toString()
             );
           });
       }
@@ -125,6 +227,7 @@ const DatasetUploadComponent: React.FC = () => {
             onClick={handleButtonClick}
             button_type="primary"
             full={false}
+            disabled={dataModel === null}
           >
             Browse
           </Button>
@@ -171,10 +274,12 @@ const DatasetUploadComponent: React.FC = () => {
           ) : null}
           <br />
           {logs && (
-            <Text>
-              <h3>Status</h3>
-              <pre>{logs}</pre>
-            </Text>
+            <>
+              <Heading size="h1">Status</Heading>
+              <pre style={{ fontSize: '1.4rem', lineHeight: '2rem' }}>
+                {logs}
+              </pre>
+            </>
           )}
           {allFilesValidated && (
             <Button

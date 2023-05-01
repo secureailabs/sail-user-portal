@@ -1,17 +1,10 @@
 import papaparse from 'papaparse';
-import { DefaultService } from 'src/client';
 import { SeriesDataModelSchema } from 'src/client';
-
-interface DataFrameDataModel {
-  type: string;
-  data_frame_name: string;
-  data_frame_data_model_id: string;
-  list_series_data_model: SeriesDataModelSchema[];
-}
+import { TDataFrameDataModel } from './DatasetUploadPortal.types';
 
 class ValidatorCsv {
   public validate_headers(
-    data_model: DataFrameDataModel,
+    data_model: TDataFrameDataModel,
     list_series_name_data: string[],
     addLogMessage: (message: string) => void
   ): boolean {
@@ -24,8 +17,6 @@ class ValidatorCsv {
     );
     const data_frame_name = data_model.data_frame_name;
 
-    console.log('list_series_name_model', list_series_name_model);
-    console.log('list_series_name_data', list_series_name_data);
     for (const series_name of list_series_name_model) {
       if (!list_series_name_data.includes(series_name)) {
         allGood = allGood && false;
@@ -49,7 +40,7 @@ class ValidatorCsv {
 
   public validate_data_row(
     row_data: any,
-    data_frame_data_model: DataFrameDataModel,
+    data_frame_data_model: TDataFrameDataModel,
     addLogMessage: (message: string) => void
   ): boolean {
     // TODO: validate that patient id and dataset id series are present?
@@ -372,65 +363,44 @@ class ValidatorCsv {
 
 export async function validateFile(
   fileName: File,
+  dataframeDataModel: TDataFrameDataModel,
   addLogMessage: (message: string) => void
 ): Promise<boolean> {
   addLogMessage('Validating ' + fileName.name + '...');
   let valid = true;
-  // Fetch the data model dataframe info
-  const dataframes = await DefaultService.getAllDataModelDataframeInfo();
-  const validationPromises = dataframes.data_model_dataframes.map(
-    async (dataframe) => {
-      // Check if the dataframe name matches the file name without the extension
-      if (dataframe.name === fileName.name.split('.')[0]) {
-        // Create a data frame data model object
-        const data_frame_data_model: DataFrameDataModel = {
-          data_frame_name: dataframe.name,
-          data_frame_data_model_id: dataframe.id,
-          type: dataframe.name,
-          list_series_data_model: []
-        };
-
-        // Fetch the data model series info
-        const promises = dataframe.data_model_series.map(async (seriesId) => {
-          const seriesInfo = await DefaultService.getDataModelSeriesInfo(
-            seriesId
+  // Validate the file with the data frame data model
+  const validator = new ValidatorCsv();
+  const parsePromise = new Promise<boolean>((resolve) => {
+    papaparse.parse(fileName, {
+      header: true,
+      beforeFirstChunk: function (chunk) {
+        const rows = chunk.split(/\r\n|\n/);
+        const headers = rows[0].split(',');
+        // remove the first element of the array
+        headers.shift();
+        valid =
+          valid &&
+          validator.validate_headers(
+            dataframeDataModel,
+            headers,
+            addLogMessage
           );
-          data_frame_data_model.list_series_data_model.push(
-            seriesInfo.series_schema
+      },
+      step: function (results: { data: any }) {
+        valid =
+          valid &&
+          validator.validate_data_row(
+            results.data,
+            dataframeDataModel,
+            addLogMessage
           );
-        });
-        await Promise.all(promises);
-
-        // Validate the file with the data frame data model
-        const validator = new ValidatorCsv();
-        papaparse.parse(fileName, {
-          header: true,
-          beforeFirstChunk: function (chunk) {
-            const rows = chunk.split(/\r\n|\n/);
-            const headers = rows[0].split(',');
-            // remove the first element of the array
-            headers.shift();
-            valid =
-              valid &&
-              validator.validate_headers(
-                data_frame_data_model,
-                headers,
-                addLogMessage
-              );
-          },
-          step: function (results: { data: any }) {
-            valid =
-              valid &&
-              validator.validate_data_row(
-                results.data,
-                data_frame_data_model,
-                addLogMessage
-              );
-          }
-        });
+      },
+      complete: function () {
+        // Resolve the Promise with the final value of valid
+        resolve(valid);
       }
-    }
-  );
-  await Promise.all(validationPromises);
-  return valid;
+    });
+  });
+  const validationResult = await parsePromise;
+  return validationResult;
 }
