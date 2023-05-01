@@ -8,6 +8,6 @@ export type RegisterDataFederation_In = {
     name: string;
     description: string;
     data_format: DataFederationDataFormat;
-    data_model: string;
+    data_model_id?: string;
 };
 

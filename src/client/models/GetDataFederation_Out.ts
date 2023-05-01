@@ -10,7 +10,7 @@ export type GetDataFederation_Out = {
     name: string;
     description: string;
     data_format: DataFederationDataFormat;
-    data_model: string;
+    data_model_id?: string;
     id: string;
     creation_time?: string;
     organization: BasicObjectInfo;

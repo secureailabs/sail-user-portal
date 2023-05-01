@@ -568,6 +568,34 @@ export class DefaultService {
     }
 
     /**
+     * Add Data Model
+     * Add a data model to a data federation
+     * @param dataFederationId UUID of the data federation
+     * @param requestBody
+     * @returns void
+     * @throws ApiError
+     */
+    public static addDataModel(
+        dataFederationId: string,
+        requestBody: string,
+    ): CancelablePromise<void> {
+        return __request(OpenAPI, {
+            method: 'PATCH',
+            url: '/data-federations/{data_federation_id}',
+            path: {
+                'data_federation_id': dataFederationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: `The data model already exists`,
+                404: `DataFederation not found`,
+                422: `Validation Error`,
+            },
+        });
+    }
+
+    /**
      * Invite Researcher
      * Invite a researcher to join a data federation
      * @param dataFederationId UUID of the data federation
@@ -669,34 +697,6 @@ export class DefaultService {
                 'data_submitter_organization_id': dataSubmitterOrganizationId,
             },
             errors: {
-                404: `DataFederation not found`,
-                422: `Validation Error`,
-            },
-        });
-    }
-
-    /**
-     * Add Data Model
-     * Add a data model to a data federation
-     * @param dataFederationId UUID of the data federation
-     * @param requestBody
-     * @returns void
-     * @throws ApiError
-     */
-    public static addDataModel(
-        dataFederationId: string,
-        requestBody: any,
-    ): CancelablePromise<void> {
-        return __request(OpenAPI, {
-            method: 'PUT',
-            url: '/data-federations/{data_federation_id}/data-models',
-            path: {
-                'data_federation_id': dataFederationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-            errors: {
-                400: `Data model is empty`,
                 404: `DataFederation not found`,
                 422: `Validation Error`,
             },

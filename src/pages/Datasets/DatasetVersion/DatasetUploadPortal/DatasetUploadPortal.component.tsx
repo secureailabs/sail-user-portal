@@ -51,8 +51,14 @@ const DatasetUploadComponent: React.FC = () => {
 
   // Function to fetch all the dataframes from the backend for the data federation
   async function fetchDataModel() {
-    const datamodels = await DefaultService.getAllDataModelInfo();
-    const datamodel = datamodels.data_models[0];
+    const datafederation = await DefaultService.getAllDataFederations();
+    if (!datafederation?.data_federations?.[0].data_model_id) {
+      setLogs('No data model found for the data federation.');
+      return;
+    }
+    const datamodel = await DefaultService.getDataModelInfo(
+      datafederation.data_federations[0].data_model_id
+    );
 
     const data_model: TDataModel = {
       data_model_id: datamodel.id,

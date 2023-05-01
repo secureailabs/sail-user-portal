@@ -29,7 +29,7 @@ const RegisterDatasetComponent: React.FC<any> = ({ close }) => {
     }
 
     // get the data federation where the current user is a data submitter
-    DefaultService.getAllDataFederations(userData.id)
+    DefaultService.getAllDataFederations(userData.organization.id)
       .then((response) => {
         if (response.data_federations?.length === 0) {
           setOnscreenMessage(
