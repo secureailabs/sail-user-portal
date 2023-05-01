@@ -33,6 +33,7 @@ const DatasetUploadComponent: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { version } = useParams() as { version: string };
   const [dataModel, setDataModel] = React.useState<TDataModel | null>(null);
+  const [showUploadButton, setShowUploadButton] = React.useState(true);
 
   function handleButtonClick() {
     fileInputRef.current?.click();
@@ -233,7 +234,7 @@ const DatasetUploadComponent: React.FC = () => {
             onClick={handleButtonClick}
             button_type="primary"
             full={false}
-            disabled={dataModel === null}
+            disabled={dataModel === null || showUploadButton === false}
           >
             Browse
           </Button>
@@ -287,9 +288,12 @@ const DatasetUploadComponent: React.FC = () => {
               </pre>
             </>
           )}
-          {allFilesValidated && (
+          {allFilesValidated && showUploadButton && (
             <Button
-              onClick={() => uploadAndPublish(version, selectedFiles, setLogs)}
+              onClick={() => {
+                setShowUploadButton(false);
+                uploadAndPublish(version, selectedFiles, setLogs);
+              }}
               button_type="primary"
               full={false}
             >
