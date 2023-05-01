@@ -7,6 +7,7 @@ import CsvDisplay from './CsvDisplay';
 import papaparse from 'papaparse';
 import Text from 'src/components/Text';
 import { uploadAndPublish } from './DatasetUploadPortal.utils';
+import { validateFile } from './Validate';
 import { useParams } from 'react-router-dom';
 
 const DatasetUploadComponent: React.FC = () => {
@@ -32,33 +33,36 @@ const DatasetUploadComponent: React.FC = () => {
     validateFiles();
   }, [selectedFiles]);
 
+  function addLogMessage(message: string) {
+    setLogs((prev) => prev + '\n' + message);
+  }
+
   function validateFiles() {
     if (selectedFiles) {
-      let allValid = true;
       for (let i = 0; i < selectedFiles.length; i++) {
-        setLogs(
-          (prev) => prev + '\nValidating ' + selectedFiles[i].name + '...'
-        );
-        if (!selectedFiles[i].name.endsWith('.csv')) {
-          allValid = false;
-          setLogs(
-            (prev) =>
-              prev +
-              '\nValidation of file ' +
-              selectedFiles[i].name +
-              ' failed!'
-          );
-        } else {
-          setLogs(
-            (prev) =>
-              prev +
-              '\nValidation of file ' +
-              selectedFiles[i].name +
-              ' success!'
-          );
-        }
+        validateFile(selectedFiles[i], addLogMessage)
+          .then((result) => {
+            if (result === true) {
+              addLogMessage(
+                'Validation of file ' + selectedFiles[i].name + ' success!'
+              );
+            } else {
+              addLogMessage(
+                'Validation of file ' + selectedFiles[i].name + ' failed!'
+              );
+              setAllFilesValidated(false);
+            }
+          })
+          .catch((error) => {
+            addLogMessage(
+              'Validation process ' +
+                selectedFiles[i].name +
+                ' failed! ' +
+                error
+            );
+          });
       }
-      setAllFilesValidated(allValid);
+      setAllFilesValidated(true);
     }
   }
 
