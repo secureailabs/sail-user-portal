@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { TVirtualMachinesFailureProps } from './VirtualMachines.types';
+import Text from 'src/components/Text';
 
 const VirtualMachinesFailure: React.FC<TVirtualMachinesFailureProps> = () => {
   return (
-    <p>
+    <Text>
       There was an error fetching secure computation nodes. Please try again
-      later
-    </p>
+      later.
+    </Text>
   );
 };
 

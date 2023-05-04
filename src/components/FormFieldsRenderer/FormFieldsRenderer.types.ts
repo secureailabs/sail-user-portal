@@ -29,4 +29,5 @@ export type TFormFieldsRenderer = {
   button_text?: string;
   children?: ReactElement;
   full?: boolean;
+  buttonNeverDisabled?: boolean;
 };

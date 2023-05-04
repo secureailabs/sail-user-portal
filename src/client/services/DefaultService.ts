@@ -4,7 +4,6 @@
 import type { Body_login } from '../models/Body_login';
 import type { DatasetEncryptionKey_Out } from '../models/DatasetEncryptionKey_Out';
 import type { GetDataFederation_Out } from '../models/GetDataFederation_Out';
-import type { GetDataFederationProvision } from '../models/GetDataFederationProvision';
 import type { GetDataModel_Out } from '../models/GetDataModel_Out';
 import type { GetDataModelDataframe_Out } from '../models/GetDataModelDataframe_Out';
 import type { GetDataModelSeries_Out } from '../models/GetDataModelSeries_Out';
@@ -13,7 +12,6 @@ import type { GetDatasetVersion_Out } from '../models/GetDatasetVersion_Out';
 import type { GetDatasetVersionConnectionString_Out } from '../models/GetDatasetVersionConnectionString_Out';
 import type { GetInvite_Out } from '../models/GetInvite_Out';
 import type { GetMultipleDataFederation_Out } from '../models/GetMultipleDataFederation_Out';
-import type { GetMultipleDataFederationProvision_Out } from '../models/GetMultipleDataFederationProvision_Out';
 import type { GetMultipleDataModel_Out } from '../models/GetMultipleDataModel_Out';
 import type { GetMultipleDataModelDataframe_Out } from '../models/GetMultipleDataModelDataframe_Out';
 import type { GetMultipleDataModelSeries_Out } from '../models/GetMultipleDataModelSeries_Out';
@@ -32,8 +30,6 @@ import type { QueryResult } from '../models/QueryResult';
 import type { RefreshToken_In } from '../models/RefreshToken_In';
 import type { RegisterDataFederation_In } from '../models/RegisterDataFederation_In';
 import type { RegisterDataFederation_Out } from '../models/RegisterDataFederation_Out';
-import type { RegisterDataFederationProvision_In } from '../models/RegisterDataFederationProvision_In';
-import type { RegisterDataFederationProvision_Out } from '../models/RegisterDataFederationProvision_Out';
 import type { RegisterDataModel_In } from '../models/RegisterDataModel_In';
 import type { RegisterDataModel_Out } from '../models/RegisterDataModel_Out';
 import type { RegisterDataModelDataframe_In } from '../models/RegisterDataModelDataframe_In';
@@ -46,6 +42,8 @@ import type { RegisterDatasetVersion_In } from '../models/RegisterDatasetVersion
 import type { RegisterDatasetVersion_Out } from '../models/RegisterDatasetVersion_Out';
 import type { RegisterOrganization_In } from '../models/RegisterOrganization_In';
 import type { RegisterOrganization_Out } from '../models/RegisterOrganization_Out';
+import type { RegisterSecureComputationNode_In } from '../models/RegisterSecureComputationNode_In';
+import type { RegisterSecureComputationNode_Out } from '../models/RegisterSecureComputationNode_Out';
 import type { RegisterUser_In } from '../models/RegisterUser_In';
 import type { RegisterUser_Out } from '../models/RegisterUser_Out';
 import type { UpdateDataFederation_In } from '../models/UpdateDataFederation_In';
@@ -896,86 +894,6 @@ export class DefaultService {
     }
 
     /**
-     * Provision Data Federation
-     * Provision data federation SCNs
-     * @param requestBody
-     * @returns RegisterDataFederationProvision_Out Data Federation Provision Id and list of SCNs
-     * @throws ApiError
-     */
-    public static registerDataFederationProvision(
-        requestBody: RegisterDataFederationProvision_In,
-    ): CancelablePromise<RegisterDataFederationProvision_Out> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/data-federations-provisions',
-            body: requestBody,
-            mediaType: 'application/json',
-            errors: {
-                403: `Organization must be one of the the data federation researcher`,
-                404: `Data Federation not found`,
-                422: `Validation Error`,
-            },
-        });
-    }
-
-    /**
-     * Get Data Federation Provision Info
-     * Get data federation provision SCNs
-     * @param provisionId Data Federation Provision Id
-     * @returns GetDataFederationProvision Data Federation Provision information and list of SCNs
-     * @throws ApiError
-     */
-    public static getDataFederationProvisionInfo(
-        provisionId: string,
-    ): CancelablePromise<GetDataFederationProvision> {
-        return __request(OpenAPI, {
-            method: 'GET',
-            url: '/data-federations-provsions/{provision_id}',
-            path: {
-                'provision_id': provisionId,
-            },
-            errors: {
-                422: `Validation Error`,
-            },
-        });
-    }
-
-    /**
-     * Get All Data Federation Provision Info
-     * Get all data federation provision SCNs
-     * @returns GetMultipleDataFederationProvision_Out All Data Federation Provision information and list of SCNs for the current organization
-     * @throws ApiError
-     */
-    public static getAllDataFederationProvisionInfo(): CancelablePromise<GetMultipleDataFederationProvision_Out> {
-        return __request(OpenAPI, {
-            method: 'GET',
-            url: '/data-federations-provsions',
-        });
-    }
-
-    /**
-     * Deprovision Data Federation
-     * Deprovision data federation SCNs
-     * @param provisionId Data Federation Provision Id to deprovision
-     * @returns void
-     * @throws ApiError
-     */
-    public static deprovisionDataFederation(
-        provisionId: string,
-    ): CancelablePromise<void> {
-        return __request(OpenAPI, {
-            method: 'DELETE',
-            url: '/data-federations-provisions/{provision_id}',
-            path: {
-                'provision_id': provisionId,
-            },
-            errors: {
-                422: `Validation Error`,
-            },
-        });
-    }
-
-    /**
      * Get All Datasets
      * Get list of all the datasets for the current organization
      * @returns GetMultipleDataset_Out List of datasets
@@ -1225,7 +1143,7 @@ export class DefaultService {
             },
             errors: {
                 404: `Dataset version not found`,
-                409: `Dataset version is already uploaded or in progress`,
+                409: `Dataset version is not in ENCRYPTING state. Cannot get the connection string.`,
                 422: `Validation Error`,
             },
         });
@@ -1233,22 +1151,38 @@ export class DefaultService {
 
     /**
      * Get All Secure Computation Nodes
-     * Get list of all the secure_computation_node for the current user and federation provision
-     * @param dataFederationProvisionId Data federation provision id
+     * Get list of all the secure_computation_node for the current user
      * @returns GetMultipleSecureComputationNode_Out List of secure_computation_nodes
      * @throws ApiError
      */
-    public static getAllSecureComputationNodes(
-        dataFederationProvisionId: string,
-    ): CancelablePromise<GetMultipleSecureComputationNode_Out> {
+    public static getAllSecureComputationNodes(): CancelablePromise<GetMultipleSecureComputationNode_Out> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/secure-computation-node',
-            query: {
-                'data_federation_provision_id': dataFederationProvisionId,
-            },
             errors: {
                 404: `Dataset version not found`,
+            },
+        });
+    }
+
+    /**
+     * Register Secure Computation Node
+     * Provision data federation SCNs
+     * @param requestBody
+     * @returns RegisterSecureComputationNode_Out SCN information
+     * @throws ApiError
+     */
+    public static registerSecureComputationNode(
+        requestBody: RegisterSecureComputationNode_In,
+    ): CancelablePromise<RegisterSecureComputationNode_Out> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/secure-computation-node',
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                403: `Organization must be one of the the data federation researcher`,
+                404: `Data Federation not found`,
                 422: `Validation Error`,
             },
         });
@@ -1300,6 +1234,28 @@ export class DefaultService {
             errors: {
                 403: `Access denied`,
                 404: `Secure Computation Node not found`,
+                422: `Validation Error`,
+            },
+        });
+    }
+
+    /**
+     * Deprovision Secure Computation Node
+     * Deprovision SCN
+     * @param secureComputationNodeId
+     * @returns void
+     * @throws ApiError
+     */
+    public static deprovisionSecureComputationNode(
+        secureComputationNodeId: string,
+    ): CancelablePromise<void> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/secure-computation-node/{secure_computation_node_id}',
+            path: {
+                'secure_computation_node_id': secureComputationNodeId,
+            },
+            errors: {
                 422: `Validation Error`,
             },
         });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Table from 'src/components/Table';
 import { TDatasetsSuccessProps } from './Datasets.types';
 import StandardContent from 'src/components/StandardContent';

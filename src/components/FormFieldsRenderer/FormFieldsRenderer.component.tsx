@@ -14,7 +14,8 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
   full = true,
   formState,
   children,
-  button_text
+  button_text,
+  buttonNeverDisabled = false
 }) => {
   return (
     <>
@@ -102,7 +103,7 @@ const FormRenderer: React.FC<TFormFieldsRenderer> = ({
       {button_text && (
         <Button
           full={true}
-          disabled={!formState.isDirty}
+          disabled={!formState.isDirty && !buttonNeverDisabled}
           button_type="primary"
           type="submit"
         >

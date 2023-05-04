@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTable, useSortBy, useFlexLayout } from 'react-table';
+import { useTable, useSortBy } from 'react-table';
 import Text from 'src/components/Text';
 import type TTable from './Table.types';
 import { useNavigate } from 'react-router-dom';

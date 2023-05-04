@@ -1,3 +1,3 @@
-import VirtualMachines from './VirtualMachines.container';
+import VirtualMachines from './VirtualMachines.component';
 
 export default VirtualMachines;
