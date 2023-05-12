@@ -25,6 +25,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 Build the docker image for the app.
 
+For MAC users and you get the following error
+**failed to solve with frontend dockerfile.v0**
+Set the following environment variables (https://github.com/docker/buildx/issues/426)
+export DOCKER_BUILDKIT=0
+export COMPOSE_DOCKER_CLI_BUILD=0
+
 ### `npm run push_image`
 
 Push the docker image to the SAIL registry.
