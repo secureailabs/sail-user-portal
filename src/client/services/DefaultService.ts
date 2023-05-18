@@ -443,14 +443,14 @@ export class DefaultService {
      * Get All Data Federations
      * Get list of all the data federations
      * @param dataSubmitterId UUID of Data Submitter in the data federation
-     * @param researcherId UUID of Researcher in the data federation
+     * @param researchOrganizationsId UUID of Researcher in the data federation
      * @param datasetId UUID of Dataset in the data federation
      * @returns GetMultipleDataFederation_Out List of data federations
      * @throws ApiError
      */
     public static getAllDataFederations(
         dataSubmitterId?: string,
-        researcherId?: string,
+        researchOrganizationsId?: string,
         datasetId?: string,
     ): CancelablePromise<GetMultipleDataFederation_Out> {
         return __request(OpenAPI, {
@@ -458,7 +458,7 @@ export class DefaultService {
             url: '/data-federations',
             query: {
                 'data_submitter_id': dataSubmitterId,
-                'researcher_id': researcherId,
+                'research_organizations_id': researchOrganizationsId,
                 'dataset_id': datasetId,
             },
             errors: {

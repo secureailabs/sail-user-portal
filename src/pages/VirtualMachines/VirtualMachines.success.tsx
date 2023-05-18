@@ -22,8 +22,8 @@ const VirtualMachineSuccess: React.FC<TVirtualMachinesSuccessProps> = ({
   }
 
   const UrlCell: React.FC<UrlCellProps> = ({ cell: { value } }) => {
-    if (value && value !== '0.0.0.0') {
-      const notebook_url = `https://${value}:8888/`;
+    if (value && value !== '') {
+      const notebook_url = `https://${value}`;
       return (
         <a href={notebook_url} target="_blank" rel="noopener noreferrer">
           Open Notebook
@@ -35,7 +35,7 @@ const VirtualMachineSuccess: React.FC<TVirtualMachinesSuccessProps> = ({
 
   const DeleteScn: React.FC<DeleteScnProps> = ({ cell: { value } }) => {
     const ipaddress = value.split(' ')[1];
-    if (ipaddress && ipaddress !== '0.0.0.0') {
+    if (ipaddress && ipaddress !== '') {
       const deleteScn = async () => {
         await DefaultService.deprovisionSecureComputationNode(
           value.split(' ')[0]
@@ -74,12 +74,11 @@ const VirtualMachineSuccess: React.FC<TVirtualMachinesSuccessProps> = ({
         Header: 'Delete',
         Cell: DeleteScn,
         id: 'delete',
-        accessor: (row: GetSecureComputationNode_Out) =>
-          `${row.id} ${row.ipaddress}`
+        accessor: (row: GetSecureComputationNode_Out) => `${row.id} ${row.url}`
       },
       {
         Header: 'Notebook',
-        accessor: 'ipaddress',
+        accessor: 'url',
         Cell: UrlCell
       }
     ],
