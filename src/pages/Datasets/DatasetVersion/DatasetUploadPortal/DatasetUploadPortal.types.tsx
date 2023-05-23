@@ -1,7 +1,11 @@
 import { SeriesDataModelSchema } from 'src/client';
 
-export type TDataframeValidationState = {
-  [key: string]: boolean;
+export type TFileInformation = {
+  file: File | null;
+  required: boolean;
+  dataframeName: string;
+  dataframeId: string;
+  validationState: boolean;
 };
 
 export type TDataFrameDataModel = {

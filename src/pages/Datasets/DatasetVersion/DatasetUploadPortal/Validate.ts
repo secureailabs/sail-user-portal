@@ -362,16 +362,16 @@ class ValidatorCsv {
 }
 
 export async function validateFile(
-  fileName: File,
+  file: File,
   dataframeDataModel: TDataFrameDataModel,
   addLogMessage: (message: string) => void
 ): Promise<boolean> {
-  addLogMessage('Validating ' + fileName.name + '...');
+  addLogMessage('Validating ' + file.name + '...');
   let valid = true;
   // Validate the file with the data frame data model
   const validator = new ValidatorCsv();
   const parsePromise = new Promise<boolean>((resolve) => {
-    papaparse.parse(fileName, {
+    papaparse.parse(file, {
       header: true,
       beforeFirstChunk: function (chunk) {
         const rows = chunk.split(/\r\n|\n/);

@@ -6,7 +6,7 @@ import {
 
 export function uploadAndPublish(
   dataset_version_id: string,
-  selectedFiles: FileList | null,
+  selectedFiles: File[] | null,
   addLogMessage: (message: string) => void
 ) {
   if (!process.env.REACT_APP_SAIL_DATA_UPLOAD_SERVICE_URL)
