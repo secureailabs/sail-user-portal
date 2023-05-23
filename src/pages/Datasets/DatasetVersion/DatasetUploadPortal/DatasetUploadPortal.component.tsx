@@ -141,10 +141,7 @@ const DatasetUploadComponent: React.FC = () => {
   }
 
   function processUploadedFile(fileToProcess: File, dataframeName: string) {
-    console.log('Processing file in function' + fileToProcess.name);
-    console.log('Processing file in function' + dataModel);
     if (fileToProcess && dataModel) {
-      console.log('both presern');
       const dataframeDataModel = dataModel.data_model_dataframes.find(
         (dataframe) => dataframe.data_frame_name === dataframeName
       );
@@ -157,13 +154,9 @@ const DatasetUploadComponent: React.FC = () => {
         return;
       }
       // Validate the file
-      console.log('Validating file ' + fileToProcess.name);
       validateFile(fileToProcess, dataframeDataModel, addLogMessage)
         .then((result) => {
           if (result === true) {
-            console.log(
-              'Validation of file ' + fileToProcess.name + ' success!'
-            );
             addLogMessage(
               'Validation of file ' + fileToProcess.name + ' success!'
             );
@@ -242,7 +235,6 @@ const DatasetUploadComponent: React.FC = () => {
           previewFile();
         }
         // call the validation function
-        console.log('Processing file ' + file[0].name);
         processUploadedFile(file[0], value);
       }
     }
@@ -298,7 +290,7 @@ const DatasetUploadComponent: React.FC = () => {
         Cell: UploadCell
       }
     ],
-    []
+    [dataModel]
   );
 
   return (
