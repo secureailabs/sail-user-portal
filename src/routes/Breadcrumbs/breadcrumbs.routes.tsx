@@ -97,7 +97,7 @@ const BreadcrumbRoutes: React.FC = () => {
       }
     },
     {
-      path: '/dashboard/computational-resources',
+      path: '/dashboard/researcher-portal',
       breadcrumb: 'Computational Resources'
     },
     {

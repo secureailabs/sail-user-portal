@@ -36,17 +36,9 @@ const Dashboard: React.FC<TDashboardProps> = ({
       link: '/dashboard/data-models'
     },
     {
-      text: 'Computational Resources',
+      text: 'Researcher Portal',
       Icon: HiOutlineDesktopComputer,
-      link: '/dashboard/computational-resources'
-    },
-    {
-      text: 'Launch Notebook',
-      Icon: MdLaunch,
-      onClick: () => {
-        window.location.href =
-          'http://52.152.225.54:8080/lab?token=fa8dfcf5a8cfd55402f687698847adabced336cd0423172c';
-      }
+      link: '/dashboard/researcher-portal'
     }
   ];
 

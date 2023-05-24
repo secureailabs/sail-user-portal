@@ -63,7 +63,7 @@ const DashboardRouter: React.FC = (): React.ReactElement => (
       }
     />
     <Route
-      path="/computational-resources"
+      path="/researcher-portal"
       element={
         <ProtectedRoute redirect="/login">
           <VirtualMachines />
