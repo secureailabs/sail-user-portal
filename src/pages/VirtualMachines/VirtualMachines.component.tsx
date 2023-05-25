@@ -20,7 +20,7 @@ const VirtualMachines: React.FC = () => {
   });
 
   return (
-    <StandardContent title="Computational Resources">
+    <StandardContent title="Researcher Portal">
       <ConditionalRender
         status={status}
         success={() => (

@@ -28,7 +28,11 @@ interface UploadProps {
   };
 }
 
-const DatasetUploadComponent: React.FC = () => {
+export type TDatasetUploadProps = {
+  refetch: () => void;
+};
+
+const DatasetUploadComponent: React.FC<TDatasetUploadProps> = ({ refetch }) => {
   // State to keep track of the validation state of the dataframes
   const [dataModel, setDataModel] = React.useState<TDataModel | null>(null);
   const [dataframeState, setDataframeState] = React.useState<
@@ -377,7 +381,7 @@ const DatasetUploadComponent: React.FC = () => {
                   }
                 });
                 setShowUploadButton(false);
-                uploadAndPublish(version, fileList, setLogs);
+                uploadAndPublish(version, fileList, addLogMessage, refetch);
               }}
               button_type="primary"
               full={false}

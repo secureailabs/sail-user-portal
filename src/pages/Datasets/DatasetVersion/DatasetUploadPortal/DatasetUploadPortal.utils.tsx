@@ -7,7 +7,8 @@ import {
 export function uploadAndPublish(
   dataset_version_id: string,
   selectedFiles: File[] | null,
-  addLogMessage: (message: string) => void
+  addLogMessage: (message: string) => void,
+  refetch_data_version: () => void
 ) {
   if (!process.env.REACT_APP_SAIL_DATA_UPLOAD_SERVICE_URL)
     throw new Error('REACT_APP_SAIL_DATA_UPLOAD_SERVICE_URL not set');
@@ -25,6 +26,9 @@ export function uploadAndPublish(
     DefaultService.uploadDataset(dataset_version_id, file_blobs)
       .then(() => {
         addLogMessage('Upload of all files success!');
+        setTimeout(() => {
+          refetch_data_version();
+        }, 2000);
       })
       .catch((err) => {
         addLogMessage('Upload of all files failed! Error: ' + err);

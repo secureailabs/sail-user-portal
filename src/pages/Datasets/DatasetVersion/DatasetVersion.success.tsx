@@ -8,11 +8,12 @@ import { DatasetVersionState } from 'src/client';
 import DatasetUploadPortal from './DatasetUploadPortal';
 
 const DatasetVersionSuccess: React.FC<TDatasetVersionSuccessProps> = ({
-  getDatasetVersionData
+  getDatasetVersionData,
+  refetch
 }) => {
   const { register, handleSubmit, formState, trigger } = useForm({
     mode: 'onSubmit',
-    defaultValues: {
+    values: {
       ...getDatasetVersionData
     }
   });
@@ -36,7 +37,9 @@ const DatasetVersionSuccess: React.FC<TDatasetVersionSuccessProps> = ({
             </div>
           </Card>
           {getDatasetVersionData?.state ===
-            DatasetVersionState.NOT_UPLOADED && <DatasetUploadPortal />}
+            DatasetVersionState.NOT_UPLOADED && (
+            <DatasetUploadPortal refetch={refetch} />
+          )}
         </>
       </StandardContent>
     </div>

@@ -98,7 +98,7 @@ const BreadcrumbRoutes: React.FC = () => {
     },
     {
       path: '/dashboard/researcher-portal',
-      breadcrumb: 'Computational Resources'
+      breadcrumb: 'Researcher Portal'
     },
     {
       path: '/dashboard/downloads/:id',

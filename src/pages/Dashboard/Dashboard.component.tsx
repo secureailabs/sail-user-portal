@@ -10,7 +10,6 @@ import {
   MdOutlinePeopleAlt
 } from 'react-icons/md';
 import { HiOutlineDesktopComputer } from 'react-icons/hi';
-import { FaServer } from 'react-icons/fa';
 import DashboardRouter from 'src/routes/Dashboard.routes';
 import Sidebar from 'src/layout/Sidebar';
 import Header from 'src/components/Header';
