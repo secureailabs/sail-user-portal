@@ -11,7 +11,7 @@ const DatasetContainer: React.FC = () => {
   const { data, isLoading, status, error, refetch } = useQuery<
     GetDataset_Out,
     ApiError
-  >(['dataset'], () => DefaultService.getDataset(id), {
+  >([id], () => DefaultService.getDataset(id), {
     refetchOnMount: 'always'
   });
 

@@ -11,7 +11,7 @@ const DatasetVersionContainer: React.FC = () => {
   const { data, isLoading, status, error, refetch } = useQuery<
     GetDatasetVersion_Out,
     ApiError
-  >(['dataset_version'], () => DefaultService.getDatasetVersion(version), {
+  >([version], () => DefaultService.getDatasetVersion(version), {
     refetchOnMount: 'always'
   });
 

@@ -4,7 +4,6 @@ import {
   MdViewColumn,
   MdSettings,
   MdHelpOutline,
-  MdLaunch,
   MdLogout,
   MdSystemUpdateAlt,
   MdOutlineDocumentScanner,
@@ -28,13 +27,13 @@ const Dashboard: React.FC<TDashboardProps> = ({
 }) => {
   const primary: any[] = [
     { text: 'Dashboard', Icon: MdDashboard, link: '/dashboard', exact: true },
-    { text: 'Data Federation', Icon: FaServer, link: '/dashboard/federation' },
+    // { text: 'Data Federation', Icon: FaServer, link: '/dashboard/federation' },
     { text: 'My Datasets', Icon: MdViewColumn, link: '/dashboard/datasets' },
-    {
-      text: 'My DataModels',
-      Icon: MdViewColumn,
-      link: '/dashboard/data-models'
-    },
+    // {
+    //   text: 'My DataModels',
+    //   Icon: MdViewColumn,
+    //   link: '/dashboard/data-models'
+    // },
     {
       text: 'Researcher Portal',
       Icon: HiOutlineDesktopComputer,

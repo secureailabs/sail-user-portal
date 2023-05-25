@@ -8,7 +8,7 @@ const updateBreadcrumb = (
   nameKey: string,
   setBreadcrumb: React.Dispatch<React.SetStateAction<string>>,
   queryClient: QueryClient,
-  self: () => void
+  self: (arg: string) => void
 ) => {
   const queryState = queryClient.getQueryState(queryKey);
 
@@ -17,8 +17,8 @@ const updateBreadcrumb = (
     setBreadcrumb(queryState.data[nameKey]);
   }
 
-  if (!queryState || new Date().getTime() - queryState.dataUpdatedAt >= 100) {
-    setTimeout(self, 15);
+  if (!queryState || !queryState.data) {
+    setTimeout(() => self(queryKey), 15);
   }
 };
 
@@ -30,27 +30,27 @@ const BreadcrumbRoutes: React.FC = () => {
 
   const queryClient = useQueryClient();
 
-  const updateFederationName = () =>
+  const updateFederationName = (id: string) =>
     updateBreadcrumb(
-      'federation',
+      id,
       'name',
       setFederationName,
       queryClient,
       updateFederationName
     );
 
-  const updateDatasetName = () =>
+  const updateDatasetName = (id: string) =>
     updateBreadcrumb(
-      'dataset',
+      id,
       'name',
       setDatasetName,
       queryClient,
       updateDatasetName
     );
 
-  const updateDatasetVersionName = () =>
+  const updateDatasetVersionName = (version_id: string) =>
     updateBreadcrumb(
-      'dataset_version',
+      version_id,
       'name',
       setDatasetVersionName,
       queryClient,
@@ -78,21 +78,21 @@ const BreadcrumbRoutes: React.FC = () => {
     {
       path: '/dashboard/federation',
       breadcrumb: () => {
-        updateFederationName();
+        updateFederationName('federation');
         return federationName;
       }
     },
     {
       path: '/dashboard/datasets/:id',
-      breadcrumb: () => {
-        updateDatasetName();
+      breadcrumb: (match: any) => {
+        updateDatasetName(match.match.params.id);
         return datasetName;
       }
     },
     {
       path: '/dashboard/datasets/:id/versions/:version',
-      breadcrumb: () => {
-        updateDatasetVersionName();
+      breadcrumb: (match: any) => {
+        updateDatasetVersionName(match.match.params.version);
         return datasetVersionName;
       }
     },

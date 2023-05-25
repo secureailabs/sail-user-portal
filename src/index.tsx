@@ -6,7 +6,6 @@ import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import * as ReactDOMClient from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryClient = new QueryClient({
