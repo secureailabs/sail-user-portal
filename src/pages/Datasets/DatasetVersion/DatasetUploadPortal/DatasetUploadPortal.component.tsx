@@ -1,7 +1,7 @@
 import Card from 'src/components/Card';
 import Button from 'src/components/Button';
 import React, { useRef, ChangeEvent } from 'react';
-import { Container, MenuItem } from '@mui/material';
+import { Box, Container, MenuItem } from '@mui/material';
 import Select from '@mui/material/Select';
 import CsvDisplay from './CsvDisplay';
 import papaparse from 'papaparse';
@@ -243,7 +243,7 @@ const DatasetUploadComponent: React.FC<TDatasetUploadProps> = ({ refetch }) => {
       }
     }
     return (
-      <Container>
+      <Box display="flex" flexWrap="nowrap">
         <input
           type="file"
           ref={fileInputRef}
@@ -260,7 +260,7 @@ const DatasetUploadComponent: React.FC<TDatasetUploadProps> = ({ refetch }) => {
           Browse
         </Button>
         {selectedFile?.name}
-      </Container>
+      </Box>
     );
   };
 

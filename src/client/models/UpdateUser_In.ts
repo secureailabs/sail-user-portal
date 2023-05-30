@@ -7,7 +7,7 @@ import type { UserRole } from './UserRole';
 
 export type UpdateUser_In = {
     job_title: string;
-    role: UserRole;
+    roles: Array<UserRole>;
     account_state: UserAccountState;
     avatar: string;
 };

@@ -12,7 +12,7 @@ import StandardContent from 'src/components/StandardContent';
 import Stats from 'src/components/Stats';
 import { FaUsers } from 'react-icons/fa';
 import { HiViewBoards } from 'react-icons/hi';
-import { UserInfo_Out } from 'src/client';
+import { UserInfo_Out, UserRole } from 'src/client';
 
 TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo('en');
@@ -72,7 +72,8 @@ const CustomizableDashboard: React.FC<{ userData: UserInfo_Out }> = ({
     { i: 'c', x: 8, y: 0, w: 3, h: 7, static: true },
     { i: 'd', x: 8, y: 7, w: 3, h: 5, static: true }
   ];
-  if (userData?.role === 'ADMIN') {
+  // check if user has admin role or not
+  if (userData && userData.roles.includes(UserRole.ADMIN)) {
     return (
       <div className="standard-content-scroll">
         <StandardContent title="Dashboard">

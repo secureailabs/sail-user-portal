@@ -19,59 +19,71 @@ import { TDashboardProps } from './Dashboard.types';
 import default_profile_image from '../../assets/user.png';
 // @ts-ignore
 import newLogo from '../../assets/newLogo.png';
+import { UserRole } from 'src/client';
+import { FaServer } from 'react-icons/fa';
 
 const Dashboard: React.FC<TDashboardProps> = ({
   userData,
   logoutMutationFunction
 }) => {
   const primary: any[] = [
-    { text: 'Dashboard', Icon: MdDashboard, link: '/dashboard', exact: true },
-    // { text: 'Data Federation', Icon: FaServer, link: '/dashboard/federation' },
-    { text: 'My Datasets', Icon: MdViewColumn, link: '/dashboard/datasets' },
-    // {
-    //   text: 'My DataModels',
-    //   Icon: MdViewColumn,
-    //   link: '/dashboard/data-models'
-    // },
+    // { text: 'Dashboard', Icon: MdDashboard, link: '/dashboard', exact: true },
+    // { text: 'Data Federation', Icon: FaServer, link: '/dashboard' },
     {
-      text: 'Researcher Portal',
-      Icon: HiOutlineDesktopComputer,
-      link: '/dashboard/researcher-portal'
+      text: 'DataModel',
+      Icon: MdViewColumn,
+      link: '/dashboard/data-models'
     }
   ];
 
+  if (userData.roles.includes(UserRole.DATA_SUBMITTER)) {
+    primary.push({
+      text: 'My Datasets',
+      Icon: MdViewColumn,
+      link: '/dashboard/datasets'
+    });
+  }
+
+  if (userData.roles.includes(UserRole.RESEARCHER)) {
+    primary.push({
+      text: 'Researcher Portal',
+      Icon: HiOutlineDesktopComputer,
+      link: '/dashboard/researcher-portal'
+    });
+  }
+
   const secondary: any[] = [
+    // {
+    //   text: 'Downloads',
+    //   Icon: MdSystemUpdateAlt,
+    //   link: '/dashboard/downloads'
+    // },
+    // {
+    //   text: 'Documentation',
+    //   Icon: MdOutlineDocumentScanner,
+    //   link: '/dashboard/documentation'
+    // },
+    // {
+    //   text: 'Settings',
+    //   Icon: MdSettings,
+    //   link: '/dashboard/settings'
+    // },
+    // {
+    //   text: 'My Organization',
+    //   Icon: MdOutlinePeopleAlt,
+    //   link: '/dashboard/my-organization'
+    // },
+    // {
+    //   text: 'Help',
+    //   Icon: MdHelpOutline,
+    //   link: '/dashboard/help'
+    // },
     {
       text: 'Logout',
       Icon: MdLogout,
       onClick: () => {
         logoutMutationFunction();
       }
-    },
-    {
-      text: 'Downloads',
-      Icon: MdSystemUpdateAlt,
-      link: '/dashboard/downloads'
-    },
-    {
-      text: 'Documentation',
-      Icon: MdOutlineDocumentScanner,
-      link: '/dashboard/documentation'
-    },
-    {
-      text: 'Settings',
-      Icon: MdSettings,
-      link: '/dashboard/settings'
-    },
-    {
-      text: 'My Organization',
-      Icon: MdOutlinePeopleAlt,
-      link: '/dashboard/my-organization'
-    },
-    {
-      text: 'Help',
-      Icon: MdHelpOutline,
-      link: '/dashboard/help'
     }
   ];
 

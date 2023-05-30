@@ -9,7 +9,7 @@ export type UserInfo_Out = {
     name: string;
     email: string;
     job_title: string;
-    role: UserRole;
+    roles: Array<UserRole>;
     avatar?: string;
     id: string;
     organization: BasicObjectInfo;
