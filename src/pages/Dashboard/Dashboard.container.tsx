@@ -2,7 +2,7 @@ import React from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 
 import Dashboard from './Dashboard.component';
-import { OpenAPI } from 'src/client';
+import { OpenAPI, UserInfo_Out } from 'src/client';
 
 const logout = async () => {
   OpenAPI.TOKEN = '';
@@ -18,9 +18,13 @@ const DashboardContainer: React.FC = () => {
     retry: false
   });
 
+  const userData = queryClient.getQueryData<UserInfo_Out>('userData');
+  if (!userData) {
+    return null;
+  }
+
   return Dashboard({
-    // @ts-ignore
-    userData: queryClient.getQueryData('userData'),
+    userData: userData,
     logoutMutationFunction: logoutMutation.mutate
   });
 };
