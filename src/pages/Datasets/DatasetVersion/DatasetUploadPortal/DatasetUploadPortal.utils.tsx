@@ -4,12 +4,15 @@ import {
   Body_upload_dataset
 } from 'src/datasetUpload';
 
+import { updateDatasetInfo } from './DatasetUploadPortal.updateutils';
+
 export function uploadAndPublish(
   dataset_version_id: string,
   selectedFiles: File[] | null,
   addLogMessage: (message: string) => void,
   refetch_data_version: () => void
 ) {
+  let notes = '';
   if (!process.env.REACT_APP_SAIL_DATA_UPLOAD_SERVICE_URL)
     throw new Error('REACT_APP_SAIL_DATA_UPLOAD_SERVICE_URL not set');
 
@@ -21,11 +24,13 @@ export function uploadAndPublish(
     };
     for (let i = 0; i < selectedFiles.length; i++) {
       addLogMessage('Uploading ' + selectedFiles[i].name + '...');
+      notes = notes + 'Uploaded ' + selectedFiles[i].name + '\n';
       file_blobs.dataset_files.push(selectedFiles[i]);
     }
     DefaultService.uploadDataset(dataset_version_id, file_blobs)
       .then(() => {
         addLogMessage('Upload of all files success!');
+        updateDatasetInfo(dataset_version_id, notes);
         setTimeout(() => {
           refetch_data_version();
         }, 2000);

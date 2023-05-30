@@ -6,6 +6,7 @@ import Card from 'src/components/Card';
 import { TDatasetVersionSuccessProps } from './DatasetVersion.types';
 import { DatasetVersionState } from 'src/client';
 import DatasetUploadPortal from './DatasetUploadPortal';
+import Heading from 'src/components/Heading';
 
 const DatasetVersionSuccess: React.FC<TDatasetVersionSuccessProps> = ({
   getDatasetVersionData,
@@ -23,18 +24,28 @@ const DatasetVersionSuccess: React.FC<TDatasetVersionSuccessProps> = ({
       <StandardContent title={getDatasetVersionData?.name}>
         <>
           <Card primaryText="">
-            <div className="form-double">
-              <FormFieldsRenderer
-                register={register}
-                formState={formState}
-                fields={{
-                  name: {},
-                  dataset_version_created_time: {},
-                  description: {},
-                  state: {}
-                }}
-              />
-            </div>
+            <>
+              <div className="form-double">
+                <FormFieldsRenderer
+                  register={register}
+                  formState={formState}
+                  fields={{
+                    name: {},
+                    dataset_version_created_time: {},
+                    description: {},
+                    state: {}
+                  }}
+                />
+              </div>
+              {getDatasetVersionData?.note && (
+                <>
+                  <Heading size="h1">Upload Status</Heading>
+                  <pre style={{ fontSize: '1.4rem', lineHeight: '2rem' }}>
+                    {getDatasetVersionData?.note}
+                  </pre>
+                </>
+              )}
+            </>
           </Card>
           {getDatasetVersionData?.state ===
             DatasetVersionState.NOT_UPLOADED && (
