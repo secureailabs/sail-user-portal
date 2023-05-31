@@ -259,7 +259,7 @@ const DatasetUploadComponent: React.FC<TDatasetUploadProps> = ({ refetch }) => {
         >
           Browse
         </Button>
-        {selectedFile?.name}
+        <Box style={{ marginLeft: '1rem' }}>{selectedFile?.name}</Box>
       </Box>
     );
   };
@@ -316,7 +316,7 @@ const DatasetUploadComponent: React.FC<TDatasetUploadProps> = ({ refetch }) => {
             data={dataModel ? dataframeState : []}
           />
           {currentFile && (
-            <Container
+            <Box
               style={{
                 display: 'flex',
                 flexDirection: 'row-reverse',
@@ -327,12 +327,17 @@ const DatasetUploadComponent: React.FC<TDatasetUploadProps> = ({ refetch }) => {
                 padding: '2rem'
               }}
             >
-              <Select
+              <select
                 style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   minWidth: '10%',
-                  maxWidth: '10%',
-                  marginBottom: '-1rem',
-                  marginLeft: '1rem'
+                  minHeight: '3rem',
+                  maxWidth: '15%',
+                  marginBottom: '0rem',
+                  marginLeft: '1rem',
+                  fontSize: '1.5rem'
                 }}
                 value={currentFile?.name.split('.')[0]}
                 onChange={(e) => {
@@ -347,16 +352,16 @@ const DatasetUploadComponent: React.FC<TDatasetUploadProps> = ({ refetch }) => {
                 }}
               >
                 {Array.from(dataframeState).map((dataframeInfo) => (
-                  <MenuItem
+                  <option
                     key={dataframeInfo.dataframeName}
                     value={dataframeInfo.dataframeName}
                   >
                     {dataframeInfo.dataframeName}
-                  </MenuItem>
+                  </option>
                 ))}
-              </Select>
+              </select>
               <Text>Preview data</Text>
-            </Container>
+            </Box>
           )}
           {sample_csv_data.length ? (
             <CsvDisplay csvData={sample_csv_data} />

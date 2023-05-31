@@ -12,11 +12,12 @@ import {
 import { useQuery } from 'react-query';
 
 const VirtualMachines: React.FC = () => {
-  const { data, isLoading, status, error, refetch } = useQuery<
+  const { data, status, error, refetch } = useQuery<
     GetMultipleSecureComputationNode_Out,
     ApiError
   >(['virtualmachines'], DefaultService.getAllSecureComputationNodes, {
-    refetchOnMount: 'always'
+    refetchOnMount: 'always',
+    refetchInterval: 10000
   });
 
   return (

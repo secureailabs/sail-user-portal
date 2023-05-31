@@ -29,11 +29,11 @@ const Dashboard: React.FC<TDashboardProps> = ({
   const primary: any[] = [
     // { text: 'Dashboard', Icon: MdDashboard, link: '/dashboard', exact: true },
     // { text: 'Data Federation', Icon: FaServer, link: '/dashboard' },
-    {
-      text: 'DataModel',
-      Icon: MdViewColumn,
-      link: '/dashboard/data-models'
-    }
+    // {
+    //   text: 'DataModel',
+    //   Icon: MdViewColumn,
+    //   link: '/dashboard/data-models'
+    // }
   ];
 
   if (userData.roles.includes(UserRole.DATA_SUBMITTER)) {

@@ -31,7 +31,9 @@ const CsvDisplay: React.FC<CsvDisplayProps> = ({ csvData }) => {
         <TableHead>
           <TableRow>
             {headers.map((header, i) => (
-              <TableCell key={i}>{header}</TableCell>
+              <TableCell sx={{ fontWeight: 'fontWeightBold' }} key={i}>
+                {header}
+              </TableCell>
             ))}
           </TableRow>
         </TableHead>
